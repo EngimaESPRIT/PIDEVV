@@ -25,6 +25,12 @@ class AppKernel extends Kernel
             new GestionCommoditeBundle\GestionCommoditeBundle(),
             new GestionActualiteBundle\GestionActualiteBundle(),
             new GestionShopBundle\GestionShopBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

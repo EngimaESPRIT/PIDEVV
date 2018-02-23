@@ -5,3 +5,6 @@ services:
   redirect.after.login:
     class:  MyApp\UserBundle\Redirection\LoginAfterRedirection
     arguments: ["@router"]
+  redirect.after.logout:
+    class:  MyApp\UserBundle\Redirection\AfterLogoutRedirection
+    arguments: ["@router","@security.authorization_checker"]

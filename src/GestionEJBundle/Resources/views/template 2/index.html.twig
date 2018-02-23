@@ -230,109 +230,24 @@
                                                     <h5><a href="group-list.html">Club Ranking</a></h5>
                                                     <div class="info-ranking">
                                                         <ul>
-                                                            <li>
-                                                              <span class="position">
-                                                                  1
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/rusia.png" alt="">
-                                                                    Russia
-                                                                </a>
-                                                                <span class="points">
-                                                                    90
-                                                                </span>
-                                                            </li>
+                                                            {% for b in m %}
 
                                                             <li>
                                                               <span class="position">
-                                                                  2
+{{ b.classementfifa }}
                                                               </span>
                                                                <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/arabia.png" alt="">
-                                                                    Saudi Arabia
+                                                                    <img src="{{ asset('uploads/Equipes/' ~ b.Drapeau) }}" alt="">
+                                                                    {{ b.nom }}
                                                                 </a>
                                                                 <span class="points">
-                                                                    86
+
+                                                                    {{ b.groupe }}
                                                                 </span>
                                                             </li>
+{% endfor %}
 
-                                                            <li>
-                                                              <span class="position">
-                                                                  3
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/egy.png" alt="">
-                                                                    Egypt
-                                                                </a>
-                                                                <span class="points">
-                                                                    84
-                                                                </span>
-                                                            </li>
 
-                                                            <li>
-                                                              <span class="position">
-                                                                  4
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/uru.png" alt="">
-                                                                    Uruguay
-                                                                </a>
-                                                                <span class="points">
-                                                                  70
-                                                               </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  5
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                                    Portugal
-                                                                </a>
-                                                                <span class="points">
-                                                                    67
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  6
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/esp.png" alt="">
-                                                                    Spain
-                                                                </a>
-                                                                <span class="points">
-                                                                    60
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  55
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/mar.png" alt="">
-                                                                    Morocco
-                                                                </a>
-                                                                <span class="points">
-                                                                    90
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  8
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/clubs-logos/irn.png" alt="">
-                                                                     IR Iran
-                                                                </a>
-                                                                <span class="points">
-                                                                    53
-                                                                </span>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                </div>
@@ -422,109 +337,23 @@
                                                     <h5><a href="group-list.html">Top player</a></h5>
                                                     <div class="info-player">
                                                         <ul>
+    {% set myVal = 0 %}
+                                                            {% for b in j %}
                                                             <li>
                                                               <span class="position">
-                                                                  1
+                                                                   {% set myVal=myVal+1 %}
+                                                                  {{ myVal }}
                                                               </span>
                                                                <a href="single-team.html">
-                                                                    <img src="img/players/1.jpg" alt="">
-                                                                    Cristiano R.
+                                                                    <img src="{{ asset('uploads/Joueurs/' ~ b.imageJoueur1) }}" alt="">
+                                                                   {{ b.nom }} {{ b.prenom }}
                                                                 </a>
                                                                 <span class="points">
-                                                                    90
+                                                                    {{ b.buts }}
                                                                 </span>
                                                             </li>
+                                                                {% endfor %}
 
-                                                            <li>
-                                                              <span class="position">
-                                                                  2
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/players/2.jpg" alt="">
-                                                                    Lionel Messi
-                                                                </a>
-                                                                <span class="points">
-                                                                    88
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  3
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/players/3.jpg" alt="">
-                                                                    Neymar
-                                                                </a>
-                                                                <span class="points">
-                                                                    86
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  4
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/players/4.jpg" alt="">
-                                                                    Luis Suárez
-                                                                </a>
-                                                                <span class="points">
-                                                                  80
-                                                               </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  5
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/players/5.jpg" alt="">
-                                                                    Gareth Bale
-                                                                </a>
-                                                                <span class="points">
-                                                                    76
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  6
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/players/6.jpg" alt="">
-                                                                    Sergio Agüero
-                                                                </a>
-                                                                <span class="points">
-                                                                    74
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  7
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/players/2.jpg" alt="">
-                                                                    Jamez R.
-                                                                </a>
-                                                                <span class="points">
-                                                                    70
-                                                                </span>
-                                                            </li>
-
-                                                            <li>
-                                                              <span class="position">
-                                                                  8
-                                                              </span>
-                                                               <a href="single-team.html">
-                                                                    <img src="img/players/1.jpg" alt="">
-                                                                     Falcao Garcia
-                                                                </a>
-                                                                <span class="points">
-                                                                    65
-                                                                </span>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                </div>
@@ -1223,6 +1052,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="text-center">
+
                                     <h2>Enter your e-mail and <span class="text-resalt">subscribe</span> to our newsletter.</h2>
                                     <p>Duis non lorem porta,  eros sit amet, tempor sem. Donec nunc arcu, semper a tempus et, consequat.</p>
                                 </div>
@@ -1269,6 +1099,12 @@
             <div class="content-instagram">
                 <div id="instafeed"></div>
             </div>
+
+
+    <audio autoplay>
+        <source src="{{ asset('russia.mp3') }}" type="audio/mpeg" />
+    </audio>
+
 {% endblock %}
 {% block footer %}
             {{ parent() }}

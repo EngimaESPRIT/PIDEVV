@@ -62,6 +62,12 @@ class Stade
      * @ORM\Column(name="Photostade", type="string", length=255, nullable=false)
      */
     private $photostade;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=1000, nullable=false)
+     */
+    private $Description;
 
     /**
      * @return int

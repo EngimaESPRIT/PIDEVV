@@ -32,10 +32,22 @@ class User extends BaseUser
      * @ORM\Column(type="string",length=255)
      */
     private $prenom;
+    /**
+     * @var \equipefavorite
+     *
+     * @ORM\ManyToOne(targetEntity="GestionEJBundle\Entity\Equipe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="equipefavorite", referencedColumnName="IDEquipe",nullable=true)
+     * })
+     */
+    private $equipefavorite;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
+        $this->roles = array('ROLE_CLIENT');
+
     }
 
     /**
@@ -44,6 +56,22 @@ class User extends BaseUser
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * @return \EquipeFavorite
+     */
+    public function getEquipefavorite()
+    {
+        return $this->equipefavorite;
+    }
+
+    /**
+     * @param \EquipeFavorite $equipefavorite
+     */
+    public function setEquipefavorite($equipefavorite)
+    {
+        $this->equipefavorite = $equipefavorite;
     }
 
     /**

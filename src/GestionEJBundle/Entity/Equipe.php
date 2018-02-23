@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Equipe
  *
  * @ORM\Table(name="equipe")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GestionEJBundle\Repository\EquipeRepository")
  */
 class Equipe
 {
@@ -124,7 +124,12 @@ class Equipe
      * @ORM\Column(name="LogoFederation", type="string", length=255, nullable=false)
      */
     private $Logo;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Groupe", type="string", length=1, nullable=false)
+     */
+    private $Groupe;
     /**
      * @return int
      */
@@ -409,6 +414,22 @@ class Equipe
     public function setLogo($Logo)
     {
         $this->Logo = $Logo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGroupe()
+    {
+        return $this->Groupe;
+    }
+
+    /**
+     * @param string $Groupe
+     */
+    public function setGroupe($Groupe)
+    {
+        $this->Groupe = $Groupe;
     }
 
 

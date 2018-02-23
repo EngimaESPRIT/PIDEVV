@@ -5,7 +5,7 @@
 {% block content %}
 
             <!-- Section Title -->
-            <div class="section-title single-player" style="background:url(img/slide/3.jpg)">
+            <div class="section-title single-player" style="background-image:url('{{ asset('uploads/Joueurs/' ~ m.imagejoueur3) }}')" >
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
@@ -37,51 +37,31 @@
 
                                 <div class="item-player single-player">
                                     <div class="head-player">
-                                        <img src="img/players/7.jpg" alt="location-team">
+                                        <img src="{{ asset('uploads/Joueurs/' ~ m.imagejoueur1) }}" alt="location-team">
                                     </div>
                                     <div class="info-player">
                                         <span class="number-player">
-                                            10
+                                           {{ m.numero }}
                                         </span>
                                         <h4>
-                                            Jamez Rodriguez
-                                            <span>Forward</span>
+                                           {{ m.nom }} {{ m.prenom }}
+                                            <span>{{ m.poste1 }}</span>
                                         </h4>
                                         <ul>
                                             <li>
-                                                <strong>CLUB NAME:</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span
+                                                <strong>{{ m.idEquipe.nom }}</strong> <span><img src="{{ asset('uploads/Equipes/' ~ m.idEquipe.drapeau) }}" alt=""> {{ m.nationalite }} </span
                                             </li>
-                                            <li><strong>MATCHES:</strong> <span>90</span></li>
-                                            <li><strong>AGE:</strong> <span>28</span></li>
-                                            <li><strong>Goals:</strong> <span>108</span></li>
-                                            <li><strong>Discipline:</strong> <span>4 fouls against</span></li>
-                                            <li><strong>Passing:</strong> <span>40 free kicks</span></li>
+                                            <li><strong>Selection:</strong> <span>{{ m.selections }}</span></li>
+                                            <li><strong>Date de naissance</strong> <span>{{ m.datedenaissance|date }}</span></li>
+                                            <li><strong>BUTS</strong> <span>{{ m.buts }}</span></li>
+
                                         </ul>
 
-                                        <h6>Follow Jamez Rodriguez</h6>
 
                                         <ul class="social-player">
-                                            <li>
-                                                <div>
-                                                    <a href="#" class="facebook">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="#" class="twitter-icon">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="#" class="youtube">
-                                                        <i class="fa fa-youtube"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
+                                            {{ socialButtons({'twitter' : {'message':'Le meilleur joueur sera ' ~ m.nom ~ m.prenom,'tag':m.nom},'facebook':'false','linkedin':'false','pinterest':'false'}) }}
+
+
                                         </ul>
                                     </div>
                                 </div>
@@ -92,11 +72,11 @@
                                         <h4><i class="fa fa-user"></i>Personal Info</h4>
                                     </div>
                                     <ul class="list-panel">
-                                        <li><p>Weight <span>70 Kg</span></p></li>
-                                        <li><p>Height <span>1.70 Mts</span></p></li>
-                                        <li><p>Nationality <span>Colombia</span></p></li>
-                                        <li><p>Place of Birth <span>Cucuta</span></p></li>
-                                        <li><p>Date of Birth <span>March 5th, 1989</span></p></li>
+                                        <li><p>Poids <span>{{ m.poids }}</span></p></li>
+                                        <li><p>Taille <span>{{ m.taille }}</span></p></li>
+                                        <li><p>Nationalité <span>{{ m.nationalite }}</span></p></li>
+                                        <li><p>Lieu de naissance <span>{{ m.lieunaissance }}</span></p></li>
+
                                     </ul>
                                 </div>
                                 <!-- End Attack -->
@@ -106,9 +86,9 @@
                             <div class="col-lg-8 col-xl-9">
                                 <!-- Nav Tabs -->
                                 <ul class="nav nav-tabs" id="myTab">
-                                   <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
-                                   <li><a href="#career" data-toggle="tab">CAREER</a></li>
-                                   <li><a href="#stats" data-toggle="tab">STATS</a></li>
+                                   <li class="active"><a href="#overview" data-toggle="tab">Description</a></li>
+                                   <li><a href="#career" data-toggle="tab">Carriére</a></li>
+                                   <li><a href="#stats" data-toggle="tab">Statistique</a></li>
                                 </ul>
                                 <!-- End Nav Tabs -->
 
@@ -119,17 +99,15 @@
 
                                         <div class="panel-box padding-b">
                                           <div class="titles">
-                                              <h4>Jamez overview</h4>
+                                              <h4> Carriére internationale de {{ m.nom }}</h4>
                                           </div>
                                             <div class="row">
                                                <div class="col-lg-12 col-xl-4">
-                                                   <img src="img/clubs-teams/single-team.jpg" alt="">
+                                                   <img src="{{ asset('uploads/Joueurs/' ~ m.imagejoueur2) }}" alt="">
                                                </div>
 
                                                <div class="col-lg-12 col-xl-8">
-                                                   <p>The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in international football competitions and is overseen by the Colombian Football Federation. It is a member of the CONMEBOL and is currently ranked thirteenth in the FIFA World Rankings.[3] The team are nicknamed Los Cafeteros due to the coffee production in their country.</p>
-
-                                                    <p>Since the mid-1980s, the national team has been a symbol fighting the country's negative reputation. This has made the sport popular and made the national team a sign of nationalism, pride and passion for many Colombians worldwide.</p>
+                  {{ m.description }}
                                                </div>
                                            </div>
                                        </div>

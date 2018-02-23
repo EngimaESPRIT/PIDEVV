@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
+
 
 class RegistrationType extends AbstractType
 {
@@ -16,15 +18,8 @@ class RegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('roles', ChoiceType::class, array(
-                'label' => 'Type',
-                'choices' => array(
-                    'ADMIN' => 'ROLE_ADMIN',
-                    'CLIENT' => 'ROLE_CLIENT'
-                ),
-                'required' => true,
-                'multiple' => true,)
-        );
+        $builder->add('nom')->add('prenom')->add('captcha', CaptchaType::class);
+        ;
     }/**
      * {@inheritdoc}
      */

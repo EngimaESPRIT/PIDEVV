@@ -41,28 +41,35 @@ class StadeController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
 $model = $em->getRepository("GestionEJBundle:Stade")->findAll();
 return $this->render('@GestionEJ/TemplateAdmin/afficherStade.html.twig', array('m' => $model));
 }
-    public function GoToSuppJoueurAction(Request $request)
+    public function GoToSuppStadeAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $model = $em->getRepository("GestionEJBundle:Joueur")->find($request->get('id'));
+        $model = $em->getRepository("GestionEJBundle:Stade")->find($request->get('id'));
         $model=$em->merge($model);
         $em->remove($model);
         $em->flush();
 
-        return $this->redirectToRoute('AfficheJoueur');
+        return $this->redirectToRoute('AfficherStade');
     }
-    public function GoToModifJoueurAction(Request $request)
+    public function GoToModifStadeAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $model = $em->getRepository("GestionEJBundle:Joueur")->find($request->get('id'));
-        $form=$this->createForm(AjoutJoueur::class,$model);
+        $model = $em->getRepository("GestionEJBundle:Stade")->find($request->get('id'));
+        $form=$this->createForm(AjoutStade::class,$model);
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $file = $model->getPhotostade();
+            $fileName = $model->getNom() . '.' . $file->guessExtension();
+            $file->move(
+                $this->getParameter('Joueurs_directory'),
+                $fileName
+            );
+            $model->setPhotostade($fileName);
             $em->persist($model);
             $em->flush();
-            return $this->redirectToRoute('AfficheJoueur');
+            return $this->redirectToRoute('AfficherStade');
         }
-        return $this->render('@GestionEJ/TemplateAdmin/modifJoueurs.html.twig',array('m'=>$model,'form'=>$form->createView()
+        return $this->render('@GestionEJ/TemplateAdmin/modifStade.html.twig',array('m'=>$model,'form'=>$form->createView()
         ,'id'=>$request->get('id')));
 
     }

@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Theme CSS -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('checkbox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/dusha.css') }}" />
 
 
 
@@ -26,21 +29,21 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/icons/apple-touch-icon-114x114.png') }}">
 </head>
 
-<body>
+<body  >
 
 <!-- layout-->
-<div id="layout">
+<div id="layout" style="background-image: url('{{ asset('gg.jpg') }}')">
     <!-- Header-->
     <header>
         <!-- End headerbox-->
-        <div class="headerbox">
+        <div class="headerbox" >
             <div class="container">
                 <div class="row justify-content-between align-items-center">
                     <!-- Logo-->
                     <div class="col">
                         <div class="logo">
                             <a href="{{ path('home') }}" title="Return Home">
-                                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo_img">
+                                <img src="{{ asset('wclogo.png') }}" alt="Logo" class="logo_img">
                             </a>
 
                         </div>
@@ -136,7 +139,7 @@
             </li>
 
             <li class="current">
-                <a href="{{ path('players') }}">Players</a>
+                <a href="{{ path('Playershow') }}">Players</a>
                 <ul class="sub-current">
                     <li>
                         <a href="players.html">Players List</a>
@@ -238,7 +241,7 @@
             </li>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li class="current">
-                <a href="{{ path('teams') }}"> Profile</a>
+                <a href="{{ path('fos_user_profile_show') }}"> Profile</a>
                 <ul class="sub-current">
                     <li>
                         <a href="{{ path('fos_user_profile_show') }}">Consulter Profile</a>
@@ -249,6 +252,10 @@
 
                 </ul>
             </li>
+        <li class="current">
+            <a href="{{ path('Equipe-type') }}">Equipe-Type</a>
+        </li>
+
         {% endif %}
         </ul>
         <!-- End Menu-->
@@ -297,7 +304,7 @@
         </li>
 
         <li>
-            <a href="players.html">Players</a>
+            <a href="{{ path('Playershow') }}">Players</a>
             <ul>
                 <li>
                     <a href="players.html">Players List</a>

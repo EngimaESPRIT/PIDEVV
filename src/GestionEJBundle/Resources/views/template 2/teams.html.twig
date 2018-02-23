@@ -33,14 +33,14 @@
                     <div class="container">
                         <h5><i class="fa fa-filter" aria-hidden="true"></i>Filter By:</h5>
                         <a href="#" data-filter="*" class="current">Show All</a>
-                        <a href="#" data-filter=".group-a">Group A</a>
-                        <a href="#" data-filter=".group-b">Group B</a>
-                        <a href="#" data-filter=".group-c">Group C</a>
-                        <a href="#" data-filter=".group-d">Group D</a>
-                        <a href="#" data-filter=".group-e">Group E</a>
-                        <a href="#" data-filter=".group-f">Group F</a>
-                        <a href="#" data-filter=".group-g">Group G</a>
-                        <a href="#" data-filter=".group-h">Group H</a>
+                        <a href="#" data-filter=".A">Group A</a>
+                        <a href="#" data-filter=".B">Group B</a>
+                        <a href="#" data-filter=".C">Group C</a>
+                        <a ref="#" data-filter=".D">Group D</a>
+                        <a href="#" data-filter=".E">Group E</a>
+                        <a href="#" data-filter=".F">Group F</a>
+                        <a href="#" data-filter=".G">Group G</a>
+                        <a href="#" data-filter=".H">Group H</a>
                     </div>
                 </div>
                 <!-- End Nav Filters -->
@@ -49,11 +49,11 @@
                     <div class="row portfolioContainer">
                         {% for v in m %}
                         <!-- Item Team Group A-->
-                        <div class="col-md-6 col-lg-4 col-xl-3 group-a">
+                        <div class="col-md-6 col-lg-4 col-xl-3 {{ v.groupe }}">
                             <div class="item-team">
                                 <div class="head-team">
                                     <img src="{{ asset('uploads/Equipes/'~  v.photoequipe) }}" alt="location-team">
-                                    <div class="overlay"><a href="single-team.html">+</a></div>
+                                    <div class="overlay"><a href="{{ path('team',{'id':v.IDEquipe}) }}">+</a></div>
                                 </div>
                                 <div class="info-team">
                                     <span class="logo-team">
@@ -62,11 +62,11 @@
                                     <h4>{{ v.nom }}</h4>
                                     <span class="location-team">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        Stadium
+                                        {{ v.continent }}
                                     </span>
                                     <span class="group-team">
                                         <i class="fa fa-trophy" aria-hidden="true"></i>
-                                        Group A
+                                       {{ v.groupe }}
                                     </span>
                                 </div>
                                 <a href="{{ path('team',{'id':v.IDEquipe}) }}" class="btn">Team Profile <i class="fa fa-angle-right" aria-hidden="true"></i></a>

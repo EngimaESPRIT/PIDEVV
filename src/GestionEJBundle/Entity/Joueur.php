@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Joueur
  *
  * @ORM\Table(name="joueur", indexes={@ORM\Index(name="fk_equipe", columns={"ID_Equipe"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GestionEJBundle\Repository\JoueurRepository")
  */
 class Joueur
 {
@@ -84,19 +84,7 @@ class Joueur
      */
     private $poste1;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Poste2", type="string", length=255, nullable=true)
-     */
-    private $poste2;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Poste3", type="string", length=255, nullable=true)
-     */
-    private $poste3;
 
     /**
      * @var integer
@@ -172,11 +160,34 @@ class Joueur
     private $idEquipe;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=15500, nullable=false)
+     */
+    private $Description;
+    /**
      * @return int
      */
+
     public function getIdjoueur()
     {
         return $this->idjoueur;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->Description;
+    }
+
+    /**
+     * @param string $Description
+     */
+    public function setDescription($Description)
+    {
+        $this->Description = $Description;
     }
 
     /**
@@ -329,38 +340,6 @@ class Joueur
     public function setPoste1($poste1)
     {
         $this->poste1 = $poste1;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPoste2()
-    {
-        return $this->poste2;
-    }
-
-    /**
-     * @param string $poste2
-     */
-    public function setPoste2($poste2)
-    {
-        $this->poste2 = $poste2;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPoste3()
-    {
-        return $this->poste3;
-    }
-
-    /**
-     * @param string $poste3
-     */
-    public function setPoste3($poste3)
-    {
-        $this->poste3 = $poste3;
     }
 
     /**

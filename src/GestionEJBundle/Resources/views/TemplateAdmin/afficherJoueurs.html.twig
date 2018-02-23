@@ -24,7 +24,14 @@
           </div>
         </div>
       </div>
-
+        {% set flashbag_notices = app.session.flashbag.get('notice') %}
+        {% if flashbag_notices is not empty %}
+          <ul class="msg">
+              {% for notice in flashbag_notices %}
+                <li>{{ notice }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
       <div class="clearfix"></div>
 
 
@@ -57,6 +64,7 @@
               <thead>
               <tr>
                 <th>ID</th>
+                <th>Joueur</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Numero</th>
@@ -65,8 +73,7 @@
                 <th>Taille</th>
                 <th>Nationalite</th>
                 <th>Poste1</th>
-                <th>Poste2</th>
-                <th>Poste3</th>
+
                 <th>Cout</th>
                 <th>Buts</th>
                 <th>Selections</th>
@@ -87,6 +94,8 @@
 
                 <tr>
                   <td> {{ v.IDJoueur }}</td>
+                  <td><img src="{{ asset('uploads/Joueurs/' ~ v.imagejoueur1) }}" alt="icon" width=160 height=110></td>
+
                   <td> {{ v.Nom }} </td>
                   <td> {{ v.Prenom }} </td>
                   <td> {{ v.Numero }} </td>
@@ -95,12 +104,11 @@
                   <td> {{ v.taille }} </td>
                   <td> {{ v.nationalite }} </td>
                   <td> {{ v.Poste1 }} </td>
-                  <td> {{ v.Poste2 }} </td>
-                  <td> {{ v.Poste3 }} </td>
+
                   <td> {{ v.cout }} </td>
                   <td> {{ v.buts }} </td>
                   <td> {{ v.selections }} </td>
-                  <td> {{ v.buts }} </td>
+
                   <td> {{ v.IdEquipe.idEquipe}} </td>
                   <td> {{ v.participations }} </td>
                   <td> {{ v.pied }} </td>

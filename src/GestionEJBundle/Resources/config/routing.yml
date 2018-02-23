@@ -12,9 +12,6 @@ teams:
 team:
     path:     /team
     defaults: { _controller: GestionEJBundle:Equipe:GoToTeam }
-players:
-    path:     /players
-    defaults: { _controller: GestionEJBundle:Liens:GoToPlayers }
 fixtures:
     path:     /fixtures
     defaults: { _controller: GestionEJBundle:Liens:GoToFixtures }
@@ -48,6 +45,40 @@ ModifierEquipe:
 ModifierJoueur:
     path:     /modjou
     defaults: { _controller: GestionEJBundle:Joueur:GoToModifJoueur }
+
+AjouterStade:
+    path:     /ajst
+    defaults: { _controller: GestionEJBundle:Stade:AjouterStade }
+ModifierStade:
+    path:     /modst
+    defaults: { _controller: GestionEJBundle:Stade:GoToModifStade }
+AfficherStade:
+    path:     /affst
+    defaults: { _controller: GestionEJBundle:Stade:afficherStade }
+SupprimerStade:
+    path:     /suppst
+    defaults: { _controller: GestionEJBundle:Stade:GoToSuppStade }
+Erreur:
+    path:     /Erreur
+    defaults: { _controller: GestionEJBundle:Liens:erreur }
+Playershow:
+    path:     /affjoufr
+    defaults: { _controller: GestionEJBundle:Joueur:AfficherJoueursFront }
+Equipe-type:
+    path:     /eqty
+    defaults: { _controller: GestionEJBundle:Equipetype:AjoutEquipeType }
+Equipe-type2:
+    path:     /confeq
+    defaults: { _controller: GestionEJBundle:Equipetype:AjoutTypeconf }
+OnePlayerShow:
+    path:     /frontjoueur
+    defaults: { _controller: GestionEJBundle:Joueur:afficherJoueurFront }
+AffEquipeType:
+    path:     /afficheEquipeType
+    defaults: { _controller: GestionEJBundle:Equipetype:AfficherEquipeType }
+EquipeFavorite:
+    path:     /favorite
+    defaults: { _controller: GestionEJBundle:Equipe:equipeFavorite}
 
 
 

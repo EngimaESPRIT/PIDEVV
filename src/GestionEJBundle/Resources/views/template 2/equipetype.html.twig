@@ -1,0 +1,457 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+
+    <!-- Section Title -->
+    <div class="section-title" style="background:url(img/slide/1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Players List</h1>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="index-2.html">Home</a></li>
+                            <li>Inner Page</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Section Title -->
+
+    <!-- Section Area - Content Central -->
+    <section class="content-info">
+
+        <!-- Nav Filters -->
+        <div class="portfolioFilter">
+            <div class="container">
+                <h5><i class="fa fa-filter" aria-hidden="true"></i>Filter By:</h5>
+
+                <a href="#" data-filter="*" class="current">TOUS</a>
+
+                <a href="#" data-filter=".GK">Gardien</a>
+
+                <a href="#" data-filter=".DC">Defenseur Central</a>
+                <a href="#" data-filter=".DG">Defenseur Gauche</a>
+                <a href="#" data-filter=".DD">Defenseur Droite</a>
+                <a href="#" data-filter=".MDE">Milieu Defensif</a>
+                <a href="#" data-filter=".MC">Milieu Central</a>
+                <a href="#" data-filter=".MD">Milieu Droite</a>
+                <a href="#" data-filter=".MG">Milieu Gauche</a>
+                <a href="#" data-filter=".ATT">Attaquants</a>
+
+
+
+            </div>
+        </div>
+        <!-- End Nav Filters -->
+        <form method="GET" action="{{ path('Equipe-type2') }}">
+
+        <div class="chosen-wrapper" data-js="custom-scroll" align="center">
+        <select class="chosen-select" id="fo" name="s">
+            <optgroup label="Choisissez Formation"></optgroup>
+            <option value="4-4-2"></option>
+            <option value="4-4-2" >4-4-2</option>
+            <option value="5-3-2">5-3-2</option>
+            <option value="4-3-2-1">4-3-2-1</option>
+        </select>
+        </div>
+
+            <h1 id="coutt" style="font-family: 'Dusha V5';color : #ffffff " align="center">150</h1>
+
+
+        <div class="container padding-top">
+            <div class="row portfolioContainer" id="a" >
+                <!-- Item Player -->
+
+                {% for v in m %}
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 {{ v.poste1 }}">
+                        <div class="item-player">
+                            <div class="head-player">
+
+                                <img src="{{ asset('uploads/Joueurs/' ~ v.imagejoueur1) }}" alt="location-team">
+                                <div class="overlay"><a href="single-player.html">+</a></div>
+                            </div>
+                            <div class="info-player">
+                                    <span class="number-player">
+                                       {{ v.numero }}
+                                    </span>
+                                <h4>
+                                    {{ v.prenom }}{{ v.nom }}    <label class="label">
+                                        <input  class="label__checkbox" type="checkbox"  id="{{ v.poste1 }}"  value="{{ v.idjoueur}}" />
+                                        <span class="label__text">
+      <span class="label__check">
+        <i class="fa fa-check icon"></i>
+      </span>
+    </span>
+                                    </label>
+                                    <span>Defender</span>
+                                </h4>
+                                <ul>
+                                    <li>
+                                        <strong>nationalite</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> {{ v.nationalite }}</span
+                                    </li>
+                                    <li><strong>Selections</strong> <span>{{ v.selections }}</span></li>
+                                    <li><strong>Cout</strong> <span><strong>{{ v.cout }}</strong></span></li>
+                                </ul>
+                            </div>
+                            <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+<input type="hidden" id="{{ v.idjoueur }}" value="{{ v.cout }}">
+                            <div class="center">
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+
+
+                    <!-- End Item Player -->
+
+                {% endfor %}
+
+                <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+                <script src="{{ asset('knppaginator-ajax-master/dist/js/knppaginator-ajax.js') }}"></script>
+
+                <script>
+                    $('#fo').change(function(){
+                        $('input:checkbox').prop('checked',false);
+                        document.getElementById('coutt').innerHTML=150;
+
+                        alert($("#fo").val());
+if ($("#fo").val()=='4-4-2') {
+    $("input[id='GK']").click(function () {
+
+
+        if ($("input[id='GK']:checked").length > 1) {
+
+            return false;
+
+        }
+    });
+    $("input[id='DC']").click(function () {
+
+        if ($("input[id='DC']:checked").length > 2) {
+
+return false;
+        }
+    });
+    $("input[id='DG']").click(function () {
+
+        if ($("input[id='DG']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='DD']").click(function () {
+
+        if ($("input[id='DD']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='MDE']").click(function () {
+
+        if ($("input[id='MDE']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='MC']").click(function () {
+
+        if ($("input[id='MDE']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='MG']").click(function () {
+
+
+        if ($("input[id='MG']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='MD']").click(function () {
+
+        if ($("input[id='MD']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='ATT']").click(function () {
+
+        if ($("input[id='ATT']:checked").length > 2) {
+            return false;
+
+        }
+    });
+}
+                       if ($("#fo").val()=='5-3-2') {
+        $("input[id='GK']").click(function () {
+            if ($("input[id='GK']:checked").length > 1) {
+                return false;
+
+            }
+        });
+        $("input[id='DC']").click(function () {
+            if ($("input[id='DC']:checked").length > 3) {
+                return false;
+
+            }
+        });
+        $("input[id='DG']").click(function () {
+            if ($("input[id='DG']:checked").length > 1) {
+                return false;
+
+            }
+        });
+        $("input[id='DD']").click(function () {
+            if ($("input[id='DD']:checked").length > 1) {
+                return false;
+
+            }
+        });
+
+        $("input[id='MDE']").click(function () {
+            if ($("input[id='MDE']:checked").length > 2) {
+                return false;
+            }
+
+
+
+        });
+
+
+        $("input[id='MC']").click(function () {
+
+                if ($("input[id='MC']:checked").length > 3) {
+                    return false;
+                }
+
+            }
+        );
+
+
+
+        $("input[id='MG']").click(function () {
+            if ($("input[id='MG']:checked").length > 1) {
+                return false;
+
+            }
+        });
+        $("input[id='MD']").click(function () {
+            if ($("input[id='MD']:checked").length > 1) {
+                return false;
+
+            }
+        });
+        $("input[id='ATT']").click(function () {
+            if ($("input[id='ATT']:checked").length > 2) {
+                return false;
+
+            }
+        });
+
+
+                        }
+if ($("#fo").val()=='4-3-2-1') {
+    $("input[id='GK']").click(function () {
+        if ($("input[id='GK']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='DC']").click(function () {
+        if ($("input[id='DC']:checked").length > 3) {
+            return false;
+
+        }
+    });
+    $("input[id='DG']").click(function () {
+        if ($("input[id='DG']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='DD']").click(function () {
+        if ($("input[id='DD']:checked").length > 1) {
+            return false;
+
+        }
+    });
+
+    $("input[id='MDE']").click(function () {
+        if ($("input[id='MDE']:checked").length > 3) {
+            return false;
+        }
+
+
+
+    });
+
+
+    $("input[id='MC']").click(function () {
+
+            if ($("input[id='MC']:checked").length > 3) {
+                return false;
+            }
+
+        }
+    );
+
+
+
+    $("input[id='MG']").click(function () {
+        if ($("input[id='MG']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='MD']").click(function () {
+        if ($("input[id='MD']:checked").length > 1) {
+            return false;
+
+        }
+    });
+    $("input[id='ATT']").click(function () {
+        if ($("input[id='ATT']:checked").length > 1) {
+            return false;
+
+        }
+    });
+
+
+}
+                    });
+
+
+                </script>
+                <script>
+
+                    $(document).ready(function () {
+
+                        $('input:checkbox').on('change', function () {
+
+                            if ($("input:checkbox:checked").length==11)
+                            {
+var i=0;
+                                $("#but").prop('disabled',false);
+                                $('input:checkbox:checked').each(function()
+                                {
+                                    $(this).attr('name','check'+i);
+                                    i=i+1;
+                                });
+                            }
+                            else {
+                                $("#but").prop('disabled',true);
+
+                            }
+                            if ($(this).is(':checked')) {
+
+
+                                var cout = parseInt(document.getElementById('coutt').innerHTML - parseInt(document.getElementById($(this).attr('value')).value));
+                                if (cout>=0) {
+                                    document.getElementById('coutt').innerHTML = cout;
+
+                                }
+                                else {
+                                    alert("Attention ! Cout Depassé");
+                                    $(this).prop('checked',false);
+                                }
+
+
+
+                            }
+                            else
+                            {
+
+                                var cout = (parseInt(document.getElementById('coutt').innerHTML) + (parseInt(document.getElementById($(this).attr('value')).value)));
+
+                                document.getElementById('coutt').innerHTML = cout;
+
+
+
+                            }
+                        });
+                    });
+
+                </script>
+            </div>
+
+            <input type="submit" class="btn btn-default" id="but" disabled="true"></input>
+        </div>
+
+            </form>
+            <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+
+
+        </div>
+        <!-- Newsletter -->
+        <div class="section-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h2>Enter your e-mail and <span class="text-resalt">subscribe</span> to our newsletter.</h2>
+                            <p>Duis non lorem porta,  eros sit amet, tempor sem. Donec nunc arcu, semper a tempus et, consequat.</p>
+                        </div>
+                        <form id="newsletterForm" action="http://html.iwthemes.com/sportscup/php/mailchip/newsletter-subscribe.php">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                        <input class="form-control" placeholder="Your Name" name="name"  type="text" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                        <input class="form-control" placeholder="Your  Email" name="email"  type="email" required="required">
+                                        <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="submit" name="subscribe" >SIGN UP</button>
+                                                 </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="result-newsletter"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter -->
+    </section>
+    <!-- End Section Area -  Content Central -->
+
+    <div class="instagram-btn">
+        <div class="btn-instagram">
+            <i class="fa fa-instagram"></i>
+            FOLLOW
+            <a href="https://www.instagram.com/fifaworldcup/" target="_blank">&#64;fifaworldcup</a>
+        </div>
+    </div>
+
+    <div class="content-instagram">
+        <div id="instafeed"></div>
+    </div>
+
+{% endblock %}
+               {% block footer %}
+                   {{ parent() }}
+               {% endblock %}
