@@ -1,6 +1,6 @@
 <?php
 
-namespace GestionEJBundle\Entity;
+namespace GestionTransportBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="transport")
  * @ORM\Entity
+
  */
 class Transport
 {
@@ -34,6 +35,108 @@ class Transport
      * @ORM\Column(name="type", type="string", length=50, nullable=false)
      */
     private $type;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="station", type="string", length=255, nullable=false)
+     */
+    private $station;
+
+    /**
+     * @return string
+     */
+    public function getStation()
+    {
+        return $this->station;
+    }
+
+    /**
+     * @param string $station
+     */
+    public function setStation($station)
+    {
+        $this->station = $station;
+    }
+
+
+
+    /**
+     * @return int
+     */
+    public function getCapacite()
+    {
+        return $this->capacite;
+    }
+
+    /**
+     * @param int $capacite
+     */
+    public function setCapacite($capacite)
+    {
+        $this->capacite = $capacite;
+    }
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="capacite", type="integer", nullable=false)
+     */
+    private $capacite;
+
+
+
+
+    /**
+     * @return int
+     */
+    public function getIdTransport()
+    {
+        return $this->idTransport;
+    }
+
+    /**
+     * @param int $idTransport
+     */
+    public function setIdTransport($idTransport)
+    {
+        $this->idTransport = $idTransport;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * @param int $numero
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
 
 
 }

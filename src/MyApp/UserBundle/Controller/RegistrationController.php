@@ -77,6 +77,7 @@ class RegistrationController extends Controller
      */
     public function registerAction(Request $request)
     {
+
         $userManager = $this->userManager;
         $dispatcher = $this->eventDispatcher;
 

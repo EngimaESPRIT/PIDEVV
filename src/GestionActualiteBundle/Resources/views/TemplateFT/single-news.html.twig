@@ -1,0 +1,414 @@
+{% extends 'base.html.twig' %}
+{% form_theme form2 '@MyAppUser/Form/bootstrap_3_horizontal_layout.html.twig' %}
+
+{% form_theme form1 '@MyAppUser/Form/bootstrap_3_horizontal_layout.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+
+            <!-- Section Area - Content Central -->
+            <section class="content-info">
+
+                <div class="container paddings-mini">
+                   <div class="row">
+
+                        <!-- Sidebars -->
+                        <aside class="col-lg-3">
+
+                            <div>
+                                <h4>Searh Sidebar</h4>
+                                <form class="search" action="#" method="Post">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Search..." name="email"  type="email" required="required">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit" name="subscribe" >Go!</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <!-- Widget Categories-->
+                            <div class="panel-box">
+                                <div class="titles no-margin">
+                                    <h4>Categories</h4>
+                                </div>
+                                <div class="info-panel">
+                                    <ul class="list">
+                                        <li><i class="fa fa-check"></i><a href="#"></a></li>
+                                        <li><i class="fa fa-check"></i><a href="#"></a></li>
+                                        <li><i class="fa fa-check"></i><a href="#"></a></li>
+                                        <li><i class="fa fa-check"></i><a href="#"></a></li>
+                                        <li><i class="fa fa-check"></i><a href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Widget Categories-->
+
+                            <!-- Widget Text-->
+                            <div class="panel-box">
+                                <div class="titles no-margin">
+                                    <h4>Widget Text</h4>
+                                </div>
+                                <div class="info-panel">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, incididunt ut labore et dolore.</p>
+                                </div>
+                            </div>
+                            <!-- End Widget Text-->
+
+                            <!-- Widget img-->
+                            <div class="panel-box">
+                                <div class="titles no-margin">
+                                    <h4>Widget Image</h4>
+                                </div>
+                                <img src= {{ asset('img/slide/1.jpg') }} alt="">
+
+                            </div>
+                            <!-- End Widget img-->
+                        </aside>
+                        <!-- End Sidebars -->
+
+
+                        <div class="col-lg-9">
+                            <!-- Content Text-->
+                            <div class="panel-box">
+                                <div class="titles no-margin">
+                                    <h4>{{post.title}}</h4>
+                                    <p>{% if post.date %}{{ post.date|date('Y-m-d H:i:s') }}{% endif %}</p>
+                                    <p>{{ post.contenu }}</p>
+                                </div>
+                                <img src="{{ asset('uploads/images/')~post.img1~''}}" alt="">
+
+
+                            <div class="panel-box padding-b">
+                                <!-- Title Post -->
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{{ post.title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Datecreation</th>
+                                    <td>{% if post.date %}{{ post.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Content</th>
+                                    <td>{{ post.contenu }}</td>
+                                </tr>
+                                </tbody>
+                                </table>
+
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('post_index') }}">Back to the list</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('post_edit', { 'idP': post.idPost,'id' : app.user.id }) }}">Edit</a>
+                                    </li>
+
+                                </ul>
+
+
+
+
+
+<div>
+    {% for comment in comments %}
+        {% if comment.idPost.idPost ==post.idPost %}
+                 <th>
+                 <td>{{ comment.title }}</td>
+                 </th>
+            <tr>
+                <td><a href="{{ path('comment_show', { 'id': comment.idComment, 'id_post': post  }) }}">{{ comment.idComment }}</a></td>
+            </tr>
+
+
+            <tr>
+            <td>{% if comment.date %}{{ comment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <td>{{ comment.contenu }}</td>
+            </tr>
+            <td>{{ comment.idUser.id }}</td>
+            <tr>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('comment_show', { 'id': comment.idComment }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('comment_edit', { 'id': comment.idComment }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+{%  endif %}
+    {% endfor %}
+</div>
+
+
+
+                                <div class="titles">
+                                    <h4>Publish Comment</h4>
+
+                     {{ form_start(form1) }}
+                                    {{ form_widget(form1) }}
+                                    <input type="submit" value="Create" />
+                                    {{ form_end(form1) }}
+
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('comment_index') }}">Back to the list</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-panel">
+                                     <!-- Form comment -->
+                                    <form class="form-theme">
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <input type="submit" value="Post Comment" class="btn btn-primary">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- End Form coment -->
+                                </div>
+                            </div>
+
+
+
+                            <!-- End Comment Form -->
+
+                        </div>
+                   </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="section-newsletter">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <h2>Enter your e-mail and <span class="text-resalt">subscribe</span> to our newsletter.</h2>
+                                    </div>
+                                <form id="newsletterForm" action="http://html.iwthemes.com/sportscup/php/mailchip/newsletter-subscribe.php">
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+
+                                                <input class="form-control" placeholder="Your Name" name="name"  type="text" required="required">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+
+                                                <input class="form-control" placeholder="Your  Email" name="email"  type="email" required="required">
+                                                <span class="input-group-btn">
+
+                                                    <button class="btn btn-primary" type="submit" name="subscribe" >SIGN UP</button>
+                                                 </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                <div id="result-newsletter"></div>
+                            </div>
+                            {{ form_start (form2) }}
+                            <table>
+                                <tr>
+                                    <td> Nom </td>
+                                    <td> {{ form_widget (form2.nom) }} </td>
+                                </tr>
+                                <tr>
+                                    <td> Prenom </td>
+                                    <td> {{ form_widget (form2.prenom) }} </td>
+
+                                </tr>
+                                <tr>
+                                    <td> Téléphone </td>
+                                    <td> {{ form_widget (form2.tel) }} </td>
+                                </tr>
+                                <tr>
+                                    <td> Email </td>
+                                    <td> {{ form_widget (form2.email) }} </td>
+                                </tr>
+                                <tr>
+                                    <td> Text </td>
+                                    <td> {{ form_widget (form2.text) }} </td>
+                                </tr>
+                            </table>
+                            {{ form_end (form2) }}
+                                                    </div>
+                    </div>
+
+                    </div>
+                </div>
+                </div>
+                <!-- End Newsletter -->
+            </section>
+            <!-- End Section Area -  Content Central -->
+
+            <div class="instagram-btn">
+                <div class="btn-instagram">
+                    <i class="fa fa-instagram"></i>
+                    FOLLOW
+                    <a href="https://www.instagram.com/fifaworldcup/" target="_blank">&#64;fifaworldcup</a>
+                </div>
+            </div>
+
+            <div class="content-instagram">
+                <div id="instafeed"></div>
+            </div>
+
+            <!-- footer-->
+            <footer id="footer">
+                <!-- Footer Top-->
+                <div class="top-footer">
+
+                    <!-- Logo Footer-->
+                   <div class="col-lg-12">
+                        <div class="logo-footer">
+                            <h2>Sports Cup</h2>
+                        </div>
+                   </div>
+                    <!-- End Logo Footer-->
+
+                    <!-- Social Icons-->
+                    <ul class="social">
+                        <li>
+                            <div>
+                                <a href="#" class="facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="twitter-icon">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="vimeo">
+                                    <i class="fa fa-vimeo-square"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="google-plus">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="youtube">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- End Social Icons-->
+                </div>
+                <!-- End Footer Top-->
+
+                <!-- Links Footer-->
+                <div class="links-footer">
+                    <div class="container">
+                        <div class="row">
+
+                           <!-- Column Links -->
+                            <div class="col-lg-2 col-md-5 col-sm-5">
+                                <div class="info-links">
+                                   <h5>Organisation</h5>
+                                    <ul>
+                                        <li><a href="#">Volunteers</a></li>
+                                        <li><a href="#">Committees</a></li>
+                                        <li><a href="#">Official Documents</a></li>
+                                        <li><a href="#">Terms of Service</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Column Links -->
+
+                            <!-- Column Links -->
+                            <div class="col-lg-4 col-md-7 col-sm-7">
+                                <div class="info-links">
+                                   <h5>Groups</h5>
+                                    <ul class="columns">
+                                        <li><a href="#">GROUP A</a></li>
+                                        <li><a href="#">GROUP B</a></li>
+                                        <li><a href="#">GROUP C</a></li>
+                                        <li><a href="#">GROUP D</a></li>
+                                        <li><a href="#">GROUP E</a></li>
+                                        <li><a href="#">GROUP F</a></li>
+                                        <li><a href="#">GROUP G</a></li>
+                                        <li><a href="#">GROUP H</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Column Links -->
+
+                            <!-- Column Links -->
+                            <div class="col-lg-2 col-md-5 col-sm-5">
+                                <div class="info-links">
+                                   <h5>Interest Links</h5>
+                                    <ul>
+                                        <li><a href="#">Statistics</a></li>
+                                        <li><a href="#">Teams</a></li>
+                                        <li><a href="#">Qualifiers</a></li>
+                                        <li><a href="#">Ticketing</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Column Links -->
+
+                            <!-- Column Links -->
+                            <div class="col-lg-4 col-md-7 col-sm-7">
+                                <div class="info-links">
+                                   <h5>Organisation</h5>
+                                    <ul class="columns">
+                                        <li><a href="#">NIZHNY NOVGOROD</a></li>
+                                        <li><a href="#">SAINT PETERSBURG</a></li>
+                                        <li><a href="#">EKATERINBURG</a></li>
+                                        <li><a href="#">MOSCOW</a></li>
+                                        <li><a href="#">KAZAN</a></li>
+                                        <li><a href="#">KALININGRAD</a></li>
+                                        <li><a href="#">VOLGOGRAD</a></li>
+                                        <li><a href="#">ROSTOV-ON-DON</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Column Links -->
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+                {% endblock %}
+
+
+                {% block footer %}
+                    {{ parent() }}
+                {% endblock %}
+
+
+

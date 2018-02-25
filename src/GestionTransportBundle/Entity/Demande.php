@@ -1,8 +1,9 @@
 <?php
 
-namespace GestionEJBundle\Entity;
+namespace GestionTransportBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Demande
@@ -38,16 +39,11 @@ class Demande
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="heure_depart", type="datetime", nullable=false)
+     * @ORM\Column(name="heure_depart", type="time", nullable=false)
      */
     private $heureDepart;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="heure_arrive", type="datetime", nullable=false)
-     */
-    private $heureArrive;
+
 
     /**
      * @var string
@@ -63,19 +59,14 @@ class Demande
      */
     private $pointArrive;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="distance", type="integer", nullable=false)
-     */
-    private $distance;
+
 
     /**
      * @var \User
      *
      * @ORM\ManyToOne(targetEntity="MyApp\UserBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id",onDelete="CASCADE")
      * })
      */
     private $idUser;
@@ -85,10 +76,173 @@ class Demande
      *
      * @ORM\ManyToOne(targetEntity="Vehicules")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_vehicule", referencedColumnName="id_vehicule")
+     *   @ORM\JoinColumn(name="id_vehicule", referencedColumnName="id_vehicule",onDelete="CASCADE")
      * })
      */
     private $idVehicule;
+
+
+    /**
+     * @var integer
+
+     * @ORM\Column(name="prix", type="integer", nullable=false)
+     */
+
+    private $prix;
+
+
+
+
+
+    /**
+     * @return int
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param int $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getIdDemande()
+    {
+        return $this->idDemande;
+    }
+
+    /**
+     * @param int $idDemande
+     */
+    public function setIdDemande($idDemande)
+    {
+        $this->idDemande = $idDemande;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbPlacesDispo()
+    {
+        return $this->nbPlacesDispo;
+    }
+
+    /**
+     * @param int $nbPlacesDispo
+     */
+    public function setNbPlacesDispo($nbPlacesDispo)
+    {
+        $this->nbPlacesDispo = $nbPlacesDispo;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateMatch()
+    {
+        return $this->dateMatch;
+    }
+
+    /**
+     * @param \DateTime $dateMatch
+     */
+    public function setDateMatch($dateMatch)
+    {
+        $this->dateMatch = $dateMatch;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getHeureDepart()
+    {
+        return $this->heureDepart;
+    }
+
+    /**
+     * @param \DateTime $heureDepart
+     */
+    public function setHeureDepart($heureDepart)
+    {
+        $this->heureDepart = $heureDepart;
+    }
+
+
+
+    /**
+     * @return string
+     */
+    public function getPointDepart()
+    {
+        return $this->pointDepart;
+    }
+
+    /**
+     * @param string $pointDepart
+     */
+    public function setPointDepart($pointDepart)
+    {
+        $this->pointDepart = $pointDepart;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPointArrive()
+    {
+        return $this->pointArrive;
+    }
+
+    /**
+     * @param string $pointArrive
+     */
+    public function setPointArrive($pointArrive)
+    {
+        $this->pointArrive = $pointArrive;
+    }
+
+
+
+    /**
+     * @return \User
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param \User $idUser
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+    }
+
+    /**
+     * @return \Vehicules
+     */
+    public function getIdVehicule()
+    {
+        return $this->idVehicule;
+    }
+
+    /**
+     * @param \Vehicules $idVehicule
+     */
+    public function setIdVehicule($idVehicule)
+    {
+        $this->idVehicule = $idVehicule;
+    }
+
 
 
 }

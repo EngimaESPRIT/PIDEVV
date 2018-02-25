@@ -29,7 +29,11 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
-            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new blackknight467\StarRatingBundle\StarRatingBundle(),
+            new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
+
+
 
         ];
 

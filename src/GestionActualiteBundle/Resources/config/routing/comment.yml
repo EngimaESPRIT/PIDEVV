@@ -1,0 +1,29 @@
+comment_index:
+    path:     /
+    defaults: { _controller: "GestionActualiteBundle:Comment:index" }
+    methods:  GET
+
+comment_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionActualiteBundle:Comment:show" }
+    methods:  GET
+
+comment_new:
+    path:     /new
+    defaults: { _controller: "GestionActualiteBundle:Comment:new" }
+    methods:  [GET, POST]
+
+comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionActualiteBundle:Comment:edit" }
+    methods:  [GET, POST]
+
+comment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionActualiteBundle:Comment:delete" }
+    methods:  DELETE
+
+comment_admin:
+    path:     /ad
+    defaults: { _controller: "GestionActualiteBundle:Comment:index2" }
+    methods:  GET

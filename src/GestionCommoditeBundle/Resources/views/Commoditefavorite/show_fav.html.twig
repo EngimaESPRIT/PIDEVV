@@ -1,0 +1,28 @@
+
+
+{% block body %}
+    <h1>Commoditefavorite</h1>
+
+    <table>
+        <tbody>
+
+        {% for commoditefavorite in commoditefavorite %}
+        <tr>
+            <th>Idfavorite</th>
+            <td>{{ commoditefavorite.idFavorite }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commoditefavorite_show') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('commoditefavorite_delete', { 'idFavorite': commoditefavorite.idFavorite }) }}">Delete</a>
+        </li>
+        <li>
+        </li>
+    </ul>
+        {% endfor %}
+{% endblock %}

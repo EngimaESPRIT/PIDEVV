@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block content %}
+
+
+    <link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+    {% set flashbag_notices = app.session.flashbag.get('notice') %}
+    {% if flashbag_notices is not empty %}
+        <ul class="err">
+            {% for notice in flashbag_notices %}
+                <b> <li align="center">{{ notice }}</li></b>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    <div class="row">
+
+
+
+        <div class="col-md-4" >
+
+        </div>
+        <div class="col-md-4" style="" >
+            <br>
+<center><h2><b>Ajouter un véhicule</b></h2></center>
+           <!-- <center>    <img src="{{ asset('voiture.png')  }}" width="150" height="250"   /></center> -->
+
+
+            {{ form(f) }}
+
+        </div>
+        <div class="col-md-4" >
+            <br>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <img src="{{ asset('voiture.png') }}" width="350" align="center">
+        </div>
+
+
+    </div>
+<body>
+
+{% endblock %}

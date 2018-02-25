@@ -73,4 +73,19 @@ return $this->render('@GestionEJ/TemplateAdmin/afficherStade.html.twig', array('
         ,'id'=>$request->get('id')));
 
     }
+    public function afficherStadeFrontAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
+
+        $model = $em->getRepository("GestionEJBundle:Stade")->find($request->get('id'));
+        return $this->render('@GestionEJ/template 2/stades.html.twig',array('m'=>$model,'s'=>$Stades));
+    }
+    public function afficherStadesFrontAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
+        $St = $em->getRepository("GestionEJBundle:Stade")->afficherDistinct();
+        return $this->render('GestionEJBundle:template 2:StadesSelection.html.twig',array('s'=>$Stades,'st'=>$St));
+    }
 }

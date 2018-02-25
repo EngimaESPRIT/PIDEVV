@@ -1,3 +1,41 @@
 gestion_actualite_homepage:
     path:     /
     defaults: { _controller: GestionActualiteBundle:Default:index }
+
+post:
+    resource: "@GestionActualiteBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+all_posts:
+    path:     /allPosts/{id}
+    defaults: { _controller: GestionActualiteBundle:Default:allposts }
+
+details_post:
+    path:     /onePost/{idp}/{id}
+    defaults: { _controller: GestionActualiteBundle:Default:OnePost }
+
+my_app_mail_accuse:
+    path: /success
+    defaults: { _controller: GestionActualiteBundle:Default:success }
+
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: GestionActualiteBundle:Liens:GoToAdmin }
+
+client_homepage:
+    path:     /home
+    defaults: { _controller: GestionActualiteBundle:Liens:GoToHome }
+
+comment:
+    resource: "@GestionActualiteBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
+
+post_view_admin:
+    path:     /admin/posts
+    defaults: { _controller: "GestionActualiteBundle:Liens:GoToPostAdmin" }
+
+recherche_post:
+    path:     /recherche
+    defaults: { _controller: "GestionActualiteBundle:Default:rech" }
+

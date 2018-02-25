@@ -18,7 +18,8 @@ class RegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('captcha', CaptchaType::class);
+        $builder->add('nom')->add('prenom')->add('Captcha',CaptchaType::class,array('font'=>'Consolas','as_url'=>true,'reload'=>true,'quality'=>1000,'length'=>4,'invalid_message'=>'Veuillez verifier la Captcha ( ESPRIT )'));
+        ;
         ;
     }/**
      * {@inheritdoc}

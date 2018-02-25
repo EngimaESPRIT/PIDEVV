@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4" >
+        </div>
+        <div class="col-md-4" style="" >
+            <br>
+            <center><h2><b>Ajouter une offre de covoiturage</b></h2></center>
+
+            <!-- <center>    <img src="{{ asset('voiture.png')  }}" width="150" height="250"   /></center> -->
+            {{ form(f) }}
+        </div>
+        <div class="col-md-4" >
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <img src="{{ asset('management.png') }}" width="350" align="center">
+        </div>
+    </div>
+
+
+{% endblock %}

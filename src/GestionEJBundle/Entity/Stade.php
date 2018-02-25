@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Stade
  *
  * @ORM\Table(name="stade")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GestionEJBundle\Repository\StadeRepository")
  */
 class Stade
 {
@@ -68,10 +68,101 @@ class Stade
      * @ORM\Column(name="Description", type="string", length=1000, nullable=false)
      */
     private $Description;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Wifi", type="string", length=1000, nullable=false)
+     */
+    private $wifi;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Toit", type="string", length=1000, nullable=false)
+     */
+    private $Toit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse", type="string", length=1000, nullable=false)
+     */
+    private $Adresse;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Surface", type="string", length=1000, nullable=false)
+     */
+    private $Surface;
+
+    /**
+     * @return string
+     */
+    public function getSurface()
+    {
+        return $this->Surface;
+    }
+
+    /**
+     * @param string $Surface
+     */
+    public function setSurface($Surface)
+    {
+        $this->Surface = $Surface;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getWifi()
+    {
+        return $this->wifi;
+    }
+
+    /**
+     * @param string $wifi
+     */
+    public function setWifi($wifi)
+    {
+        $this->wifi = $wifi;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToit()
+    {
+        return $this->Toit;
+    }
+
+    /**
+     * @param string $Toit
+     */
+    public function setToit($Toit)
+    {
+        $this->Toit = $Toit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->Adresse;
+    }
+
+    /**
+     * @param string $Adresse
+     */
+    public function setAdresse($Adresse)
+    {
+        $this->Adresse = $Adresse;
+    }
 
     /**
      * @return int
      */
+
     public function getIdStade()
     {
         return $this->idStade;
@@ -83,6 +174,22 @@ class Stade
     public function setIdStade($idStade)
     {
         $this->idStade = $idStade;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->Description;
+    }
+
+    /**
+     * @param string $Description
+     */
+    public function setDescription($Description)
+    {
+        $this->Description = $Description;
     }
 
     /**

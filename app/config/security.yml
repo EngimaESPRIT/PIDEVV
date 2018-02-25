@@ -33,9 +33,30 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
             # activate different ways to authenticate
+        - { path: ^/ajoutvehicule, role: ROLE_ADMIN }
+        - { path: ^/listevehicule, role: ROLE_ADMIN }
 
+        - { path: ^/ajouttransport, role: ROLE_ADMIN }
+        - { path: ^/listetransport, role: ROLE_ADMIN }
+
+        - { path: ^/ajouthoraire, role: ROLE_ADMIN }
+        - { path: ^/listehoraire, role: ROLE_ADMIN }
+
+        - { path: ^/ajoutdemande, role: ROLE_ADMIN }
+        - { path: ^/listedemande, role: ROLE_ADMIN }
+        - { path: ^/pie, role: ROLE_ADMIN }
+
+        - { path: ^/userlistedemande, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/userajoutdemande, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/userajoutvehicule, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/userlistvehicule, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/userajoutdemande, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/userlistedemande, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/searchdemande, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/searchhoraire, roles: [ROLE_CLIENT,ROLE_ADMIN] }
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+    access_denied_url: /404

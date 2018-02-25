@@ -18,6 +18,7 @@ parameters:
     Equipes_directory: 'uploads/Equipes'
     Joueurs_directory: 'uploads/Joueurs'
     Stades_directory: 'uploads/Stades'
+    images_directory: 'uploads/images'
 
 
 framework:
@@ -49,7 +50,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-
+    form_themes:
+        - bootstrap_3_layout.html.twig
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -83,14 +85,24 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: MyApp\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
     from_email:
-        address: yourmail@yourdomain.com
-        sender_name: demo
-
-         # ...
+        address:  anis.hbaieb@esprit.tn
+        sender_name:  demo
     registration:
-            form:
-                type: MyApp\UserBundle\Form\RegistrationType
+        form:
+            type: MyApp\UserBundle\Form\RegistrationType
+
+    registration:
+        confirmation:
+            enabled:  true
+            from_email:
+                address:  noreply@site.com
+                sender_name:  demo
+            template: MyAppUserBundle:Registration:check_email.html.twig
+
+
 nomaya_social:
     buttons:
         facebook:
@@ -124,3 +136,12 @@ nomaya_social:
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
 gregwar_captcha: ~
+swiftmailer:
+    transport:  "%mailer_transport%"
+    auth_mode:  "%mailer_auth_mode%"
+    host:       "%mailer_host%"
+    username:   "%mailer_user%"
+    password:   "%mailer_password%"
+    encryption: "%mailer_encryption%"
+    spool:      { type: memory }
+

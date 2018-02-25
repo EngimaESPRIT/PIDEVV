@@ -48,6 +48,7 @@ class User extends BaseUser
         // your own logic
         $this->roles = array('ROLE_CLIENT');
 
+
     }
 
     /**
@@ -320,7 +321,7 @@ class User extends BaseUser
      *
      * @ORM\Column(name="soldes", type="float", precision=10, scale=0, nullable=true)
      */
-    private $soldes;
+    private $soldes=50;
 
     /**
      * @return int

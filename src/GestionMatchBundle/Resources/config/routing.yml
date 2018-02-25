@@ -1,3 +1,67 @@
 gestion_match_homepage:
     path:     /
     defaults: { _controller: GestionMatchBundle:Default:index }
+
+ajout_match:
+    path:     /ajmat
+    defaults: { _controller: GestionMatchBundle:GestionMatches:GoToAjoutMatche }
+
+affiche_match:
+    path:     /affmatch
+    defaults: { _controller: GestionMatchBundle:GestionMatches:GoToAfficheMatche }
+affiche_match2:
+    path:     /affmatch2
+    defaults: { _controller: GestionMatchBundle:GestionMatches:GoToAfficheMatche2 }
+
+modifier_match:
+      path:     /modifmatch
+      defaults: { _controller: GestionMatchBundle:GestionMatches:GoToModifMatche }
+supprimer_match:
+      path:     /suppmatch
+      defaults: { _controller: GestionMatchBundle:GestionMatches:GoToSuppMatche }
+
+
+affiche_groupe:
+    path:     /affgrp
+    defaults: { _controller: GestionMatchBundle:GestionGroupe:GoToAfficheGroupes }
+
+affiche_groupe_front:
+    path:     /affgrpf
+    defaults: { _controller: GestionMatchBundle:GestionGroupe:GoToAfficheGroupesFront }
+
+modifier_equipedugroupe:
+    path:     /modifgrp
+    defaults: { _controller: GestionMatchBundle:GestionGroupe:GoToModifGroupe }
+
+ajout_Prono:
+    path:     /ajtprono
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:GoToAjoutProno }
+affiche_prono:
+    path:     /affprono
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:GoToAfficheProno }
+modifier_Prono:
+    path:     /modifprono
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:GoToModifierProno }
+
+Cart_Prono:
+    path:     /cart
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:GoToCart }
+
+
+affiche_prono_client:
+    path:     /pronooo
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:GoToAffichePronoClient }
+
+addtocart:
+    path:     /addcart/{id}/{cote}
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:addToCart }
+caart:
+    path:     /gotocart
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:cart }
+affcart:
+    path:     /affcart
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:AfficheDetails }
+
+calendrier:
+    path:     /calendar
+    defaults: { _controller: GestionMatchBundle:GestionMatches:Calendrier }

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+
+{% set flashbag_notices = app.session.flashbag.get('notice') %}
+{% if flashbag_notices is not empty %}
+    <ul class="msg">
+        {% for notice in flashbag_notices %}
+           <b> <li align="center">{{ notice }}</li></b>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <br>
+    <center><h2><b>Votre liste de(s) offre(s) de covoiturage</b></h2></center>
+
+    <br>
+<table class="table-responsive">
+
+
+    <tr bgcolor="#01d099">
+
+        <th><font size="3" color="white"><center>Vehicule</center></font></th>
+        <th><font size="3" color="white"><center>Places</center></font></th>
+        <th><font size="3" color="white"><center>Date Match</center></font></th>
+        <th><font size="3" color="white"><center>Heure depart</center></font></th>
+
+        <th><font size="3" color="white"><center>Point départ</center></font></th>
+        <th><font size="3" color="white"><center>Point arrive</center></font></th>
+
+        <th><font size="3" color="white"><center>Prix</center></font></th>
+
+        <th><font size="3" color="white"><center>Supprimer</center></font></th>
+        <th><font size="3" color="white"><center>Modifier</center></font></th>
+
+
+    </tr>
+
+
+    {% for item in v %}
+        <tr>
+
+
+            <td><font color="black"><center>{{ item.idVehicule.immatriculation }}</center></font></td>
+            <td><font color="black"><center>{{ item.nbPlacesDispo }}</center></font></td>
+            <td><font color="black"><center>{{ item.dateMatch | date('d/m/Y') }}</center></font></td>
+            <td><font color="black"><center>{{ item.heureDepart | date('H:i') }}</center></font></td>
+
+            <td><font color="black"><center>{{ item.pointDepart }}</center></font></td>
+            <td><font color="black"><center>{{ item.pointArrive }}</center></font></td>
+
+
+            <td><font color="black"><center>{{ item.prix }}</center></font></td>
+
+
+
+            <td align="center"><a href="{{ path('UserSupprimerDemande',{'id':item.idDemande}) }}" onclick="return confirm('Voulez-vous vraiment supprimer votre offre de covoiturage ?')" > <button type="button" class="btn btn-danger btn-sm">Supprimer</button></a></td>
+            <td align="center"><a href="{{ path('UserModifierDemande',{'id':item.idDemande}) }}"> <button type="button" class="btn btn-primary btn-sm">Modifier</button></a></td>
+
+
+
+        </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

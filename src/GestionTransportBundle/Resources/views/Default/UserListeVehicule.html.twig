@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+
+<link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+
+{% set flashbag_notices = app.session.flashbag.get('notice') %}
+{% if flashbag_notices is not empty %}
+    <ul class="msg">
+        {% for notice in flashbag_notices %}
+            <b> <li align="center">{{ notice }}</li></b>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <br>
+    <center><h2><b>Votre liste de(s) véhicule(s)</b></h2></center>
+    <br>
+<table class="table-responsive"  >
+
+
+    <tr bgcolor="#01d099">
+
+        <th><font size="3" color="white"><center>Immatriculation</center></font></th>
+        <th><font size="3" color="white"><center>Marque</center></font></th>
+        <th><font size="3" color="white"><center>Carte Grise</center></font></th>
+        <th><font size="3" color="white"><center>Places</center></font></th>
+        <th><font size="3" color="white"><center>Numero Assurance</center></font></th>
+        <th><font size="3" color="white"><center>Image</center></font></th>
+        <th><font size="3" color="white"><center>Supprimer</center></font></th>
+        <th><font size="3" color="white"><center>Modifier</center></font></th>
+
+    </tr>
+
+
+    {% for item in v %}
+        <tr>
+
+
+            <td><font color="black"><center>{{ item.immatriculation }}</center></font></td>
+            <td><font color="black"><center>{{ item.marque  }}</td>
+            <td><img src={{ asset('uploads/images/' ~ item.imageCarteGrise) }} ></td>
+            <td><font color="black"><center>{{ item.nbPlaces }}</td>
+            <td><font color="black"><center>{{ item.numAssurance }}</td>
+            <td><img src={{ asset('uploads/images/' ~ item.imageVehicule ) }}></td>
+
+            <td align="center"><a href="{{ path('UserSupprimerVehicule',{'id':item.idVehicule}) }}" onclick="return confirm('Voulez-vous vraiment supprimer votre véhicule ?')" > <button type="button" class="btn btn-danger btn-sm">Supprimer</button></a></td>
+            <td align="center"><a href="{{ path('UserModifierVehicule',{'id':item.idVehicule}) }}"> <button type="button" class="btn btn-primary btn-sm">Modifier</button></a></td>
+
+
+
+        </tr>
+    {% endfor %}
+
+</table>
+
+
+    <script src="{{ asset('jquery-3.2.1.min.js') }}">
+
+
+
+
+    </script>
+
+{% endblock %}

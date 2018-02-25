@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Matches
  *
- * @ORM\Table(name="matches", indexes={@ORM\Index(name="fk_equipa", columns={"EquipeA"}), @ORM\Index(name="fk_equipb", columns={"EquipeB"}), @ORM\Index(name="fk_stade", columns={"id_stade"})})
+ * @ORM\Table(name="matches", indexes={@ORM\Index(name="fk_equipa", columns={"EquipeA"}), @ORM\Index(name="fk_groupe", columns={"Id_groupe"}), @ORM\Index(name="fk_equipeb", columns={"EquipeB"}), @ORM\Index(name="fk_stade", columns={"id_stade"})})
  * @ORM\Entity
  */
 class Matches
@@ -20,13 +20,6 @@ class Matches
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idMatch;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Id_groupe", type="string", length=20, nullable=false)
-     */
-    private $idGroupe;
 
     /**
      * @var string
@@ -91,6 +84,16 @@ class Matches
     private $equipeb;
 
     /**
+     * @var \Groupe
+     *
+     * @ORM\ManyToOne(targetEntity="GestionMatchBundle\Entity\Groupe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_groupe", referencedColumnName="Nom_Groupe")
+     * })
+     */
+    private $idGroupe;
+
+    /**
      * @var \Stade
      *
      * @ORM\ManyToOne(targetEntity="GestionEJBundle\Entity\Stade")
@@ -99,6 +102,182 @@ class Matches
      * })
      */
     private $idStade;
+
+    /**
+     * @return int
+     */
+    public function getIdMatch()
+    {
+        return $this->idMatch;
+    }
+
+    /**
+     * @param int $idMatch
+     */
+    public function setIdMatch($idMatch)
+    {
+        $this->idMatch = $idMatch;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhase()
+    {
+        return $this->phase;
+    }
+
+    /**
+     * @param string $phase
+     */
+    public function setPhase($phase)
+    {
+        $this->phase = $phase;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateMatch()
+    {
+        return $this->dateMatch;
+    }
+
+    /**
+     * @param \DateTime $dateMatch
+     */
+    public function setDateMatch($dateMatch)
+    {
+        $this->dateMatch = $dateMatch;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLieuMatch()
+    {
+        return $this->lieuMatch;
+    }
+
+    /**
+     * @param string $lieuMatch
+     */
+    public function setLieuMatch($lieuMatch)
+    {
+        $this->lieuMatch = $lieuMatch;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResultat()
+    {
+        return $this->resultat;
+    }
+
+    /**
+     * @param string $resultat
+     */
+    public function setResultat($resultat)
+    {
+        $this->resultat = $resultat;
+    }
+
+    /**
+     * @return int
+     */
+    public function getButequipe1()
+    {
+        return $this->butequipe1;
+    }
+
+    /**
+     * @param int $butequipe1
+     */
+    public function setButequipe1($butequipe1)
+    {
+        $this->butequipe1 = $butequipe1;
+    }
+
+    /**
+     * @return int
+     */
+    public function getButesuipe2()
+    {
+        return $this->butesuipe2;
+    }
+
+    /**
+     * @param int $butesuipe2
+     */
+    public function setButesuipe2($butesuipe2)
+    {
+        $this->butesuipe2 = $butesuipe2;
+    }
+
+    /**
+     * @return \Equipe
+     */
+    public function getEquipea()
+    {
+        return $this->equipea;
+    }
+
+    /**
+     * @param \Equipe $equipea
+     */
+    public function setEquipea($equipea)
+    {
+        $this->equipea = $equipea;
+    }
+
+    /**
+     * @return \Equipe
+     */
+    public function getEquipeb()
+    {
+        return $this->equipeb;
+    }
+
+    /**
+     * @param \Equipe $equipeb
+     */
+    public function setEquipeb($equipeb)
+    {
+        $this->equipeb = $equipeb;
+    }
+
+    /**
+     * @return \Groupe
+     */
+    public function getIdGroupe()
+    {
+        return $this->idGroupe;
+    }
+
+    /**
+     * @param \Groupe $idGroupe
+     */
+    public function setIdGroupe($idGroupe)
+    {
+        $this->idGroupe = $idGroupe;
+    }
+
+    /**
+     * @return \Stade
+     */
+    public function getIdStade()
+    {
+        return $this->idStade;
+    }
+
+    /**
+     * @param \Stade $idStade
+     */
+    public function setIdStade($idStade)
+    {
+        $this->idStade = $idStade;
+    }
 
 
 }

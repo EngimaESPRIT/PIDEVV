@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block header%}
+{{ parent() }}
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+
+<div class="color_perso" style="background-image: url('/PIDEV/web/free_train.png')">
+    <h1 class="text-center block-info"><b>  Dear Spectator</b></h1>
+<br>
+<br>
+    <div class="haha" >
+        <center>     <p class="h4">On our portal you can reserve carpooling, railway or bus ticket, tickets for additional trains heading to host cities of the World Cup. </p></center>
+      <center>  <p class="h4">More than 50 additional trains and buses  will be provided for your convenience. If you didn't find a convenient route, we invite you to contact our resource after the formation of the final schedule. </p></center>
+       <center>  <p class="h4">  If you didn't find a convenient route, we invite you to contact our resource after the formation of the final schedule.</p></center>
+
+  <center> <p class="h4">Thank you!</p></center>
+    </div>
+    <br>
+
+
+<center><img src="{{ asset('FIFA_World_Cup_2018_Logo.png') }}" width="200" ></center>
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+    {% block footer %}
+
+{% endblock %}

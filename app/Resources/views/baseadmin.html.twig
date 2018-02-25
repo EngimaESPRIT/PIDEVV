@@ -95,13 +95,83 @@
                                     <li><a href="{{ path('AfficheJoueur') }}">Afficher Joueurs</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                            <!-- AMINE SAFI  -->
+
+                            <li><a><i class="fa fa-clone"></i>Gestion des transport <span
+                                            class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="../../../../../../../../../Users/Rusty/Desktop/production/chartjs.html">Chart JS</a></li>
-                                    <li><a href="../../../../../../../../../Users/Rusty/Desktop/production/chartjs2.html">Chart JS2</a></li>
-                                    <li><a href="../../../../../../../../../Users/Rusty/Desktop/production/morisjs.html">Moris JS</a></li>
-                                    <li><a href="../../../../../../../../../Users/Rusty/Desktop/production/echarts.html">ECharts</a></li>
-                                    <li><a href="../../../../../../../../../Users/Rusty/Desktop/production/other_charts.html">Other Charts</a></li>
+                                    <li><a>Vehicules</a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('ajouter_vehicule') }}"> Ajouter vehicule</a></li>
+                                            <li><a href="{{ path('lister_vehicule') }}">Liste vehicules</a></li>
+                                        </ul>
+
+                                    </li>
+
+
+                                    <li><a>Covoiturage</a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('ajouter_demande') }}">Ajouter offre de covoiturage</a>
+                                            </li>
+                                            <li><a href="{{ path('lister_demande') }}">Liste offres de covoiturage</a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+
+                                    <li><a>Train/Bus</a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('ajouter_transport') }}">Ajouter Train/Bus</a></li>
+                                            <li><a href="{{ path('lister_transport') }}">Liste Train/Bus</a></li>
+                                        </ul>
+
+                                    </li>
+
+
+                                    <li><a>Horaire</a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('ajouter_horaire') }}">Ajouter horaire</a></li>
+                                            <li><a href="{{ path('lister_horaire') }}">Liste horaires</a></li>
+
+                                        </ul>
+
+
+                                    </li>
+
+                                    <li><a href="{{ path('_graphePie') }}"> Statistique</a>
+
+                                    </li>
+
+
+                                </ul>
+                            </li>
+
+                            <!-- AMINE SAFI  -->
+                            <li><a><i class="fa fa-bar-chart-o"></i> Produits <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('ajouterproduit') }}">Ajouter un Produit</a></li>
+                                    <li><a href="{{ path('afficherProduits') }}">Afficher les Produits</a></li>
+                                    <li><a href="{{path('afficherMProduits') }}">Modifier un Produit</a></li>
+                                    <li><a href="{{ path('afficherSProduits') }}">Supprimer un Produit</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> Commodite<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('commodite_new') }}">Ajout Commodites</a></li>
+                                    <li><a href="{{ path('galeriecommodite_new') }}">Ajout Galerie Commodite</a></li>
+                                    <li><a href="{{ path('commodite_show') }}">Afficher Commodites</a></li>
+                                    <li><a href="{{ path('galeriecommodite_show') }}">Afficher Galerie Commodites</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> Matches <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('affiche_match2') }}">Gerer les matches</a></li>
+                                    <li><a href="{{ path('affiche_groupe') }}">Gerer Table de groupes</a></li>
+                                    <li><a href="{{ path('affiche_prono') }}">Gerer Table des pronostiques</a></li>
+
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>

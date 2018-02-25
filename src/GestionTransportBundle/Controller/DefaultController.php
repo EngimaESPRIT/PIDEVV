@@ -8,6 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('GestionTransportBundle:Default:index.html.twig');
+        return $this->render('GestionTransportBundle:ClientTemplate:index.html.twig');
     }
+
+
+
+
+
 }

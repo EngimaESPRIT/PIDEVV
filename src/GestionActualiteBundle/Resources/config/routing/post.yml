@@ -1,0 +1,29 @@
+post_index:
+    path:     /
+    defaults: { _controller: "GestionActualiteBundle:Post:index" }
+    methods:  GET
+
+post_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionActualiteBundle:Post:show" }
+    methods:  GET
+
+post_new:
+    path:     /new
+    defaults: { _controller: "GestionActualiteBundle:Post:new" }
+    methods:  [GET, POST]
+
+post_edit:
+    path:     /edit/{id}/{idP}
+    defaults: { _controller: "GestionActualiteBundle:Post:edit" }
+    methods:  [GET, POST]
+
+post_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionActualiteBundle:Post:delete" }
+    methods:  DELETE
+
+post_admin_index:
+    path:     /ad
+    defaults: { _controller: "GestionActualiteBundle:Post:index2" }
+    methods:  GET

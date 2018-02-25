@@ -79,7 +79,11 @@ AffEquipeType:
 EquipeFavorite:
     path:     /favorite
     defaults: { _controller: GestionEJBundle:Equipe:equipeFavorite}
-
-
+StadeView:
+    path:     /stades
+    defaults: { _controller: GestionEJBundle:Stade:afficherStadeFront}
+StadeSelection:
+    path:     /StadeSelection
+    defaults: { _controller: GestionEJBundle:Stade:afficherStadesFront}
 
 

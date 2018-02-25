@@ -1,0 +1,53 @@
+<h1>Feedback</h1>
+
+<table>
+    <tbody>
+    {% for feedback in feedback %}
+    <tr>
+        <th>Idfeedback</th>
+        <td>{{ feedback.idFeedback }}</td>
+    </tr>
+    <tr>
+        <th>Contenu</th>
+        <td>{{ feedback.contenu }}</td>
+    </tr>
+    <tr>
+        <th>Rate</th>
+        <td>{{ feedback.rate }}</td>
+    </tr>
+    <tr>
+        <th>Rateacceuil</th>
+        <td>{{ feedback.rateAcceuil }}</td>
+    </tr>
+    <tr>
+        <th>Ratecuisine</th>
+        <td>{{ feedback.rateCuisine }}</td>
+    </tr>
+    <tr>
+        <th>Rateambiance</th>
+        <td>{{ feedback.rateAmbiance }}</td>
+    </tr>
+    <tr>
+        <th>Raterqp</th>
+        <td>{{ feedback.rateRqp }}</td>
+    </tr>
+    <tr>
+        <th>Averagerate</th>
+        <td>{{ feedback.averageRate }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('feedback_show') }}"> Back to the list</a>
+    </li>
+    <li>
+        <a href="{{ path('feedback_update', { 'idFeedback': feedback.idFeedback }) }}">Edit</a>
+    </li>
+
+    <li>
+        <a href="{{ path('feedback_delete', { 'idFeedback': feedback.idFeedback }) }}">delete</a>
+    </li>
+</ul>
+{% endfor %}

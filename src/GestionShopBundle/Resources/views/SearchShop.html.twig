@@ -1,0 +1,34 @@
+<div class="ajax">
+                        <!-- Products -->
+                        <div class="shop-holder theme-padding-bottom">
+                            <div class="row">
+
+
+                                <!-- Product Column -->
+
+                                <a href="{{ path('ShowDetails',{ 'idProduit': pro.idProduit }) }}">
+                                    <div class="col-lg-4 col-sm-6 col-xs-6 r-full-width">
+                                        <div class="product-column">
+                                            <div class="product-column-inner">
+                                                <div class="product-img">
+                                                    <img src="{{ asset('imagesShop/'~ pro.image~'') }}" style="height: 200px; width: 200px" alt="">
+                                                </div>
+                                                <h5>{{ pro.nom }}</h5>
+                                                <span class="product-use">{{ pro.categorie }}</span>
+                                            </div>
+                                            <div class="btm">
+                                                <a class="btn" href="{{ path('addToCart',{'idProduit': pro.idProduit}) }}"><i class="fa fa-shopping-cart"></i>Ajouter au panier</a>
+                                                <span class="price">{{ pro.prix }} ₽</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                    <!-- Product Column -->
+
+
+                            </div>
+                        </div>
+
+                        <!-- Products -->
+</div>            <!-- Products -->
+

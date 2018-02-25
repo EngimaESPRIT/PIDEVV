@@ -27,6 +27,7 @@ class JoueurController extends \Symfony\Bundle\FrameworkBundle\Controller\Contro
         $m=new Joueur();
         $form=$this->createForm(AjoutJoueur::class,$m);
         $form->handleRequest($request);
+
         if ($form->isValid())
         {
 
@@ -118,8 +119,11 @@ class JoueurController extends \Symfony\Bundle\FrameworkBundle\Controller\Contro
     }
     public function AfficherJoueursFrontAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')==false) {
-            $em = $this->getDoctrine()->getManager();
+
             $equipes = $em->getRepository("GestionEJBundle:Equipe")->findAll();
 
             $model = $em->getRepository("GestionEJBundle:Joueur")->findAll();
@@ -129,19 +133,22 @@ class JoueurController extends \Symfony\Bundle\FrameworkBundle\Controller\Contro
                 $request->query->getInt('page', 2)/*page number*/,
                 $request->query->get('limit', 10)
             );
-            return $this->render('@GestionEJ/template 2/players.html.twig', array('m' => $paginator, 'e' => $equipes));
+            return $this->render('@GestionEJ/template 2/players.html.twig', array('m' => $paginator, 'e' => $equipes,'s'=>$stades));
         }
         else
         {
-            return $this->redirectToRoute('Erreur');
+            return $this->redirectToRoute('Erreur',array('s'=>$stades));
         }
     }
     public function afficherJoueurFrontAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
+
+        $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
         $joueurs = $em->getRepository("GestionEJBundle:Joueur")->find($request->get('id'));
 
-        return $this->render('GestionEJBundle:template 2:single-player.html.twig',array('m'=>$joueurs));
+        return $this->render('GestionEJBundle:template 2:single-player.html.twig',array('m'=>$joueurs,'s'=>$stades));
     }
 
 }

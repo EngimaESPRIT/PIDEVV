@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load("feeds", "1");</script>
+{% endblock %}
+{% block content %}
+            <!-- Section Title -->
+            <div class="section-title" style="background:url(img/slide/1.jpg)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1>Page full width</h1>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="breadcrumbs">
+                                <ul>
+                                    <li><a href="index-2.html">Home</a></li>
+                                    <li>Inner Page</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Section Title -->
+
+            <!-- Section Area - Content Central -->
+            <section class="content-info">
+
+                <div class="container paddings-mini">
+                    <!-- Content Text-->
+                    <div class="panel-box padding-b">
+                        <div class="titles">
+                            <h4>Text Content.</h4>
+                        </div>
+
+                        <div class="info-panel">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                </div>
+                            </div>
+
+                            <div class="row padding-top-mini">
+                                <div class="col-md-4">
+                                     <img class="img-responsive" src="img/blog/1.jpg" alt="">
+                                </div>
+                                <div class="col-md-8">
+
+                                    {{
+                                    (document).ready(function() {
+                                    //feed to parse
+                                    var feed = "http://feeds.feedburner.com/raymondcamdensblog?format=xml";
+
+                                    $.ajax(feed, {
+                                    accepts:{
+                                    xml:"application/rss+xml"
+                                    },
+                                    dataType:"xml",
+                                    success:function(data) {
+                                    //Credit: http://stackoverflow.com/questions/10943544/how-to-parse-an-rss-feed-using-javascript
+
+                                    $(data).find("item").each(function () { // or "item" or whatever suits your feed
+                                    var el = $(this);
+                                    console.log("------------------------");
+                                    console.log("title      : " + el.find("title").text());
+                                    console.log("link       : " + el.find("link").text());
+                                    console.log("description: " + el.find("description").text());
+                                    });
+
+
+                                    }
+                                    });
+
+                                    });
+                                        }}
+
+                                </div>
+                            </div>
+
+                            <div class="row padding-top-mini">
+                                <div class="col-md-12">
+
+                                </div>
+                            </div>
+
+                            <div class="row padding-top-mini">
+                                <div class="col-md-8">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <img class="img-responsive" src="img/blog/2.jpg" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- End Content Text-->
+                </div>
+
+                <!-- Newsletter -->
+                <div class="section-newsletter">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <h2>Enter your e-mail and <span class="text-resalt">subscribe</span> to our newsletter.</h2>
+                                    <p>Duis non lorem porta,  eros sit amet, tempor sem. Donec nunc arcu, semper a tempus et, consequat.</p>
+                                </div>
+                                <form id="newsletterForm" action="http://html.iwthemes.com/sportscup/php/mailchip/newsletter-subscribe.php">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Your Name" name="name"  type="text" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                                <input class="form-control" placeholder="Your  Email" name="email"  type="email" required="required">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="submit" name="subscribe" >SIGN UP</button>
+                                                 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="result-newsletter"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Newsletter -->
+            </section>
+            <!-- End Section Area -  Content Central -->
+
+            <div class="instagram-btn">
+                <div class="btn-instagram">
+                    <i class="fa fa-instagram"></i>
+                    FOLLOW
+                    <a href="https://www.instagram.com/fifaworldcup/" target="_blank">&#64;fifaworldcup</a>
+                </div>
+            </div>
+
+            <div class="content-instagram">
+                <div id="instafeed"></div>
+            </div>
+{% endblock %}
+          {% block footer %}
+              {{ parent() }}
+          {% endblock %}

@@ -131,12 +131,57 @@ class Equipe
      */
     private $Groupe;
     /**
+ * @var integer
+ *
+ * @ORM\Column(name="nbr_points", type="integer", nullable=true)
+ */
+    private $nbr_points;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr_buts", type="integer", nullable=true)
+     */
+    private $nbr_buts;
+    /**
      * @return int
      */
     public function getIdequipe()
     {
         return $this->idequipe;
     }
+
+    /**
+     * @return int
+     */
+    public function getNbrPoints()
+    {
+        return $this->nbr_points;
+    }
+
+    /**
+     * @param int $nbr_points
+     */
+    public function setNbrPoints($nbr_points)
+    {
+        $this->nbr_points = $nbr_points;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbrButs()
+    {
+        return $this->nbr_buts;
+    }
+
+    /**
+     * @param int $nbr_buts
+     */
+    public function setNbrButs($nbr_buts)
+    {
+        $this->nbr_buts = $nbr_buts;
+    }
+
 
     /**
      * @param int $idequipe

@@ -22,6 +22,8 @@ public function AjoutEquipeTypeAction(Request $request)
     if ($this->get('security.authorization_checker')->isGranted('ROLE_CLIENT')) {
         $em = $this->getDoctrine()->getManager();
 
+
+        $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
         $model = $em->getRepository("GestionEJBundle:Equipetype")->find($this->getUser()->getId());
         if ($model == null) {
 
@@ -32,14 +34,17 @@ public function AjoutEquipeTypeAction(Request $request)
             $model = $em->getRepository("GestionEJBundle:Joueur")->findAll();
 
 
-            return $this->render('GestionEJBundle:template 2:equipetype.html.twig', array('m' => $model));
+            return $this->render('GestionEJBundle:template 2:equipetype.html.twig', array('m' => $model,'s'=>$stades));
         } else {
             return $this->redirectToRoute('AffEquipeType');
         }
     }
     else
     {
-        return $this->redirectToRoute('Erreur');
+        $em = $this->getDoctrine()->getManager();
+
+        $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
+        return $this->redirectToRoute('Erreur',array('s'=>$stades));
     }
 }
 
@@ -49,8 +54,12 @@ public function AjoutEquipeTypeAction(Request $request)
      */
     public function AjoutTypeconfAction(Request $request)
 {
+    $em = $this->getDoctrine()->getManager();
+
+    $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
     if ($this->get('security.authorization_checker')->isGranted('ROLE_CLIENT')) {
-        $em = $this->getDoctrine()->getManager();
+
+
         $equipe = new Equipetype();
         $model = $em->getRepository("GestionEJBundle:Joueur")->findAll();
 
@@ -109,7 +118,7 @@ $equipe->setJoueur1($j1);
 
     else
     {
-        $this->redirectToRoute('Erreur');
+        $this->redirectToRoute('Erreur',array('s'=>$stades));
     }
 
     }
@@ -118,11 +127,13 @@ $equipe->setJoueur1($j1);
 
 public function AfficherEquipeTypeAction()
 {
-
     $em = $this->getDoctrine()->getManager();
+
+    $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
+
     echo $this->getUser()->getId();
     $model = $em->getRepository("GestionEJBundle:Equipetype")->find($this->getUser()->getId());
-    return $this->render('@GestionEJ/template 2/equipetypeconf.html.twig',array('m'=>$model));
+    return $this->render('@GestionEJ/template 2/equipetypeconf.html.twig',array('m'=>$model,'s'=>$stades));
 
 }
 }

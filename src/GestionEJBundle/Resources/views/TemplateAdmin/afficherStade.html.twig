@@ -63,7 +63,7 @@
                                 <th>Capacite</th>
                                 <th>Longititude</th>
                                 <th>Latitude</th>
-                                <th>PhotoStade</th>
+
                                 <th>Modifier</th>
                                 <th>Supprimer</th>
 
@@ -77,14 +77,14 @@
 
                                 <tr>
                                     <td> {{ v.idstade }}</td>
-                                    <td><img src="{{ asset('uploads/Stades/' ~ v.photostade) }}" alt="icon" width=160 height=110></td>
+                                    <td><img src="{{ asset('uploads/Joueurs/' ~ v.photostade) }}" alt="icon" width=160 height=110></td>
 
                                     <td> {{ v.nom }} </td>
                                     <td> {{ v.ville }} </td>
                                     <td> {{ v.capacite }} </td>
                                     <td> {{ v.longitude }}</td>
                                     <td> {{ v.latitude }}</td>
-                                    <td> {{ v.photostade }}</td>
+
 
                                     <td>
                                         <a href="{{ path('ModifierStade',{'id':v.IDstade}) }}">Modifier Stade </a>

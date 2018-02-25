@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+
+
+{{ form(Form)}}
+<link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+
+
+{% set flashbag_notices = app.session.flashbag.get('notice') %}
+{% set flashbag_alerts = app.session.flashbag.get('alert') %}
+{% if flashbag_notices is not empty %}
+    <ul class="msg">
+        {% for notice in flashbag_notices %}
+            <b> <li align="center">{{ notice }}</li></b>
+        {% endfor %}
+    </ul>
+{% elseif flashbag_alerts is not empty %}
+
+    <ul class="err">
+        {% for item in flashbag_alerts %}
+            <b> <li align="center">{{ item }}</li></b>
+        {% endfor %}
+    </ul>
+
+{% endif %}
+
+
+    <br>
+    <center><h2><b>Liste des horaires BUS/TRAIN</b></h2></center>
+
+    <marquee  style="font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; color: #FFFFFF" bgcolor="black" scrollamount="5">
+        <font size="4">Bienvenue {% filter upper %}{{  app.user.username}}{% endfilter %}, Dans cette section vous pouvez réserver un TICKET de Bus/Train affichés ci-dessous. </font>
+
+    </marquee>
+
+
+
+    <br>
+
+
+    <table class="table-responsive" >
+    <tr bgcolor="#01d099">
+
+        <th><font size="3" color="white"><center>Numero</center></font></th>
+        <th><font size="3" color="white"><center>Type</center></font></th>
+        <th><font size="3" color="white"><center>Capacite</center></font></th>
+        <th><font size="3" color="white"><center>Date Match</center></font></th>
+        <th><font size="3" color="white"><center>Heure départ</center></font></th>
+
+        <th><font size="3" color="white"><center>Point départ</center></font></th>
+        <th><font size="3" color="white"><center>Point arrivé</center></font></th>
+
+        <th><font size="3" color="white"><center>Prix</center></font></th>
+        <th></th>
+
+    </tr>
+    {% for item in res %}
+        <tr>
+
+<td><font color="black"><center>{{ item.idTransport.numero }}</td>
+<td><font color="black"><center>{{ item.idTransport.type }}</td>
+            <td><font color="black"><center>{{ item.capacite }}</td>
+            <td><font color="black"><center>{{ item.dateMatch | date('Y/m/d')}}</td>
+            <td><font color="black"><center>{{ item.heureDepart | date('H:i') }}</td>
+
+            <td><font color="black"><center>{{ item.pointDepart }}</td>
+            <td><font color="black"><center>{{ item.pointArrive }}</td>
+
+            <td><font color="black"><center>{{ item.prix }}</td>
+
+
+            {% if item.capacite == 0 %}
+                <td><center><button type="button" class="btn btn-danger btn-xs" id="amine"> COMPLET  </button> </center> </td>
+            {% else %}
+
+                <td align="center"><a href="{{ path('UserReserverHoraire',{'id':item.idHoraire}) }}" onclick="return confirm('Voulez-vous confirmer votre reservation ?')" > <button type="button" class="btn btn-success btn-xs">Reserver</button></a></td>
+
+            {% endif %}
+
+        </tr>
+    {%endfor%}
+</table>
+
+{% endblock %}

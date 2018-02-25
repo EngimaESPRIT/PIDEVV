@@ -10,8 +10,10 @@ use CMEN\GoogleChartsBundle\GoogleCharts\Charts\ColumnChart;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use GestionEJBundle\Entity\Equipe;
 use GestionEJBundle\Entity\Joueur;
+use GestionEJBundle\Entity\Stade;
 use GestionEJBundle\Form\AjoutEquipe;
 use NatocTo\FootballData\FootballData;
+use Nette\Utils\DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use GestionEJBundle\Controller\JoueurController;
 
@@ -34,6 +36,61 @@ class LiensController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
         $pieChart = new PieChart();
         $em= $this->getDoctrine();
         $joueurs = $em->getRepository('GestionEJBundle:Joueur')->afficherparButs();
+        $jou = $em->getRepository('GestionEJBundle:Joueur')->findAll();
+        $equ = $em->getRepository('GestionEJBundle:Equipe')->findAll();
+        $wins=0;
+        $nbe=0;
+        $first=0;
+foreach ($equ as $e)
+{
+    $wins=$wins+$e->getMatchwins();
+    $nbe=$nbe+1;
+    if ($e->getParticipations()==0)
+    {
+        $first=$first+1;
+    }
+}
+$first=($first*100)/$nbe;
+$wins=$wins/$nbe;
+
+        $nbj=0;
+        foreach ($jou as $j)
+        {
+            $nbj=$nbj+1;
+        }
+        $date=new \DateTime('now');
+
+        $years=0;
+        $nbjj=0;
+        $buts=0;
+        foreach ($jou as $j)
+        {
+     $d=$date->format('Y')-$j->getDatedenaissance()->format('Y');
+     $buts=$buts+$j->getButs();
+     $years=$years+$d;
+     $nbjj=$nbjj+1;
+        }
+        $buts=$buts/$nbjj;
+$years=$years/$nbjj;
+        $years=round($years);
+        echo $years;
+        $st= $em->getRepository('GestionEJBundle:Stade')->findAll();
+
+        $s=new Stade();
+        $nb=0;
+        $tot=0;
+         foreach ($st as $s)
+         {
+$nb=$nb+1;
+         }
+
+         foreach($st as $s)
+         {
+            $tot=($tot)+($s->getCapacite());
+         }
+
+         $statstade=$tot/$nb;
+
 
 
         $nbbuts=0;
@@ -71,7 +128,7 @@ class LiensController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
 
         $nbmatches=0;
         foreach($equipes as $j)
-        {             $nbmatches=$nbbuts+$j->getMatchescm();
+        {             $nbmatches=$nbmatches+$j->getMatchescm();
 
         }
 
@@ -82,8 +139,8 @@ class LiensController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
 
         foreach($equipes as $j) {
             $stat=array();
-            array_push($stat,$j->getNom(),(($j->getMatchwins()) *100)/$nbmatches);
-            $nb=(($j->getMatchwins()) *100)/$nbmatches;
+            array_push($stat,$j->getNom(),(($j->getMatchwins()) *100)/$j->getMatchescm());
+            $nb=(($j->getMatchwins()) *100)/$j->getMatchescm();
             $stat=[$j->getNom(),$nb];
             array_push($data,$stat);
 
@@ -100,7 +157,7 @@ class LiensController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
         $ColumnChart ->getOptions()->getTitleTextStyle()->setFontSize(20);
         if ($auth_checker->isGranted('ROLE_ADMIN')==true)
         {
-            return $this->render('@GestionEJ/TemplateAdmin/index.html.twig',array('piechart'=>$pieChart,'columnchart'=>$ColumnChart));
+            return $this->render('@GestionEJ/TemplateAdmin/index.html.twig',array('piechart'=>$pieChart,'columnchart'=>$ColumnChart,'stade'=>$statstade,'j'=>$nbj,'moy'=>$years,'b'=>$buts,'w'=>$wins,'f'=>$first));
         }
         else{
             return $this->render('GestionEJBundle:template 2:page-404.html.twig');

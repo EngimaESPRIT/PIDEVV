@@ -1,3 +1,201 @@
 gestion_transport_homepage:
     path:     /
     defaults: { _controller: GestionTransportBundle:Default:index }
+
+
+
+
+
+
+
+
+ajouter_vehicule:
+    path:     /ajoutvehicule
+    defaults: { _controller: GestionTransportBundle:Vehicules:ajoutVehicule }
+
+
+lister_vehicule:
+    path:     /listevehicule
+    defaults: { _controller: GestionTransportBundle:Vehicules:listeVehicule }
+
+supprimer_vehicule:
+    path: /supprimervehicule/{id}
+    defaults: { _controller: GestionTransportBundle:Vehicules:supprimerVehicule }
+
+
+modifier_vehicule:
+    path: /modifiervehicule/{id}
+    defaults: { _controller: GestionTransportBundle:Vehicules:modifierVehicule }
+
+
+
+
+
+
+
+
+
+
+
+ajouter_transport:
+    path:     /ajouttransport
+    defaults: { _controller: GestionTransportBundle:Transport:ajoutTransport }
+
+
+lister_transport:
+    path:     /listetransport
+    defaults: { _controller: GestionTransportBundle:Transport:listeTransport }
+
+
+supprimer_transport:
+    path: /supprimertransport/{id}
+    defaults: { _controller: GestionTransportBundle:Transport:supprimerTransport }
+
+modifier_transport:
+    path: /modifiertransport/{id}
+    defaults: { _controller: GestionTransportBundle:Transport:modifierTransport }
+
+
+
+
+
+
+
+
+
+ajouter_horaire:
+    path:     /ajouthoraire
+    defaults: { _controller: GestionTransportBundle:Horaire:ajoutHoraire }
+
+
+lister_horaire:
+    path:     /listehoraire
+    defaults: { _controller: GestionTransportBundle:Horaire:listeHoraire }
+
+
+supprimer_horaire:
+    path: /supprimerhoraire/{id}
+    defaults: { _controller: GestionTransportBundle:Horaire:supprimerHoraire }
+
+modifier_horaire:
+    path: /modifierhoraire/{id}
+    defaults: { _controller: GestionTransportBundle:Horaire:modifierHoraire }
+
+
+
+
+
+
+
+
+
+ajouter_demande:
+    path:     /ajoutdemande
+    defaults: { _controller: GestionTransportBundle:Demande:ajoutDemande }
+
+lister_demande:
+    path:     /listedemande
+    defaults: { _controller: GestionTransportBundle:Demande:listeDemande }
+
+
+supprimer_demande:
+    path: /supprimerdemande/{id}
+    defaults: { _controller: GestionTransportBundle:Demande:supprimerDemande }
+
+modifier_demande:
+    path: /modifierdemande/{id}
+    defaults: { _controller: GestionTransportBundle:Demande:modifierDemande }
+
+
+
+
+UserAjoutVehicule:
+    path: /userajoutvehicule
+    defaults: { _controller: GestionTransportBundle:UserVehicules:userAjoutVehicule }
+
+UserListVehicule:
+    path: /userlistvehicule
+    defaults: { _controller: GestionTransportBundle:UserVehicules:userListeVehicule }
+
+UserModifierVehicule:
+    path: /usermodifiervehicule/{id}
+    defaults: { _controller: GestionTransportBundle:UserVehicules:userModifierVehicule }
+
+UserSupprimerVehicule:
+    path: /usersupprimervehicule/{id}
+    defaults: { _controller: GestionTransportBundle:UserVehicules:userSupprimerVehicule }
+
+
+UserAjoutDemande:
+    path:     /userajoutdemande
+    defaults: { _controller: GestionTransportBundle:UserDemande:userAjoutDemande }
+
+UserListDemande:
+    path:     /userlistedemande
+    defaults: { _controller: GestionTransportBundle:UserDemande:userListeDemande }
+
+
+UserSupprimerDemande:
+    path: /usersupprimerdemande/{id}
+    defaults: { _controller: GestionTransportBundle:UserDemande:userSupprimerDemande }
+
+UserModifierDemande:
+    path: /usermodifierdemande/{id}
+    defaults: { _controller: GestionTransportBundle:UserDemande:userModifierDemande }
+
+
+
+
+
+
+
+
+
+
+
+UserChercherDemande:
+    path: /searchdemande
+    defaults: { _controller: GestionTransportBundle:Demande:Recherche}
+
+UserReserverDemande:
+    path: /reserverdemande/{id}
+    defaults: { _controller: GestionTransportBundle:ReservationDemande:reserverDemande }
+
+
+
+
+
+UserChercherHoraire:
+    path: /searchhoraire
+    defaults: { _controller: GestionTransportBundle:Horaire:Recherche }
+
+UserReserverHoraire:
+    path: /reserverhoraire/{id}
+    defaults: { _controller: GestionTransportBundle:ReservationHoraire:reserverHoraire }
+
+
+
+
+
+
+
+transport:
+    path: /transport
+    defaults: { _controller: GestionTransportBundle:Liens:GoToTransport}
+
+404:
+    path: /404
+    defaults: { _controller: GestionTransportBundle:Liens:GoTo404 }
+
+
+ClientHome:
+    path: /home
+    defaults: { _controller: GestionTransportBundle:Liens:GoToHome }
+
+
+
+
+
+_graphePie:
+    path: /pie
+    defaults: { _controller: GestionTransportBundle:UsersSoldes:graph }

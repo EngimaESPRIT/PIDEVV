@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+{{ form(Form)}}
+
+
+<link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+
+
+
+
+
+{% set flashbag_notices = app.session.flashbag.get('notice') %}
+{% set flashbag_alerts = app.session.flashbag.get('alert') %}
+{% if flashbag_notices is not empty %}
+<ul class="msg">
+  {% for notice in flashbag_notices %}
+      <b> <li align="center">{{ notice }}</li></b>
+{% endfor %}
+</ul>
+    {% elseif flashbag_alerts is not empty %}
+
+      <ul class="err">
+          {% for item in flashbag_alerts %}
+              <b> <li align="center">{{ item }}</li></b>
+          {% endfor %}
+      </ul>
+
+{% endif %}
+
+
+
+    <br>
+    <center><h2><b>Liste des offres de covoiturage</b></h2></center>
+
+    <marquee  style="font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; color: #FFFFFF" bgcolor="black" scrollamount="5">
+        <font size="4"> Bienvenue {% filter upper %}{{  app.user.username}}{% endfilter %}, Dans cette section vous pouvez réserver dans les offres de covoiturages ci-dessous. </font>
+
+    </marquee>
+
+    <br>
+
+
+<table class="table-responsive">
+    <tr bgcolor="#01d099">
+
+        <th><font size="3" color="white"><center>Proprietaire</center></font></th>
+        <th><font size="3" color="white"><center>Marque</center></font></th>
+        <th><font size="3" color="white"><center>Nombre de places</center></font></th>
+        <th><font size="3" color="white"><center>Date Match</center></font></th>
+        <th><font size="3" color="white"><center>Heure départ</center></font></th>
+
+        <th><font size="3" color="white"><center>Point départ</center></font></th>
+        <th><font size="3" color="white"><center>Point arrivé</center></font></th>
+
+        <th><font size="3" color="white"><center>Prix</center></font></th>
+
+
+
+
+        <th><font color="white"><center>Image Vehicule</center></font></th>
+        <th></th>
+
+    </tr>
+    {% for item in res %}
+        <tr>
+          <!--  <td> {{ item.idDemande }} </td> -->
+            <td><font color="black"><center> {{ item.idUser }} </center></font></td>
+            <td><font color="black"><center> {{ item.idVehicule.marque }} </center></font></td>
+            <td><font color="black"><center>{{ item.nbPlacesDispo }}</center></font></td>
+            <td><font color="black"><center>{{ item.dateMatch | date('Y/m/d') }}</center></font></td>
+            <td><font color="black"><center>{{ item.heureDepart | date('H:i') }}</center></font></td>
+
+            <td><font color="black"><center>{{ item.pointDepart }}</center></font></td>
+            <td><font color="black"><center>{{ item.pointArrive }}</center></font></td>
+
+            <td><font color="black"><center>{{ item.prix }}</center></font></td>
+
+          <td><img src={{ asset('uploads/images/' ~ item.idVehicule.imageVehicule) }}  height="200" width="300"></td>
+            {% if item.nbPlacesDispo == 0  and item.idUser.id != app.user.id %}
+
+                 <td><center><button type="button" class="btn btn-danger btn-xs" id="amine"> COMPLET  </button> </center> </td>
+
+
+            {% elseif item.idUser.id == app.user.id %}
+
+                <td ><font color="white"><center></center></font></td>
+            {% else %}
+                <td align="center"><a href="{{ path('UserReserverDemande',{'id':item.idDemande}) }}" onclick="return confirm('Voulez-vous confirmer votre reservation ?')"> <button type="button" class="btn btn-success btn-xs" id="amine"  >Reserver</button></a></td>
+
+
+          {% endif %}
+
+
+        </tr>
+    {%endfor%}
+</table>
+
+
+
+{% endblock %}

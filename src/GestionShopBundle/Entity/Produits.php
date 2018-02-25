@@ -1,14 +1,17 @@
 <?php
 
-namespace GestionEJBundle\Entity;
+namespace GestionShopBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Produits
  *
+ *
+ * @ORM\Entity(repositoryClass="GestionShopBundle\Repository\ProduitsRepository")
  * @ORM\Table(name="produits")
- * @ORM\Entity
+ *
  */
 class Produits
 {
@@ -20,13 +23,6 @@ class Produits
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idProduit;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Image", type="string", length=500, nullable=false)
-     */
-    private $image;
 
     /**
      * @var string
@@ -50,6 +46,35 @@ class Produits
     private $categorie;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="couleur", type="string", length=255)
+     */
+    private $couleur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string")
+     */
+    private $description;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marque", type="string", length=255)
+     */
+    private $marque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="composition", type="string", length=255)
+     */
+    private $composition;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="quantite", type="integer", nullable=false)
@@ -57,5 +82,229 @@ class Produits
     private $quantite;
 
 
-}
+    /**
+     *@var string
+     *
+     * @ORM\Column(name="image", type="string", length=500, nullable=false)
+     */
+    private $image;
 
+
+    private $file;
+
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param int $idProduit
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param float $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param string $categorie
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * @param int $quantite
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * @param string $couleur
+     */
+    public function setCouleur($couleur)
+    {
+        $this->couleur = $couleur;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * @param string $marque
+     */
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComposition()
+    {
+        return $this->composition;
+    }
+
+    /**
+     * @param string $composition
+     */
+    public function setComposition($composition)
+    {
+        $this->composition = $composition;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+    }
+
+    public function getUploadDir()
+    {
+        return 'imagesShop';
+    }
+
+    public function getAbsolutRoot()
+    {
+        return $this->getUploadRoot().$this->image ;
+    }
+
+    public function getWebPath()
+    {
+        return $this->getUploadDir().'/'.$this->image;
+    }
+
+    public function getUploadRoot()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir().'/';
+    }
+
+    public function upload()
+    {
+        if($this->file === null){
+            return;
+
+        }
+        $this->image = $this->file->getClientOriginalName();
+
+        if(!is_dir($this->getUploadRoot()))
+        {
+            mkdir($this->getUploadRoot(),'0777',true);
+        }
+
+        $this->file->move($this->getUploadRoot(),$this->image);
+        unset($this->file);
+    }
+
+
+
+
+
+}

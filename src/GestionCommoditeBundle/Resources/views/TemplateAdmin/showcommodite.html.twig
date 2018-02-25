@@ -1,0 +1,118 @@
+{% extends 'baseadmin.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Users <small>Some examples to get you started</small></h3>
+                </div>
+
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Fixed Header Example <small>Users</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <p class="text-muted font-13 m-b-30">
+                            This example shows FixedHeader being styling by the Bootstrap CSS framework.
+                        </p>
+                        <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+
+                                <th>Idcommodite</th>
+                                <th>Categorie</th>
+                                <th>nom Commodite</th>
+                                <th>Tel</th>
+                                <th>adresse</th>
+                                <th>Carte credit</th>
+                                <th>Alcool</th>
+                                <th>Ticket restaurant</th>
+                                <th>wifi gratuit </th>
+                                <th>Description</th>
+                                <th>ville</th>
+                                <th>Lat</th>
+                                <th>Lng</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for commodite in commodites %}
+                                <tr>
+                                    <td><a href="{{ path('commodite_show', { 'idCommodite': commodite.idCommodite }) }}">{{ commodite.idCommodite }}</a></td>
+                                    <td>{{ commodite.categorie }}</td>
+                                    <td>{{ commodite.tel }}</td>
+                                    <td>{{ commodite.adresse }}</td>
+                                    <td>{{ commodite.nomCommodite }}</td>
+                                    <td>{% if commodite.carteCredit %}Yes{% else %}No{% endif %}</td>
+                                    <td>{% if commodite.alcool %}Yes{% else %}No{% endif %}</td>
+                                    <td>{% if commodite.ticketRestaurant %}Yes{% else %}No{% endif %}</td>
+                                    <td>{% if commodite.wifiGratuit %}Yes{% else %}No{% endif %}</td>
+                                    <td>{{ commodite.description }}</td>
+                                    <td>{{ commodite.lat }}</td>
+                                    <td>{{ commodite.lng }}</td>
+                                    <td>{{ commodite.ville }}</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('commodite_update', { 'idCommodite': commodite.idCommodite }) }}">Modifier</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('commodite_delete', { 'idCommodite': commodite.idCommodite }) }}">Supprimer</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- /page content -->
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

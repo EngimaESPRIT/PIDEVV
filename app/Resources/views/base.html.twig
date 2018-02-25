@@ -32,7 +32,7 @@
 <body  >
 
 <!-- layout-->
-<div id="layout" style="background-image: url('{{ asset('gg.jpg') }}')">
+<div id="layout">
     <!-- Header-->
     <header>
         <!-- End headerbox-->
@@ -52,7 +52,8 @@
     {% if is_granted("IS_AUTHENTICATED_FULLY") %}
 
 
-                  LOGGED IN AS {{ app.user.username }}
+        LOGGED IN AS  &nbsp <b>{{ app.user.username }} &nbsp </b>
+        solde &nbsp <b> {{ app.user.soldes }} </b>
 
         <a href="{{ path('fos_user_security_logout') }}" class="far fa-user">Logout</a>
 
@@ -84,47 +85,6 @@
                 <a href="{{ path('home') }}">Home</a>
             </li>
 
-            <li>
-                <a href="#">World Cup</a>
-                <div class="sf-mega">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h5><i class="fa fa-trophy" aria-hidden="true"></i>World Cup</h5>
-                            <ul>
-                                <li><a href="table-point.html">Point Table</a></li>
-                                <li><a href="fixtures.html">Fixtures</a></li>
-                                <li><a href="groups.html">Groups</a></li>
-                                <li><a href="news-left-sidebar.html">News</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-md-3">
-                            <h5><i class="fa fa-users" aria-hidden="true"></i> Teams List</h5>
-                            <div class="img-hover">
-                                <img src="{{ asset('img/blog/1.jpg') }}" alt="" class="img-responsive">
-                                <div class="overlay"><a href="teams.html">+</a></div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <h5><i class="fa fa-futbol-o" aria-hidden="true"></i> Players List</h5>
-                            <div class="img-hover">
-                                <img src="{{ asset('img/blog/2.jpg') }}" alt="" class="img-responsive">
-                                <div class="overlay"><a href="players.html">+</a></div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <h5><i class="fa fa-gamepad" aria-hidden="true"></i> Results Info</h5>
-                            <div class="img-hover">
-                                <img src="{{ asset('img/blog/3.jpg') }}" alt="" class="img-responsive">
-                                <div class="overlay"><a href="results.html">+</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
 
             <li class="current">
                 <a href="{{ path('teams') }}">Teams</a>
@@ -149,96 +109,60 @@
                     </li>
                 </ul>
             </li>
+            <li class="current">
+                <a href="{{ path('StadeSelection') }}">Stades</a>
 
-            <li>
-                <a href="fixtures.html">Fixtures</a>
+            </li>
+            <li class="current">
+
+                <a href="#">Groupes</a>
+                <ul class="sub-current">
+                    <ul>
+                        <li><a href="{{ path('affiche_match') }}">Matches</a></li>
+                        <li><a href="{{ path('affiche_groupe_front') }}">Groupes</a></li>
+
+                    </ul>
+                </ul>
+
             </li>
 
             <li class="current">
-                <a href="results.html">Results</a>
+
+                <a href="{{ path('transport') }}">Transport</a>
+                <ul class="sub-current">
+                    <ul>
+                        <li><a href="{{ path('UserAjoutVehicule')}}">Ajouter Vehicule</a></li>
+                        <li><a href="{{ path('UserListVehicule')}}">Votre liste de véhicule(s)</a></li>
+                        <li><a href="{{ path('UserAjoutDemande')}}">Ajouter une offre de covoiturage</a></li>
+                        <li><a href="{{ path('UserListDemande')}}">Votre liste de covoiturage</a></li>
+                        <li><a href="{{ path('UserChercherDemande' ) }}">Réserver offre de covoiturage</a></li>
+                        <li><a href="{{ path('UserChercherHoraire')  }}">Réserver Bus/Train</a></li>
+                    </ul>
+                </ul>
+
+            </li>
+            <li class="current">
+                <a href="{{ path('afficherProduitsUser') }}">Shop</a>
                 <ul class="sub-current">
                     <li>
-                        <a href="results.html">Results List</a>
+
+                        <a href=href="{{ path('affichageParCategorie',{'string': "Maillot"}) }}">Maillot</a>
                     </li>
                     <li>
-                        <a href="single-result.html">Single Result</a>
+                        <a href="{{ path('affichageParCategorie',{'string': "Chaussures"}) }}">Chaussures</a>
                     </li>
+                    <li>
+                        <a href="{{ path('affichageParCategorie',{'string': "Accessoires"}) }}">Accessoires</a>
+                    </li>
+
+
                 </ul>
             </li>
 
-            <li>
-                <a href="table-point.html">Point Table</a>
-            </li>
 
-            <li>
-                <a href="groups.html">Groups</a>
-            </li>
 
-            <li>
-                <a href="#">Features</a>
-                <div class="sf-mega">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h5>Features</h5>
-                            <ul>
-                                <li><a href="page-full-width.html">Full Width</a></li>
-                                <li><a href="page-left-sidebar.html">Left Sidebar</a></li>
-                                <li><a href="page-right-sidebar.html">Right Sidebar</a></li>
-                                <li><a href="page-404.html">404 Page</a></li>
-                                <li><a href="page-faq.html">FAQ</a></li>
-                                <li><a href="sitemap.html">Sitemap</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <h5>Headers & Footers</h5>
-                            <ul>
-                                <li><a href="feature-header-footer-1.html">Header Version 1</a></li>
-                                <li><a href="feature-header-footer-2.html">Header Version 2</a></li>
-                                <li><a href="feature-header-footer-3.html">Header Version 3</a></li>
-                                <li><a href="feature-header-footer-1.html#footer">Footer Version 1</a></li>
-                                <li><a href="feature-header-footer-2.html#footer">Footer Version 2</a></li>
-                                <li><a href="feature-header-footer-3.html#footer">Footer Version 3</a></li>
-                            </ul>
-                        </div>
 
-                        <div class="col-md-3">
-                            <h5>Pages</h5>
-                            <ul>
-                                <li><a href="page-about.html">About Us</a></li>
-                                <li><a href="single-player.html">About Me</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="single-team.html">Club Info</a></li>
-                                <li><a href="single-result.html">Match Result</a></li>
-                                <li><a href="table-point.html">Positions</a></li>
-                            </ul>
-                        </div>
 
-                        <div class="col-md-3">
-                            <h5>News</h5>
-                            <ul>
-                                <li>
-                                    <a href="news-left-sidebar.html">News Lef Sidebar</a>
-                                </li>
-                                <li>
-                                    <a href="news-right-sidebar.html">News Right Sidebar</a>
-                                </li>
-                                <li>
-                                    <a href="news-no-sidebar.html">News No Sidebar</a>
-                                </li>
-                                <li>
-                                    <a href="single-news.html">Single News</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <i class="fa fa-trophy big-icon" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-
-                <a href="{{ path('Contact') }}">Contact</a>
-            </li>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li class="current">
                 <a href="{{ path('fos_user_profile_show') }}"> Profile</a>
@@ -252,10 +176,18 @@
 
                 </ul>
             </li>
+        <li >
+            <a href="{{ path('all_posts' , {'id': app.user.id } ) }}">Actualite</a>
+        </li>
+
+
+
         <li class="current">
             <a href="{{ path('Equipe-type') }}">Equipe-Type</a>
         </li>
-
+        <li>
+            <a href="{{ path('cart') }}">Cart</a>
+        </li>
         {% endif %}
         </ul>
         <!-- End Menu-->
@@ -314,7 +246,21 @@
                 </li>
             </ul>
         </li>
+        <li class="current">
 
+            <a href="{{ path('transport') }}">Transport</a>
+            <ul class="sub-current">
+                <ul>
+                    <li><a href="{{ path('UserAjoutVehicule')}}">Ajouter Vehicule</a></li>
+                    <li><a href="{{ path('UserListVehicule')}}">Votre liste de véhicule(s)</a></li>
+                    <li><a href="{{ path('UserAjoutDemande')}}">Ajouter une offre de covoiturage</a></li>
+                    <li><a href="{{ path('UserListDemande')}}">Votre liste de covoiturage</a></li>
+                    <li><a href="{{ path('UserChercherDemande' ) }}">Réserver offre de covoiturage</a></li>
+                    <li><a href="{{ path('UserChercherHoraire')  }}">Réserver Bus/Train</a></li>
+                </ul>
+            </ul>
+
+        </li>
         <li>
             <a href="{{ path('fixtures') }}">Fixtures</a>
         </li>
@@ -361,17 +307,7 @@
                         <li><a href="feature-header-footer-3.html#footer">Footer Version 3</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Pages</a>
-                    <ul>
-                        <li><a href="page-about.html">About Us</a></li>
-                        <li><a href="single-player.html">About Me</a></li>
-                        <li><a href="feature-header-footer-2.html#footer">Services</a></li>
-                        <li><a href="single-team.html">Club Info</a></li>
-                        <li><a href="single-result.html">Match Result</a></li>
-                        <li><a href="table-point.html">Positions</a></li>
-                    </ul>
-                </li>
+
                 <li>
                     <a href="#">News</a>
                     <ul>
@@ -532,7 +468,8 @@
             </div>
         </div>
     </div>
-    <!-- End Links Footer-->
+
+
 
 </footer>
 <!-- End footer-->
@@ -552,6 +489,8 @@
 <!-- End layout-->
 
 <!-- ======================= JQuery libs =========================== -->
+<script type="text/javascript" src="{{ asset('livechat/php/app.php')~"?widget-init.js" }}"></script>
+
 <!-- jQuery local-->
 <script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
 <!-- popper.js-->

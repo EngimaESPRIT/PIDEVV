@@ -8,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Pronostics
  *
  * @ORM\Table(name="pronostics", indexes={@ORM\Index(name="fk_id_user", columns={"id_user"}), @ORM\Index(name="fk_match_prono", columns={"Id_Match"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GestionMatchBundle\Repository\PronosticsRepository")
+ *
  */
 class Pronostics
 {
@@ -61,6 +62,102 @@ class Pronostics
      * })
      */
     private $idMatch;
+
+    /**
+     * @return int
+     */
+    public function getIdProno()
+    {
+        return $this->idProno;
+    }
+
+    /**
+     * @param int $idProno
+     */
+    public function setIdProno($idProno)
+    {
+        $this->idProno = $idProno;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCoteequipea()
+    {
+        return $this->coteequipea;
+    }
+
+    /**
+     * @param float $coteequipea
+     */
+    public function setCoteequipea($coteequipea)
+    {
+        $this->coteequipea = $coteequipea;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCotex()
+    {
+        return $this->cotex;
+    }
+
+    /**
+     * @param float $cotex
+     */
+    public function setCotex($cotex)
+    {
+        $this->cotex = $cotex;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCoteequipeb()
+    {
+        return $this->coteequipeb;
+    }
+
+    /**
+     * @param float $coteequipeb
+     */
+    public function setCoteequipeb($coteequipeb)
+    {
+        $this->coteequipeb = $coteequipeb;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param \User $idUser
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+    }
+
+    /**
+     * @return \Matches
+     */
+    public function getIdMatch()
+    {
+        return $this->idMatch;
+    }
+
+    /**
+     * @param \Matches $idMatch
+     */
+    public function setIdMatch($idMatch)
+    {
+        $this->idMatch = $idMatch;
+    }
 
 
 }

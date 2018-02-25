@@ -1,6 +1,6 @@
 <?php
 
-namespace GestionEJBundle\Entity;
+namespace GestionActualiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

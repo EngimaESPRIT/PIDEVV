@@ -1,6 +1,6 @@
 <?php
 
-namespace GestionEJBundle\Entity;
+namespace GestionActualiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,6 +29,29 @@ class Comment
     private $date;
 
     /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title" ,type="string" , nullable=false)
+     */
+
+    private $title;
+    /**
      * @var string
      *
      * @ORM\Column(name="contenu", type="string", length=255, nullable=false)
@@ -38,7 +61,7 @@ class Comment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_update", type="date", nullable=false)
+     * @ORM\Column(name="date_update", type="date", nullable=true)
      */
     private $dateUpdate;
 
@@ -61,6 +84,102 @@ class Comment
      * })
      */
     private $idPost;
+
+    /**
+     * @return int
+     */
+    public function getIdComment()
+    {
+        return $this->idComment;
+    }
+
+    /**
+     * @param int $idComment
+     */
+    public function setIdComment($idComment)
+    {
+        $this->idComment = $idComment;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * @param string $contenu
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateUpdate()
+    {
+        return $this->dateUpdate;
+    }
+
+    /**
+     * @param \DateTime $dateUpdate
+     */
+    public function setDateUpdate($dateUpdate)
+    {
+        $this->dateUpdate = $dateUpdate;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param \User $idUser
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+    }
+
+    /**
+     * @return \Post
+     */
+    public function getIdPost()
+    {
+        return $this->idPost;
+    }
+
+    /**
+     * @param \Post $idPost
+     */
+    public function setIdPost($idPost)
+    {
+        $this->idPost = $idPost;
+    }
 
 
 }

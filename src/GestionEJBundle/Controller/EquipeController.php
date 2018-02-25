@@ -69,12 +69,18 @@ $file=$m->getDrapeau();
     {
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')==false) {
             $em = $this->getDoctrine()->getManager();
+
+
+            $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
             $model = $em->getRepository("GestionEJBundle:Equipe")->findAll();
-            return $this->render('GestionEJBundle:template 2:teams.html.twig', array('m' => $model));
+            return $this->render('GestionEJBundle:template 2:teams.html.twig', array('m' => $model,'s'=>$stades));
         }
         else
         {
-            return $this->redirectToRoute('Erreur');
+            $em = $this->getDoctrine()->getManager();
+
+            $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
+            return $this->redirectToRoute('Erreur',array('s'=>$stades));
         }
 
 
@@ -85,7 +91,10 @@ $file=$m->getDrapeau();
 
         $model = $em->getRepository("GestionEJBundle:Equipe")->find($request->get('id'));
         $joueurs = $em->getRepository("GestionEJBundle:Joueur")->findBy(array("idEquipe"=>$request->get('id')));
-        return $this->render('GestionEJBundle:template 2:single-team.html.twig', array('m' => $model,'j'=>$joueurs));
+
+
+        $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
+        return $this->render('GestionEJBundle:template 2:single-team.html.twig', array('m' => $model,'j'=>$joueurs,'s'=>$stades));
     }
     public function GoToSuppEquipeAction(Request $request)
     {

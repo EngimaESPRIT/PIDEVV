@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+            <!-- Google Map -->
+            <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96675.78523415352!2d-74.04718227108513!3d40.78141356385996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2ed64fc3b013b%3A0xd813d2023b2ead16!2sNew+York+County%2C+Nueva+York%2C+EE.+UU.!5e0!3m2!1ses!2sco!4v1515849243841" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <!-- End Google Map -->
+
+            <!-- Section Area - Content Central -->
+            <section class="content-info">
+
+                <div class="container">
+                    <div class="row paddings-mini">
+                        <!-- Left Content -->
+                        {% block RechPost %}
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th> id </th>
+                                    <th> title </th>
+                                    <th> contenu </th>
+                                    <th> Date de Naissance </th>
+                                    <th> description </th>
+                                    <th> img1 </th>
+                                    <th> id user </th>
+
+                                </tr>
+                                <tr class="active"> <td> {{ RechPost.id }} </td><td> {{ RechPost.title }} </td> <td> {{ RechPost.contenu }} </td> <td>{{ RechPost.date.format("d/m/Y") }} </td> <td>{{ RechPost.description}} </td> <td> {{ RechPost.img1 }} </td> <td> {{ RechPost.users.id }} </td>  </tr>
+                            </table>
+
+                        {% endblock %}
+
+
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <!-- End Newsletter -->
+            </section>
+            <!-- End Section Area -  Content Central -->
+
+            <div class="instagram-btn">
+                <div class="btn-instagram">
+                    <i class="fa fa-instagram"></i>
+                    FOLLOW
+                    <a href="https://www.instagram.com/fifaworldcup/" target="_blank">&#64;fifaworldcup</a>
+                </div>
+            </div>
+
+            <div class="content-instagram">
+                <div id="instafeed"></div>
+            </div>
+
+{% endblock %}
+{% block footer %}
+{{ parent() }}
+{% endblock%}

@@ -1,3 +1,73 @@
 gestion_commodite_homepage:
     path:     /
     defaults: { _controller: GestionCommoditeBundle:Default:index }
+gestion_commodite:
+    path:     /index
+    defaults: { _controller: GestionCommoditeBundle:Default:index2 }
+commodite_new:
+    path:     /new
+    defaults: { _controller: GestionCommoditeBundle:Commodite:newBack }
+commodite_show:
+    path:     /show
+    defaults: { _controller: GestionCommoditeBundle:Commodite:showBack }
+commodite_update:
+    path:     /update/{idCommodite}
+    defaults: { _controller: GestionCommoditeBundle:Commodite:updateBack }
+commodite_delete:
+    path:     /{idCommodite}/delete
+    defaults: { _controller: GestionCommoditeBundle:Commodite:deleteBack }
+galeriecommodite_new:
+    path:     /newGal
+    defaults: { _controller: GestionCommoditeBundle:GalerieCommodite:newBackGal }
+
+galeriecommodite_show:
+    path:     /showGal
+    defaults: { _controller: GestionCommoditeBundle:GalerieCommodite:showBackGal }
+galeriecommodite_update:
+    path:     /{idGalerie}/updateGal
+    defaults: { _controller: GestionCommoditeBundle:GalerieCommodite:updateBackGal }
+galeriecommodite_delete:
+    path:     /{idGalerie}/deleteGal
+    defaults: { _controller: GestionCommoditeBundle:GalerieCommodite:deleteBackGal }
+feedback_new:
+    path:     /newFeed
+    defaults: { _controller: GestionCommoditeBundle:feedback:newFeed }
+feedback_update:
+    path:     /{idFeedback}/updateFeed
+    defaults: { _controller: GestionCommoditeBundle:feedback:updateFeed }
+feedback_delete:
+    path:     /{idFeedback}/deleteFeed
+    defaults: { _controller: GestionCommoditeBundle:feedback:deleteFeed }
+feedback_show:
+    path:     /showFeed
+    defaults: { _controller: GestionCommoditeBundle:feedback:showFeedFront }
+commoditefavorite_show:
+    path:     /showFav
+    defaults: { _controller: "GestionCommoditeBundle:Commoditefavorite:showFav" }
+commoditefavorite_new:
+    path:     /newFav
+    defaults: { _controller: "GestionCommoditeBundle:Commoditefavorite:newFav" }
+commoditefavorite_delete:
+    path:     /{idFavorite}/deleteFav
+    defaults: { _controller: "GestionCommoditeBundle:Commoditefavorite:deleteFava" }
+commoditefront_show:
+    path:     /GoToShow
+    defaults: { _controller: "GestionCommoditeBundle:Commodite:showFront" }
+commoditefront_showcomm:
+    path:     /GoToComm/{idCommodite}
+    defaults: { _controller: "GestionCommoditeBundle:Commodite:showFrontCom" }
+feedbackfront_new:
+    path:     /GoTonewFeed/{idCommodite}
+    defaults: { _controller: "GestionCommoditeBundle:feedback:newFrontFeed" }
+feedbackfront_delete:
+    path:     /GoTodeleteFeed
+    defaults: { _controller: "GestionCommoditeBundle:feedback:deleteFrontFeed" }
+feedbackfront_update:
+    path:     /GoToupdateFeed/{idFeedback}
+    defaults: { _controller: "GestionCommoditeBundle:feedback:updateFrontFeed" }
+feedbackfront_like:
+    path:     /like/{id}
+    defaults: { _controller: "GestionCommoditeBundle:Like:like" }
+feedbackfront_dislike:
+    path:     /dislike/{id}
+    defaults: { _controller: "GestionCommoditeBundle:Like:dislike" }

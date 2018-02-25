@@ -1,0 +1,379 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+
+    <!-- Section Title -->
+    <div class="section-title" style="background:url( {{ asset('uploads/images/Commodites.jpg') }})">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Commodités</h1>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="index-2.html">Home</a></li>
+                            <li>Inner Page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Section Title -->
+
+    <!-- Section Area - Content Central -->
+    <section class="content-info">
+
+        <div class="container paddings-mini">
+            <div class="row">
+
+                <!-- Sidebars -->
+                <aside class="col-lg-3">
+
+                    <div>
+                        <h4>Searh Sidebar</h4>
+                        <form class="search">
+                            <div class="input-group">
+
+                                <input class="form-control" placeholder="Search..." name="nomCommodite" type="text"
+                                       required="required" id="inputSearch">
+                                <span class="input-group-btn">
+                                            <button class="btn btn-primary" id="btnSearch" type="button"
+                                                    name="subscribe">Go!</button>
+                                        </span>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Widget Categories-->
+                    <div class="panel-box">
+                        <div class="titles no-margin">
+                            <h4>Catégories</h4>
+                        </div>
+                        <div class="info-panel">
+                            <ul class="list">
+                                <li><i class="fa fa-spoon" style="font-size: 19pt;"></i><a>
+                                        <i class="fa fa-spoon" style="font-size: 19pt;"></i><a>
+                                            <h34 id="Restaurant">Restaurant</h34>
+                                        </a>
+
+                                <li><i class="fa fa-coffee" style="font-size: 19pt;"></i><a>
+                                        <h35 id="Cafes">Cafes</h35>
+                                    </a>
+
+                                <li><i class="fa fa-home" style="font-size: 19pt;"></i><a>
+                                        <h35 id="Hebergements"> Hebergements</h35>
+                                    </a>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Widget Categories-->
+
+                    <!-- Widget img-->
+                    <div class="panel-box">
+                        <div class="titles no-margin">
+                            <h4>Petite aide lexicale : Comment poser la bonne question ?</h4>
+                        </div>
+                        <div class="row">
+                            <div class="info-panel">
+                                <p> Bonjour ! - [zdrastvuite]</p>
+                                <p> Au revoir - [da svidania]</p>
+                                <p> Merci ! - [spasiba]</p>
+                                <p> S’il te/vous plaît - [pazhalusta]</p>
+                                <p> Mon nom est … - [Menya zovut ...]</p>
+                                <p>Entrée/sortie - [vkhod/vykhod]</p>
+                                <p> Je ne suis pas d’accord - [Ya ne soglasen]</p>
+                                <p> Formule (au restaurant) - [komplexny obet]</p>
+                                <p>Formule du midi - [biznes lanch]</p>
+                                <p> Comment puis-je me rendre au stade ?- [Kak proiti k stadionu?]</p>
+                                <p> J’ai oublié mon passeport à l’hôtel - [Ya zabyl pasport v gostinitse]</p>
+                                <p>Combien ça coûte ? - [Skolko eto stoit?]</p>
+                                <p> Acceptez-vous les cartes bancaires ? - [Vi prinimaete kreditniye karty?]</p>
+                                <p> J’ai oublié mon passeport à l’hôtel - [Ya zabyl pasport v gostinitse]</p>
+                                <p>Je ne parle pas russe- [Ya ne govoryu po-russki]</p>
+                                <p> Quel est le mot de passe du Wi-Fi ? -[Kakoy u vas parol ot vay-fai?]</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Widget img-->
+                    <!-- End Widget img-->
+                </aside>
+                <!-- End Sidebars -->
+
+
+                <div class="col-lg-9">
+                    <!-- Content Text-->
+                    <div class="panel-box">
+                        <div class="titles">
+                            <h4>Commodités</h4>
+                        </div>
+
+                        <!-- Post Item -->
+                        {#{% var i=0 %}#}
+
+                        <div class="post-item" id="post-item">
+                            {% for commodite in commodite %}
+                            <div class="row">
+
+                                <div class="col-md-4">
+
+                                    <div class="img-hover">
+                                        <p style="float:right;"> {{ commodite.moy | rating }} </p>
+                                        {#{<img src={{ asset('uploads/images/' ~ image[commodite[i]].name) }} alt="" class="img-responsive">}#}
+                                        <img src="{{ asset('uploads/images/' ~ commodite.images[0].name ) }}" alt=""
+                                             class="img-responsive">
+
+                                        <div class="overlay"><a
+                                                    href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <p style="float: right;">{{ commodite.nbLikes }} personnes aimes cette
+                                        commodité</p>
+                                    <h5>
+                                        <a href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}"> {{ commodite.nomCommodite }}  </a>
+                                    </h5>
+                                    <span class="data-info"> ville: {{ commodite.ville }} </td> </span>
+                                    <p> {{ commodite.description [:445] }} {% if commodite.description|length > 445 %}...{% endif %}</p>
+                                      <p>  <a href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}">
+                                            Read More [+]</a></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="navigation">
+                            {{ knp_pagination_render(commodite) }}
+                        </div>
+                    </div>
+                    {#{{% i++ %}}#}
+                </div>
+
+                <!-- End Post Item -->
+
+                <!-- End Content Text-->
+            </div>
+        </div>
+        <!-- Newsletter -->
+        <div class="section-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h2>Enter your e-mail and <span class="text-resalt">subscribe</span> to our newsletter.</h2>
+                            <p>Duis non lorem porta, eros sit amet, tempor sem. Donec nunc arcu, semper a tempus et,
+                                consequat.</p>
+                        </div>
+                        <form id="newsletterForm"
+                              action="http://html.iwthemes.com/sportscup/php/mailchip/newsletter-subscribe.php">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                        <input class="form-control" placeholder="Your Name" name="name" type="text"
+                                               required="required">
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                        <input class="form-control" placeholder="Your  Email" name="email" type="email"
+                                               required="required">
+                                        <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="submit" name="subscribe">SIGN UP</button>
+                                                 </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="result-newsletter"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter -->
+    </section>
+    <!-- End Section Area -  Content Central -->
+
+    <div class="instagram-btn">
+        <div class="btn-instagram">
+            <i class="fa fa-instagram"></i>
+            FOLLOW
+            <a href="https://www.instagram.com/fifaworldcup/" target="_blank">&#64;fifaworldcup</a>
+        </div>
+    </div>
+
+    <div class="content-instagram">
+        <div id="instafeed"></div>
+    </div>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#btnSearch').click(function () {
+                getDataByName();
+            });
+
+            $('#Restaurant').click(function () {
+                getDataByCategorie('Rstaurants');
+            });
+            $('#Cafes').click(function () {
+                getDataByCategorie('Cafes');
+            });
+            $('#Hebergements').click(function () {
+                getDataByCategorie('Hebergements');
+            });
+
+            function getDataByName() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost/enfin/PIDEV/web/app_dev.php/getByName',
+                    data: {nom: $("#inputSearch").val()},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        $('#post-item').html('');
+                        $.each(data, function (index, element) {
+                            console.log(element);
+                            var rating = '<div class="rating">';
+                            if (element.moy != null) {
+                                for (var i = 1; i <= parseInt(element.moy); i++) {
+                                    rating = rating + '<div class="star-full"></div>';
+                                    //'      <div class="star-empty"></div>\n' +
+
+                                }
+                                for (var j = 0; j <= 5 - parseInt(element.moy); j++) {
+                                    console.log('j=' + j);
+                                    rating = rating + '<div class="star-empty"></div>';
+                                }
+                            }
+                            else {
+                                for (var j = 0; j < 5; j++) {
+                                    console.log('j=' + j);
+                                    rating = rating + '<div class="star-empty"></div>';
+                                }
+                            }
+                            rating = rating + '</div>';
+                            $('#post-item').append('<div class="row">' +
+                                '                                    <div class="col-md-4">' +
+                                '                                        <div class="img-hover">' + rating +
+
+                                '                                            <img src="uploads/images/' + element.images[0] + '" alt=""' +
+                                '                                                 class="img-responsive">' +
+                                '                                        </div>' +
+                                '                                    </div>' +
+                                '                                    <div class="col-md-8">' +'<p style="float: right;">'+element.nbLikes+' personnes aimes cette\n' +
+                                '                                            commodité</p>'+
+                                '                                        <h5>' +
+                                '                                            <a href="/GoToComm/' + element.id + '"> ' + element.nom + '  </a>' +
+                                '                                        </h5>' +
+                                '                                        <span class="data-info"> Ville: ' + element.ville +
+
+                                '                                             <i class="fa fa-comments"></i></span>' +
+                                '                                        <p data-validate-length="20" > ' + element.description +
+                                '                                            <a href="/GoToComm/' + element.id + '"> Read More [+] </a></p>' +
+                                '                                    </div>' +
+                                '</div><br>'
+                            )
+                        });
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+
+                });
+            }
+
+            function getDataByCategorie(categorie) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost/enfin/PIDEV/web/app_dev.php/getByCategories',
+                    data: {categorie: categorie, nom: $("#inputSearch").val()},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        $('#post-item').html('');
+
+                        $.each(data, function (index, element) {
+                            console.log(element);
+
+                            var rating = '<div class="rating">';
+                            if (element.moy != null) {
+                                for (var i = 1; i <= parseInt(element.moy); i++) {
+                                    rating = rating + '<div class="star-full"></div>';
+                                    //'      <div class="star-empty"></div>\n' +
+
+                                }
+                                for (var j = 0; j <= 5 - parseInt(element.moy); j++) {
+                                    console.log('j=' + j);
+                                    rating = rating + '<div class="star-empty"></div>';
+                                }
+                            }
+                            else {
+                                for (var j = 0; j < 5; j++) {
+                                    console.log('j=' + j);
+                                    rating = rating + '<div class="star-empty"></div>';
+                                }
+                            }
+                            rating = rating + '</div>';
+                            $('#post-item').append('<div class="row">' +
+                                '                                    <div class="col-md-4">' +
+                                '                                        <div class="img-hover">' + rating +
+                                '                                            <img src="../uploads/images/' + element.images[0] + '" alt=""' +
+                                '                                                 class="img-responsive">' +
+                                '                                        </div>' +
+                                '                                    </div>' +
+                                '                                    <div class="col-md-8">' +'<p style="float: right;">'+element.nbLikes+' personnes aimes cette\n' +
+                                '                                            commodité</p>'+
+                                '                                        <h5>' +
+                                '                                            <a href="/GoToComm/' + element.id + '"> ' + element.nom + '  </a>' +
+                                '                                        </h5>' +
+                                '                                        <span class="data-info"> Telephone: ' + element.tel +
+
+                                '                                             <i class="fa fa-comments"></i></span>' +
+                                '                                        <p> ' + element.description +
+                                '                                            <a href="/GoToComm/' + element.id + '"> Read More [+] </a></p>' +
+                                '                                    </div>' +
+                                '</div><br>'
+                            )
+                        });
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+
+                });
+            }
+        });
+    </script>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

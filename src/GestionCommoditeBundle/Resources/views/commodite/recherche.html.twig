@@ -1,0 +1,60 @@
+{{ form(form) }}
+<div id="a">
+    <table>
+        <tr>
+            <th>descr</th>
+            <th>nomCommodite</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+
+        {% for commodite in com %}
+
+            <tr>
+                <td> {{ commodite.description }}</td>
+                <td> {{ commodite.nomCommodite }} </td>
+
+
+            </tr>
+
+        {% endfor %}
+    </table>
+</div>
+<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<script>
+    $("#").keyup(function()
+    {
+        var nomCommodite=$("#").val();
+        var DATA='n='+nomCommodite;
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ path('esprit_parc_RechercheDQL') }}",
+            data: DATA,
+            success:function (response) {
+                $("#a").html(
+                    "<table id='t' border='1'>" +
+                    "<tr><th>serie</th><th>date</th><th>Modele</th></tr>" +
+                    "" +
+                    "</table>"
+
+                );
+                $.each(response,function(k,el)
+                {
+                    $('#t').append(
+                        "<tr>" +
+                        "<td>"+el.description+"</td>" +
+                        "<td>"+el.nomCommodite+"</td>" +
+
+                        "</tr>"
+
+
+                    );
+                })
+            },
+        })
+    });
+
+
+</script>

@@ -1,0 +1,42 @@
+
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col-md-6">
+        <label> Rate Qualite/Prix *</label>
+        {{ form_widget(form.rateRqp, {'attr':{'class' :'form-control', 'name':'name' ,'id':'name'}}) }}
+
+    </div>
+    <div class="col-md-6">
+        <label> Rate Acceuil *</label>
+        {{ form_widget(form.rateAcceuil,{'attr':{'class' :'form-control', 'name':'name' ,'id':'name'}}) }}
+
+    </div>
+
+    <div class="col-md-6">
+        <label> Rate Cuisine *</label>
+        {{ form_widget(form.rateCuisine, {'attr':{'class' :'form-control', 'name':'name' ,'id':'name'}})  }}
+    </div>
+
+    <div class="col-md-6">
+        <label> Rate Ambiance *</label>
+        {{ form_widget(form.rateAmbiance , {'attr':{'class' :'form-control', 'name':'name' ,'id':'name'}}) }}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <label>Comment *
+        </label>
+        {{ form_widget(form.contenu , {'attr':{'class' :'form-control', 'name':'name' ,'id':'name','required':'required' ,' type': 'text/css', 'hight':'100%' }}) }}
+        </textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {{ form_widget(form.modifier,{'attr':{'class':'btn btn-primary'}}) }} <i class="fa fa-angle-right"></i>
+    </div>
+</div>
+{{ form_end(form) }}
+
