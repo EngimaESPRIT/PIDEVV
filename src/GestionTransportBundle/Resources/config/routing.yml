@@ -199,3 +199,18 @@ ClientHome:
 _graphePie:
     path: /pie
     defaults: { _controller: GestionTransportBundle:UsersSoldes:graph }
+
+
+PDF:
+    path: /pdf
+    defaults: { _controller: GestionTransportBundle:PDF:generatePDF }
+
+
+alimenter:
+    path: /alimenter
+    defaults: { _controller: GestionTransportBundle:UsersSoldes:alimenterSolde }
+
+
+successRecharge:
+    path: /successSolde
+    defaults: { _controller: GestionTransportBundle:UsersSoldes:success }

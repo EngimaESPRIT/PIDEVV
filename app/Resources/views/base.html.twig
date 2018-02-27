@@ -61,7 +61,9 @@
 
     {% else %}
     <a href="{{ path('fos_user_security_login') }}" class="login" ><i class="fas fa-user"></i>Member Login</a>
-{% endif %}
+        <a href="{{ path('fos_user_registration_register') }}" class="login" ><i class="fas fa-user"></i>Inscription</a>
+
+    {% endif %}
 
 
                     <!-- Call Nav Menu-->
@@ -86,28 +88,17 @@
             </li>
 
 
-            <li class="current">
+            <li>
                 <a href="{{ path('teams') }}">Teams</a>
-                <ul class="sub-current">
-                    <li>
-                        <a href="teams.html">Teams List</a>
-                    </li>
-                    <li>
-                        <a href="single-team.html">Single Team</a>
-                    </li>
-                </ul>
-            </li>
 
-            <li class="current">
+            </li>
+            <li>
+
+                <a href="{{ path('commoditefront_show') }}">Commodités</a>
+            </li>
+            <li >
                 <a href="{{ path('Playershow') }}">Players</a>
-                <ul class="sub-current">
-                    <li>
-                        <a href="players.html">Players List</a>
-                    </li>
-                    <li>
-                        <a href="single-player.html">Single Player</a>
-                    </li>
-                </ul>
+
             </li>
             <li class="current">
                 <a href="{{ path('StadeSelection') }}">Stades</a>
@@ -137,6 +128,7 @@
                         <li><a href="{{ path('UserListDemande')}}">Votre liste de covoiturage</a></li>
                         <li><a href="{{ path('UserChercherDemande' ) }}">Réserver offre de covoiturage</a></li>
                         <li><a href="{{ path('UserChercherHoraire')  }}">Réserver Bus/Train</a></li>
+                        <li><a href="{{ path('alimenter')  }}">Recharger avec BON</a></li>
                     </ul>
                 </ul>
 

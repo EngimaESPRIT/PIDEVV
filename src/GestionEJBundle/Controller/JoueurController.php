@@ -18,6 +18,7 @@ use GestionEJBundle\Form\AjoutEquipe;
 use GestionEJBundle\Form\AjoutJoueur;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class JoueurController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
@@ -27,37 +28,73 @@ class JoueurController extends \Symfony\Bundle\FrameworkBundle\Controller\Contro
         $m=new Joueur();
         $form=$this->createForm(AjoutJoueur::class,$m);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+$v=false;
 
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
+$d=new \DateTime("now");
 
-            $file1 = $m->getImagejoueur1();
-            $file2 = $m->getImagejoueur2();
-            $file3 = $m->getImagejoueur3();
-            $fileName = $m->getNom().$m->getPrenom().'1'.'.'.$file1->guessExtension();
-            $file1->move(
-                $this->getParameter('Joueurs_directory'),
-                $fileName
-            );
-            $fileName2 = $m->getNom().$m->getPrenom().'2'.'.'.$file2->guessExtension();
-            $file2->move(
-                $this->getParameter('Joueurs_directory'),
-                $fileName2
-            );
-            $fileName3 = $m->getNom().$m->getPrenom().'3'.$file3->guessExtension();
-            $file3->move(
-                $this->getParameter('Joueurs_directory'),
-                $fileName3
-            );
-            $m->setImagejoueur1($fileName);
-            $m->setImagejoueur2($fileName2);
-            $m->setImagejoueur3($fileName3);
-            $em = $this->getDoctrine()->getManager();
+            $eq = $em->getRepository("GestionEJBundle:Joueur")->findBy(array('idEquipe'=>$m->getIdEquipe()));
+foreach ($eq as $s)
+{
+    if ($s->getIdEquipe()->getIdequipe()==$m->getIdEquipe()->getIdequipe() and $s->getNumero()==$m->getNumero())
+    {
+        $v=true;
+    }
+}
+            $i = 0;
+            foreach ($eq as $s) {
+                $i = $i + 1;
+            }
+            if ($i <= 23) {
+              if ($m->getDatedenaissance()->format('Y')<$d->format('Y')) {
+                  if ($v==false) {
 
-            $em->persist($m);
-            $em->flush();
-            $this->get('session')->getFlashBag()->add('notice','Ajout avec succees');
+                      $file1 = $m->getImagejoueur1();
+                      $file2 = $m->getImagejoueur2();
+                      $file3 = $m->getImagejoueur3();
+                      $fileName = $m->getNom() . $m->getPrenom() . '1' . '.' . $file1->guessExtension();
+                      $file1->move(
+                          $this->getParameter('Joueurs_directory'),
+                          $fileName
+                      );
+                      $fileName2 = $m->getNom() . $m->getPrenom() . '2' . '.' . $file2->guessExtension();
+                      $file2->move(
+                          $this->getParameter('Joueurs_directory'),
+                          $fileName2
+                      );
+                      $fileName3 = $m->getNom() . $m->getPrenom() . '3' . $file3->guessExtension();
+                      $file3->move(
+                          $this->getParameter('Joueurs_directory'),
+                          $fileName3
+                      );
+                      $m->setImagejoueur1($fileName);
+                      $m->setImagejoueur2($fileName2);
+                      $m->setImagejoueur3($fileName3);
+                      $em = $this->getDoctrine()->getManager();
 
+                      $em->persist($m);
+                      $em->flush();
+                      $this->get('session')->getFlashBag()->add('notice', 'Ajout avec succees');
+                      return $this->redirectToRoute('AjoutJoueur');
+                  }
+                  else
+                  {
+                      $this->get('session')->getFlashBag()->add('error', 'Echoué Un Joueur a deja ce numero dans cet equipe');
+
+                  }
+              }
+              else
+              {
+                  $this->get('session')->getFlashBag()->add('error', 'Echoué Date de naissance Erroné');
+
+              }
+
+            } else {
+                $this->get('session')->getFlashBag()->add('error', 'Equipe ne contient que 23 Joueurs');
+
+
+            }
         }
         return $this->render('@GestionEJ/TemplateAdmin/ajouterjoueur.html.twig',array('form'=>$form->createView()));
 
@@ -122,23 +159,25 @@ class JoueurController extends \Symfony\Bundle\FrameworkBundle\Controller\Contro
         $em = $this->getDoctrine()->getManager();
 
         $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')==false) {
 
             $equipes = $em->getRepository("GestionEJBundle:Equipe")->findAll();
 
             $model = $em->getRepository("GestionEJBundle:Joueur")->findAll();
             $paginator = $this->get('knp_paginator');
+            $a=new Joueur();
+            $var=0;
+            foreach ($a as $model)
+            {
+                $var=$var+1;
+            }
             $paginator = $paginator->paginate(
                 $model, /* query NOT result */
-                $request->query->getInt('page', 2)/*page number*/,
-                $request->query->get('limit', 10)
+                $request->query->getInt('page',$var/23)/*page number*/,
+                $request->query->get('limit',18)
             );
             return $this->render('@GestionEJ/template 2/players.html.twig', array('m' => $paginator, 'e' => $equipes,'s'=>$stades));
-        }
-        else
-        {
-            return $this->redirectToRoute('Erreur',array('s'=>$stades));
-        }
+
+
     }
     public function afficherJoueurFrontAction(Request $request)
     {
@@ -147,6 +186,8 @@ class JoueurController extends \Symfony\Bundle\FrameworkBundle\Controller\Contro
 
         $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
         $joueurs = $em->getRepository("GestionEJBundle:Joueur")->find($request->get('id'));
+
+
 
         return $this->render('GestionEJBundle:template 2:single-player.html.twig',array('m'=>$joueurs,'s'=>$stades));
     }

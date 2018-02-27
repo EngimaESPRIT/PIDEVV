@@ -16,12 +16,14 @@ use NatocTo\FootballData\FootballData;
 use Nette\Utils\DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use GestionEJBundle\Controller\JoueurController;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class LiensController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
 {
 
     public function GoToPlayersAction()
     {
+
 
         return $this->render('@GestionEJ/template 2/players.html.twig');
 
@@ -73,7 +75,7 @@ $wins=$wins/$nbe;
         $buts=$buts/$nbjj;
 $years=$years/$nbjj;
         $years=round($years);
-        echo $years;
+
         $st= $em->getRepository('GestionEJBundle:Stade')->findAll();
 
         $s=new Stade();
@@ -147,7 +149,7 @@ $nb=$nb+1;
         }
 
         $ColumnChart ->getData()->setArrayToDataTable(            $data         );
-        $ColumnChart ->getOptions()->setTitle('top 16 Pourcentage des victoires des equipes Par Rapport au matches quelle ont joué');
+        $ColumnChart ->getOptions()->setTitle('top 16 Pourcentage des victoires des equipes Par Rapport au matches qu elles  ont joué');
         $ColumnChart ->getOptions()->setHeight(500);
         $ColumnChart ->getOptions()->setWidth(900);
         $ColumnChart ->getOptions()->getTitleTextStyle()->setBold(true);

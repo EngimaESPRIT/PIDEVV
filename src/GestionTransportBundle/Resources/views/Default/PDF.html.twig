@@ -1,0 +1,29 @@
+<table align="center">
+
+    <tr>
+
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>E-Mail</th>
+        <th>Vehicule</th>
+
+</tr>
+
+
+
+    {% for item in u %}
+        <tr>
+            <td align="center">{{ item.idUser.nom}}</td>
+            <td align="center">{{ item.idUser.prenom}}</td>
+            <td align="center">{{ item.idUser.email}}</td>
+            <td align="center" >{{ item.immatriculation }} </td>
+
+        </tr>
+
+
+
+
+
+    {% endfor %}
+
+</table>

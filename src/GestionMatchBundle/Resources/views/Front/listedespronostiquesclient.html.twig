@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Section Title -->
+    <div class="section-title" style="background:url(img/slide/1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Fixtures</h1>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="index-2.html">Home</a></li>
+                            <li>Inner Page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Section Title -->
+
+    <!-- Section Area - Content Central -->
+    <section class="content-info">
+
+        <div class="container paddings-mini">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <h3 class="clear-title">Matches</h3>
+                </div>
+
+                <div class="col-lg-12">
+                    <table class="table-striped table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th class="text-center">ID Prono</th>
+                            <th class="text-center">ID Match</th>
+                            <th class="text-center">Nom d'utilisateur</th>
+                            <th class="text-center">Prenom d'utilisateur</th>
+                            <th class="text-center">Choix d'utilisateur</th>
+                            <th class="text-center">Statut</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr>
+                            <div class="fb-like" data-href="https://www.google.com/search?q=fifa+world+cup+2018&amp;ie=utf-8&amp;oe=utf-8&amp;client=firefox-b-ab#sie=lg;/m/06qjc4;2;/m/030q7;mt;fp;1" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                            <a href="https://twitter.com/intent/tweet?screen_name=TwitterDev&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @TwitterDev</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                            {% for v in m %}
+                            <td> {{ v.idProno }}</td>
+                            <td> {{ v.idMatch.idMatch }}</td>
+                            <td> {{ v.idUser.nom }}</td>
+                            <td> {{ v.idUser.prenom }}</td>
+                            <td> {{ v.choixUtilisateur }}</td>
+                            <td> {{ v.stautParis }}</td>
+                            <td></td>
+
+
+                        <tr>
+
+                        </tr>
+                        {% endfor %}
+                        </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="section-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h2>Enter your e-mail and <span class="text-resalt">subscribe</span> to our newsletter.</h2>
+                            <p>Duis non lorem porta,  eros sit amet, tempor sem. Donec nunc arcu, semper a tempus et, consequat.</p>
+                        </div>
+                        <form id="newsletterForm" action="http://html.iwthemes.com/sportscup/php/mailchip/newsletter-subscribe.php">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                        <input class="form-control" placeholder="Your Name" name="name"  type="text" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                        <input class="form-control" placeholder="Your  Email" name="email"  type="email" required="required">
+                                        <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="submit" name="subscribe" >SIGN UP</button>
+                                                 </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="result-newsletter"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter -->
+    </section>
+    <!-- End Section Area -  Content Central -->
+
+    <div class="instagram-btn">
+        <div class="btn-instagram">
+            <i class="fa fa-instagram"></i>
+            FOLLOW
+            <a href="https://www.instagram.com/fifaworldcup/" target="_blank">&#64;fifaworldcup</a>
+        </div>
+    </div>
+
+    <div class="content-instagram">
+        <div id="instafeed"></div>
+    </div>
+{% endblock %}
+          {% block footer %}
+              {{ parent() }}
+          {% endblock %}

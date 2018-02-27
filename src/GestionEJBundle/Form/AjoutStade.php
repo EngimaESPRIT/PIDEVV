@@ -21,8 +21,20 @@ class AjoutStade extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('ville')->add('capacite')->add('longitude',NumberType::class)
-            ->add('latitude',NumberType::class)->add('photostade',FileType::class,array('data_class' => null))->add('description',TextareaType::class)->add('Toit',ChoiceType::class,array('choices'=>array(
+        $builder->add('nom')->add('ville', ChoiceType::class, array(
+            'choices' => array(
+                'Ekaterinburg' => 'Ekaterinburg',
+                'Kaliningrad' => 'Kaliningrad',
+                'Kazan' => 'Kazan',
+                'Moscow' => 'Moscow',
+                'Nizhniy Novgorod' => 'Nizhniy Novgorod',
+                'Rostov on Don' => 'Rostov on Don',
+                'Saint Petersburg' => 'Saint Petersburg',
+                'Samara' => 'Samara',
+                'Saransk' => 'Saransk',
+                'Sochi' => 'Sochi',
+                'Volgograd' => 'Volgograd'
+            )))->add('capacite')->add('photostade',FileType::class,array('data_class' => null))->add('description',TextareaType::class)->add('Toit',ChoiceType::class,array('choices'=>array(
                 'oui'=>'oui',
                 'non'=>'non',
 

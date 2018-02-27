@@ -33,6 +33,19 @@ class User extends BaseUser
      */
     private $prenom;
     /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_id", type="string", nullable=true)
+     */
+    private $facebookID;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="google_id", type="string", nullable=true)
+     */
+    private $googleID;
+    /**
      * @var \equipefavorite
      *
      * @ORM\ManyToOne(targetEntity="GestionEJBundle\Entity\Equipe")
@@ -40,6 +53,7 @@ class User extends BaseUser
      *   @ORM\JoinColumn(name="equipefavorite", referencedColumnName="IDEquipe",nullable=true)
      * })
      */
+
     private $equipefavorite;
 
     public function __construct()

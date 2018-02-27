@@ -121,46 +121,43 @@
 
                         <div class="post-item" id="post-item">
                             {% for commodite in commodite %}
-                            <div class="row">
+                                <div class="row">
 
-                                <div class="col-md-4">
+                                    <div class="col-md-4">
 
-                                    <div class="img-hover">
-                                        <p style="float:right;"> {{ commodite.moy | rating }} </p>
-                                        {#{<img src={{ asset('uploads/images/' ~ image[commodite[i]].name) }} alt="" class="img-responsive">}#}
-                                        <img src="{{ asset('uploads/images/' ~ commodite.images[0].name ) }}" alt=""
-                                             class="img-responsive">
+                                        <div class="img-hover">
+                                            <p style="float:right;"> {{ commodite.moy | rating }} </p>
+                                            {#{<img src={{ asset('uploads/images/' ~ image[commodite[i]].name) }} alt="" class="img-responsive">}#}
+                                            <img src="{{ asset('uploads/images/' ~ commodite.images[0].name ) }}" alt=""
+                                                 class="img-responsive">
 
-                                        <div class="overlay"><a
-                                                    href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}"></a>
+                                            <div class="overlay"><a
+                                                        href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}"></a>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-8">
+                                        <p style="float: right;">{{ commodite.nbLikes }} personnes aimes cette
+                                            commodité</p>
+                                        <h5>
+                                            <a href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}"> {{ commodite.nomCommodite }}  </a>
+                                        </h5>
+                                        <span class="data-info"> ville: {{ commodite.ville }} </td> </span>
+                                        <p> {{ commodite.description [:445] }} {% if commodite.description|length > 445 %}...{% endif %}</p>
+                                        <p>  <a href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}">
+                                                Read More [+]</a></p>
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <p style="float: right;">{{ commodite.nbLikes }} personnes aimes cette
-                                        commodité</p>
-                                    <h5>
-                                        <a href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}"> {{ commodite.nomCommodite }}  </a>
-                                    </h5>
-                                    <span class="data-info"> ville: {{ commodite.ville }} </td> </span>
-                                    <p> {{ commodite.description [:445] }} {% if commodite.description|length > 445 %}...{% endif %}</p>
-                                      <p>  <a href="{{ path('commoditefront_showcomm', { 'idCommodite': commodite.idCommodite}) }}">
-                                            Read More [+]</a></p>
-
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                        <div class="navigation">
-                            {{ knp_pagination_render(commodite) }}
-                        </div>
+                        {#{{% i++ %}}#}
+                        <!-- End Post Item -->
                     </div>
-                    {#{{% i++ %}}#}
+                    <div class="navigation">
+                        {{ knp_pagination_render(commodite) }}
+                    </div>
+                    <!-- End Content Text-->
                 </div>
-
-                <!-- End Post Item -->
-
-                <!-- End Content Text-->
             </div>
         </div>
         <!-- Newsletter -->
@@ -254,7 +251,7 @@
             function getDataByName() {
                 $.ajax({
                     type: 'GET',
-                    url: 'http://localhost/enfin/PIDEV/web/app_dev.php/getByName',
+                    url: 'http://localhost/PIDEV/web/app_dev.php/getByName',
                     data: {nom: $("#inputSearch").val()},
                     dataType: 'json',
                     success: function (data) {
@@ -297,7 +294,7 @@
                                 '                                        <span class="data-info"> Ville: ' + element.ville +
 
                                 '                                             <i class="fa fa-comments"></i></span>' +
-                                '                                        <p data-validate-length="20" > ' + element.description +
+                                '                                        <p  > ' + element.description +
                                 '                                            <a href="/GoToComm/' + element.id + '"> Read More [+] </a></p>' +
                                 '                                    </div>' +
                                 '</div><br>'
@@ -314,7 +311,7 @@
             function getDataByCategorie(categorie) {
                 $.ajax({
                     type: 'GET',
-                    url: 'http://localhost/enfin/PIDEV/web/app_dev.php/getByCategories',
+                    url: 'http://localhostf/PIDEV/web/app_dev.php/getByCategories',
                     data: {categorie: categorie, nom: $("#inputSearch").val()},
                     dataType: 'json',
                     success: function (data) {
@@ -355,7 +352,7 @@
                                 '                                        <h5>' +
                                 '                                            <a href="/GoToComm/' + element.id + '"> ' + element.nom + '  </a>' +
                                 '                                        </h5>' +
-                                '                                        <span class="data-info"> Telephone: ' + element.tel +
+                                '                                        <span class="data-info"> Ville: ' + element.ville +
 
                                 '                                             <i class="fa fa-comments"></i></span>' +
                                 '                                        <p> ' + element.description +

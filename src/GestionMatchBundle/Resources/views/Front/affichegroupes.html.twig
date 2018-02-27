@@ -43,9 +43,8 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <table class="table-striped table-responsive table-hover">
+                    <table id="datatable-fixed-header" class="table table-striped table-bordered">
                         <thead>
-                        <tr>
                         <tr>
                             <th>GroupeA </th>
                             <th>Points</th>
@@ -54,42 +53,18 @@
                             <th>D</th>
                             <th>N</th>
                         </tr>
-                        </tr>
                         </thead>
-                        <tbody>
 
+                        <tbody>
                         <tr>
-                            {% for v in G %}
-                            <td>  {{ v.Equipea.Nom }} </td>
-                            <td> {{ v.pointsA }} </td>
-                            <td>  {{ v.nbrButa }} </td>
-                            <td>  {{ v.wA }} </td>
-                            <td>  {{ v.lA }}  </td>
-                            <td>  {{ v.dA }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipeb.Nom }} </td>
-                            <td>  {{ v.pointsB }} </td>
-                            <td>  {{ v.nbrButc }} </td>
-                            <td>  {{ v.wB }}  </td>
-                            <td>  {{ v.dB }}  </td>
-                            <td>  {{ v.lB }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipec.Nom }} </td>
-                            <td> {{ v.pointsC }} </td>
-                            <td>  {{ v.nbrButc }} </td>
-                            <td>  {{ v.wC }} </td>
-                            <td>  {{ v.lC }}  </td>
-                            <td>  {{ v.dC }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equiped.Nom }} </td>
-                            <td>  {{ v.pointsD }} </td>
-                            <td>  {{ v.nbrButd }} </td>
-                            <td>  {{ v.wD }} </td>
-                            <td>  {{ v.dD }}  </td>
-                            <td>  {{ v.lD }}  </td>
+                            {% for v in GA %}
+                            <td>  {{ v.nom }} </td>
+                            <td>  {{ v.nbrPoints }} </td>
+                            <td>  {{ v.nbrButs }} </td>
+                            <td>  {{ v.matchwins }} </td>
+                            <td>  {{ v.matchlosses }} </td>
+                            <td>  {{ v.matchdraws}} </td>
+
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -109,38 +84,14 @@
 
                         <tbody>
                         <tr>
-                            {% for v in G2 %}
-                            <td>  {{ v.Equipea.Nom }} </td>
-                            <td> {{ v.pointsA }} </td>
-                            <td>  {{ v.nbrButa }} </td>
-                            <td>  {{ v.wA }} </td>
-                            <td>  {{ v.lA }}  </td>
-                            <td>  {{ v.dA }}  </td>
+                            {% for v in GB %}
+                            <td>  {{ v.nom }} </td>
+                            <td>  {{ v.nbrPoints }} </td>
+                            <td>  {{ v.nbrButs }} </td>
+                            <td>  {{ v.matchwins }} </td>
+                            <td>  {{ v.matchlosses }} </td>
+                            <td>  {{ v.matchdraws}} </td>
 
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipeb.Nom }} </td>
-                            <td>  {{ v.pointsB }} </td>
-                            <td>  {{ v.nbrButc }} </td>
-                            <td>  {{ v.wB }}  </td>
-                            <td>  {{ v.dB }}  </td>
-                            <td>  {{ v.lB }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipec.Nom }} </td>
-                            <td> {{ v.pointsC }} </td>
-                            <td>  {{ v.nbrButc }} </td>
-                            <td>  {{ v.wC }} </td>
-                            <td>  {{ v.lC }}  </td>
-                            <td>  {{ v.dC }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equiped.Nom }} </td>
-                            <td>  {{ v.pointsD }} </td>
-                            <td>  {{ v.nbrButd }} </td>
-                            <td>  {{ v.wD }} </td>
-                            <td>  {{ v.dD }}  </td>
-                            <td>  {{ v.lD }}  </td>
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -164,41 +115,17 @@
 
                         <tbody>
                         <tr>
-                            {% for v in G3 %}
-                            <td>  {{ v.Equipea.Nom }} </td>
-                            <td> {{ v.pointsA }} </td>
-                            <td>  {{ v.nbrButa }} </td>
-                            <td>  {{ v.wA }} </td>
-                            <td>  {{ v.lA }}  </td>
-                            <td>  {{ v.dA }}  </td>
+                            {% for v in GC %}
+                            <td>  {{ v.nom }} </td>
+                            <td>  {{ v.nbrPoints }} </td>
+                            <td>  {{ v.nbrButs }} </td>
+                            <td>  {{ v.matchwins }} </td>
+                            <td>  {{ v.matchlosses }} </td>
+                            <td>  {{ v.matchdraws}} </td>
 
                         </tr>
-                        <tr>
-                            <td>  {{ v.Equipeb.Nom }} </td>
-                            <td> {{ v.pointsB }} </td>
-                            <td>  {{ v.nbrButb }} </td>
-                            <td>  {{ v.wB }} </td>
-                            <td>  {{ v.lB }}  </td>
-                            <td>  {{ v.dB }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipec.Nom }} </td>
-                            <td> {{ v.pointsC }} </td>
-                            <td>  {{ v.nbrButc }} </td>
-                            <td>  {{ v.wC }} </td>
-                            <td>  {{ v.lC }}  </td>
-                            <td>  {{ v.dC }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equiped.Nom }} </td>
-                            <td>  {{ v.pointsD }} </td>
-                            <td>  {{ v.nbrButd }} </td>
-                            <td>  {{ v.wD }} </td>
-                            <td>  {{ v.dD }}  </td>
-                            <td>  {{ v.lD }}  </td>
-                        </tr>
-                        {% endfor %}
                         </tbody>
+                        {% endfor %}
                     </table>
                     <table id="datatable-fixed-header" class="table table-striped table-bordered">
                         <thead>
@@ -217,41 +144,15 @@
 
 
                         <tbody>
+                        <tr>
+                            {% for v in GD %}
+                            <td>  {{ v.nom }} </td>
+                            <td>  {{ v.nbrPoints }} </td>
+                            <td>  {{ v.nbrButs }} </td>
+                            <td>  {{ v.matchwins }} </td>
+                            <td>  {{ v.matchlosses }} </td>
+                            <td>  {{ v.matchdraws}} </td>
 
-
-                        <tr>
-                            {% for v in G4 %}
-                            <td>  {{ v.Equipea.Nom }} </td>
-                            <td> {{ v.pointsA }} </td>
-                            <td>  {{ v.nbrButa }} </td>
-                            <td>  {{ v.wA }} </td>
-                            <td>  {{ v.lA }}  </td>
-                            <td>  {{ v.dA }}  </td>
-
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipeb.Nom }} </td>
-                            <td> {{ v.pointsB }} </td>
-                            <td>  {{ v.nbrButb }} </td>
-                            <td>  {{ v.wB }} </td>
-                            <td>  {{ v.lB }}  </td>
-                            <td>  {{ v.dB }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipec.Nom }} </td>
-                            <td> {{ v.pointsC }} </td>
-                            <td>  {{ v.nbrButc }} </td>
-                            <td>  {{ v.wC }} </td>
-                            <td>  {{ v.lC }}  </td>
-                            <td>  {{ v.dC }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equiped.Nom }} </td>
-                            <td>  {{ v.pointsD }} </td>
-                            <td>  {{ v.nbrButd }} </td>
-                            <td>  {{ v.wD }} </td>
-                            <td>  {{ v.dD }}  </td>
-                            <td>  {{ v.lD }}  </td>
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -269,47 +170,87 @@
                         </thead>
                         <tbody>
                         <tr>
-                            {% for v in G5 %}
-                            <td>  {{ v.Equipea.Nom }} </td>
-                            <td> {{ v.pointsA }} </td>
-                            <td>  {{ v.nbrButa }} </td>
-                            <td>  {{ v.wA }} </td>
-                            <td>  {{ v.lA }}  </td>
-                            <td>  {{ v.dA }}  </td>
+                            {% for v in GE %}
+                            <td>  {{ v.nom }} </td>
+                            <td>  {{ v.nbrPoints }} </td>
+                            <td>  {{ v.nbrButs }} </td>
+                            <td>  {{ v.matchwins }} </td>
+                            <td>  {{ v.matchlosses }} </td>
+                            <td>  {{ v.matchdraws}} </td>
 
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipeb.Nom }} </td>
-                            <td> {{ v.pointsB }} </td>
-                            <td>  {{ v.nbrButb }} </td>
-                            <td>  {{ v.wB }} </td>
-                            <td>  {{ v.lB }}  </td>
-                            <td>  {{ v.dB }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equipec.Nom }} </td>
-                            <td> {{ v.pointsC }} </td>
-                            <td>  {{ v.nbrButc }} </td>
-                            <td>  {{ v.wC }} </td>
-                            <td>  {{ v.lC }}  </td>
-                            <td>  {{ v.dC }}  </td>
-                        </tr>
-                        <tr>
-                            <td>  {{ v.Equiped.Nom }} </td>
-                            <td>  {{ v.pointsD }} </td>
-                            <td>  {{ v.nbrButd }} </td>
-                            <td>  {{ v.wD }} </td>
-                            <td>  {{ v.dD }}  </td>
-                            <td>  {{ v.lD }}  </td>
                         </tr>
                         {% endfor %}
-
-
                         </tbody>
                     </table>
+                    <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Groupe F</th>
+                            <th>Points</th>
+                            <th>Nbr de buts</th>
+                            <th>V</th>
+                            <th>D</th>
+                            <th>N</th>
+
+
+
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+                        <tr>
+                            {% for v in GF %}
+                            <td>  {{ v.nom }} </td>
+                            <td>  {{ v.nbrPoints }} </td>
+                            <td>  {{ v.nbrButs }} </td>
+                            <td>  {{ v.matchwins }} </td>
+                            <td>  {{ v.matchlosses }} </td>
+                            <td>  {{ v.matchdraws}} </td>
+
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Groupe H</th>
+                            <th>Points</th>
+                            <th>Nbr de buts</th>
+                            <th>V</th>
+                            <th>D</th>
+                            <th>N</th>
+
+
+
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+                        <tr>
+                            {% for v in GH %}
+                            <td>  {{ v.nom }} </td>
+                            <td>  {{ v.nbrPoints }} </td>
+                            <td>  {{ v.nbrButs }} </td>
+                            <td>  {{ v.matchwins }} </td>
+                            <td>  {{ v.matchlosses }} </td>
+                            <td>  {{ v.matchdraws}} </td>
+
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
+        </div>
+
+
+
 
         <!-- Newsletter -->
         <div class="section-newsletter">

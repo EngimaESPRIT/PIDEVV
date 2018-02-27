@@ -11,10 +11,23 @@
             <h1 style="color: #ffffff;font-size: xx-large"> MERCI {{ app.user.username }}</h1>
             <h1 style="color: #ffffff"> POUR VOTRE PARTICIPATION!</h1>
             <h1 style="color: #ffffff">COUT TOTAL: {{ m.joueur1.cout+m.joueur2.cout+m.joueur3.cout+m.joueur4.cout+m.joueur5.cout+m.joueur6.cout+m.joueur7.cout+m.joueur8.cout+m.joueur9.cout+m.joueur10.cout+m.joueur11.cout }}</h1>
+            <h1 style="color: #ffffff">{{ m.joueur1.nom }} Cout: {{ m.joueur1.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur1.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{ m.joueur2.nom }} Cout: {{ m.joueur2.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur2.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur3.nom }} Cout: {{ m.joueur3.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur3.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur4.nom }} Cout: {{ m.joueur4.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur4.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur5.nom }} Cout: {{ m.joueur5.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur5.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur6.nom }} Cout: {{ m.joueur6.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur6.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{    m.joueur7.nom }} Cout: {{ m.joueur7.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur7.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur8.nom }} Cout: {{ m.joueur8.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur8.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur9.nom }} Cout: {{ m.joueur9.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur9.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur10.nom }} Cout: {{ m.joueur10.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur10.idequipe.drapeau)}}" height="30" width="30"> </h1>
+            <h1 style="color: #ffffff">{{  m.joueur11.nom }} Cout: {{ m.joueur11.cout }} <img src="{{ asset('uploads/Equipes/' ~ m.joueur11.idequipe.drapeau)}}" height="30" width="30"> </h1>
+
+
 
             <div class="test">
     <main style="opacity: 1;" class="">
-        <div class="static">
+
 
     <div class="stage" >
         <div class="world" >
@@ -37,7 +50,7 @@
                 <div class="field__side" style="background-color: #00A000"></div>
             </div>
         </div>
-    </div>
+
         </div>
     </main>
 </div>
@@ -324,109 +337,55 @@
         {
             name: '{{ m.joueur10.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur10.imageJoueur1) }}',
-            origin: 'Peru',
-            height: '1.84m',
-            shirt: '14',
-            pos: 'Forward',
-            dob: '36',
-            goals: 1,
-            games: 16,
+
             x: 00,
             y: -190
         }, {
             name: '{{ m.joueur9.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur2.imageJoueur1) }}',
-            origin: 'Holland',
-            height: '1.80m',
-            shirt: '10',
-            pos: 'Forward',
-            dob: '32',
-            goals: 19,
-            games: 30,
+
             x: 250,
             y: -100
         }, {
             name: '{{ m.joueur8.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur8.imageJoueur1) }}',
-            origin: 'France',
-            height: '1.70m',
-            shirt: '7',
-            pos: 'Midfield',
-            dob: '32',
-            goals: 9,
-            games: 22,
+
             x: 100,
             y: 80
         }, {
             name: '{{ m.joueur7.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur7.imageJoueur1) }}',
-            origin: 'Germany',
-            height: '1.87m',
-            shirt: '24',
-            pos: 'Forward',
-            dob: '31',
-            goals: 21,
-            games: 3,
+
             x: 0,
             y: 100
         }, {
             name: '{{ m.joueur6.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur6.imageJoueur1) }}',
-            origin: 'Spain',
-            height: '1.90m',
-            shirt: '8',
-            pos: 'Midfield',
-            dob: '28',
-            goals: 0,
-            games: 2,
+
             x: -250,
             y: 250
         }, {
             name: '{{ m.joueur5.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur5.imageJoueur1) }}',
-            origin: 'Austria',
-            height: '1.80m',
-            shirt: '27',
-            pos: 'Defence',
-            dob: '24',
-            goals: 5,
-            games: 27,
+
             x: -250,
             y: -100
         }, {
             name: '{{ m.joueur4.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur4.imageJoueur1) }}',
-            origin: 'Germany',
-            height: '1.70',
-            shirt: '21',
-            pos: 'Defence',
-            dob: '32',
-            goals: 2,
-            games: 25,
+
             x: 250,
             y: 250
         }, {
             name: '{{ m.joueur3.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur3.imageJoueur1) }}',
-            origin: 'France',
-            height: '1.87m',
-            shirt: '5',
-            pos: 'Defence',
-            dob: '31',
-            goals: 21,
-            games: 1,
+
             x: 100,
             y: 300
         }, {
             name: '{{ m.joueur2.nom }}',
             asset: '{{ asset('uploads/Joueurs/' ~ m.joueur2.imageJoueur2) }}',
-            origin: 'Brazil',
-            height: '1.87m',
-            shirt: '4',
-            pos: 'Defence',
-            dob: '32',
-            goals: 0,
-            games: 34,
+
             x: -100,
             y: 300
         }, {
@@ -491,6 +450,8 @@
         node.classList.add("player__img");
         nodeImg = document.createElement("img");
         nodeImg.src =el.asset;
+        nodeImg.setAttribute('height',500);
+
         node.appendChild(nodeImg);
         nodePlayer.appendChild(node);
     });
@@ -499,160 +460,6 @@
 
 
     //* ===================== é
-    var wc_team = wc_team || {};
-
-    wc_team.pitch = function() {
-
-        var field = function() {
-
-                // Pitch outer bounds
-                path.call(this, {
-                    move: [100, 20],
-                    lines: [
-                        [100, 20],
-                        [20, 560],
-                        [560, 560],
-                        [460, 20]
-                    ]
-                });
-
-                var grd = this.createLinearGradient(0, 0, 0, 400);
-                grd.addColorStop(0.1, '#238C27');
-                grd.addColorStop(1, "#2CC932");
-                this.fillStyle = grd;
-                this.fill();
-                this.strokeStyle = "black";
-                this.lineWidth = "5";
-                this.stroke();
-            },
-
-            markings = function() {
-
-                // Pitch Outline
-                path.call(this, {
-                    move: [110, 30],
-                    lines: [
-                        [30, 550],
-                        [550, 550],
-                        [450, 30]
-                    ],
-                    style: ["white", "3"]
-                });
-
-                //  Half way line
-                path.call(this, {
-                    move: [76, 260],
-                    lines: [
-                        [495, 260]
-                    ],
-                    style: ["white", "3"]
-                });
-
-                // Center circle
-                this.beginPath();
-                this.arc(280, 267, 75, 30, 0, true);
-                this.strokeStyle = "white";
-                this.stroke();
-
-                // Away goal
-                path.call(this, {
-                    move: [130, 550],
-                    lines: [
-                        [145, 440],
-                        [435, 440],
-                        [450, 550]
-                    ],
-                    style: ["white", "3"]
-                });
-
-                // Penalty arc
-                this.beginPath();
-                this.arc(285, 463, 75, 1.1 * Math.PI, 1.9 * Math.PI, false);
-                this.closePath();
-                this.strokeStyle = "white";
-                this.stroke();
-
-                // 6 yard box
-                path.call(this, {
-                    move: [210, 550],
-                    lines: [
-                        [215, 500],
-                        [365, 500],
-                        [370, 550]
-                    ],
-                    style: ["white", "3"]
-                });
-
-                // Home goal
-                path.call(this, {
-                    move: [175, 30],
-                    lines: [
-                        [165, 100],
-                        [400, 100],
-                        [390, 30]
-                    ],
-                    style: ["white", "3"]
-                });
-
-                // Penalty arc
-                this.beginPath();
-                this.arc(285, 81, 60, -1.1 * Math.PI, -1.9 * Math.PI, true);
-                this.strokeStyle = "white";
-                this.stroke();
-
-                // 6 Yard box
-                path.call(this, {
-                    move: [233, 30],
-                    lines: [
-                        [230, 60],
-                        [343, 60],
-                        [340, 30]
-                    ],
-                    style: ["white", "3"]
-                });
-            }
-
-        path = function() {
-
-            this.beginPath();
-
-            move.call(this, arguments[0].move);
-            lines.call(this, arguments[0].lines);
-
-            this.closePath();
-
-            if (arguments[0].style !== undefined) {
-                attr.call(this, arguments[0].style);
-            }
-        },
-
-            move = function() {
-                var args = arguments[0];
-                this.moveTo(args[0], args[1]);
-            },
-
-            attr = function() {
-                var args = arguments[0];
-                this.strokeStyle = args[0];
-                this.lineWidth = args[1];
-                this.stroke();
-            }
-
-        lines = function() {
-
-            var that = this,
-                args = arguments[0];
-
-            for (var i = 0; i < args.length; i++) {
-                this.lineTo(args[i][0], args[i][1]);
-            }
-        }
-
-        return {
-            field: field,
-            markings: markings
-        }
-    }();
 
     wc_team.dragDrap = function() {
 
@@ -675,16 +482,7 @@
         }
     }();
 
-    wc_team.init = function() {
-        //Save common elements
-        var c = document.getElementById("pitch"),
-            ctx = c.getContext("2d");
 
-        wc_team.pitch.field.call(ctx);
-        wc_team.pitch.markings.call(ctx);
-
-        wc_team.dragDrap.init();
-    }
 
     // Create the pitch
     wc_team.init();

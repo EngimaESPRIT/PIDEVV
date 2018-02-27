@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+
+    {% set flashbag_notices = app.session.flashbag.get('notice') %}
+    {% if flashbag_notices is not empty %}
+        <ul class="msg">
+            {% for notice in flashbag_notices %}
+                <b> <li align="center">{{ notice }}</li></b>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br>
+    <center><h3><font color="green"> Recharge effectué avec succés</font></h3></center>
+    <center><img src="{{ asset('if_check_1930264.png') }}" width="150" height="200"></center>
+    <br>
+
+    <center><button > <a href="{{ path('ClientHome') }}"> HomePage</a> </button></center>
+    <br>
+
+
+{% endblock %}

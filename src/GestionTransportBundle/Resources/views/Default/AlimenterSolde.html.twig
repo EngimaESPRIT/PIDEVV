@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block content %}
+    <link href="{{ asset('css/msg.css') }}" rel="stylesheet">
+
+    {% set flashbag_alerts = app.session.flashbag.get('alert') %}
+
+    {% if flashbag_alerts is not empty %}
+
+        <ul class="err">
+            {% for item in flashbag_alerts %}
+                <b> <li align="center">{{ item }}</li></b>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+    <div class="row">
+
+        <div class="col-md-4" >
+
+        </div>
+        <div class="col-md-4" style="" >
+            <br>
+            <b><center><h1>Recharger votre solde avec BON</h1></center></b>
+            {{ form(f) }}
+        </div>
+        <div class="col-md-4" >
+            <br>
+            <br>
+            <br><br>
+
+            <img src="{{ asset('if_23_61487.png') }}">
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

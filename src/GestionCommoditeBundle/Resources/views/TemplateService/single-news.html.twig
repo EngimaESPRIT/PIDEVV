@@ -127,8 +127,9 @@
                         <div class="titles no-margin">
                             <h4>Map </h4>
 
-                            <img src="{{ asset('uploads/images/maps.PNG') }}" alt="" >
-                            <a class="btn btn-primary" href="#map" style="margin-top: 5%;margin-left: 23%;">Voir Localisation</a>
+                            <img src="{{ asset('uploads/images/maps.PNG') }}" alt="">
+                            <a class="btn btn-primary" href="#map" style="margin-top: 5%;margin-left: 23%;">Voir
+                                Localisation</a>
 
 
                         </div>
@@ -138,7 +139,6 @@
                 <!-- End Sidebars -->
 
                 <!-- End Sidebars -->
-
 
 
                 <div class="col-lg-8">
@@ -216,7 +216,9 @@
                                                 {{ feedbackx.rateAmbiance|rating }}
                                             </div>
                                         </div>
-                                        <p>{{ feedbackx.contenu }}</p>
+                                        {% if feedbackx.contenu is not null %}
+                                            <p>{{ feedbackx.contenu }}</p>
+                                        {% endif %}
                                         {{ feedbackx.dateCommentaire | date }}
                                         {#<strong>{{ app.getUser().getNom()}} {{ app.getUser().getPrenom() }}</strong>#}
                                         <strong>{{ feedbackx.idUser.nom }} {{ feedbackx.idUser.prenom }}</strong>
@@ -289,7 +291,7 @@
                                                     <div class="col-md-12">
                                                         <label>Comment *
                                                         </label>
-                                                        {{ form_widget(form.contenu , {'attr':{'class' :'form-control', 'name':'name' ,'id':'name','required':'required' ,' type': 'text/css', 'hight':'100%' }}) }}
+                                                        {{ form_widget(form.contenu , {'attr':{'class' :'form-control', 'name':'name' ,'id':'name' ,' type': 'text/css', 'hight':'100%' }}) }}
 
                                                         </textarea>
                                                     </div>
@@ -337,7 +339,7 @@
         function initMap() {
             var uluru = {lat: {{ commodite.lat }}, lng: {{ commodite.lng }}};
             var nom = '{{ commodite.nomCommodite }}'
-            var description = '{{ commodite.Description }}'
+            var adresse = '{{ commodite.adresse  }}'
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 14,
                 center: uluru
@@ -347,7 +349,7 @@
                 '</div>' +
                 '<h1 id="firstHeading" class="firstHeading">' + nom + '</h1>' +
                 '<div id="bodyContent">' +
-                description +
+                adresse +
                 '</div>' +
                 '</div>';
             var infowindow = new google.maps.InfoWindow({

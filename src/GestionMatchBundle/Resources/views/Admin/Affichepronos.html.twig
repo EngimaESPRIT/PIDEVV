@@ -57,16 +57,10 @@
                         <thead>
                         <tr>
                             <th class="text-center">ID Prono</th>
-                            <th class="text-center">Cote de l'equipe A</th>
-                            <th class="text-center">Cote de match null</th>
-                            <th class="text-center">Cote de l'equipe B</th>
+                            <th class="text-center">ID Match</th>
                             <th class="text-center">Nom d'utilisateur</th>
                             <th class="text-center">Prenom d'utilisateur</th>
-                            <th class="text-center">Equipe A</th>
-                            <th class="text-center">E²quipe B</th>
-
-
-
+                            <th class="text-center">Choix d'utilisateur</th>
                         </tr>
                         </thead>
 
@@ -76,20 +70,20 @@
                             <tr>
 
                                 <td> {{ v.idProno }}</td>
-                                <td> {{ v.coteequipea }}</td>
-                                <td> {{ v.cotex }}</td>
-                                <td> {{ v.coteequipeb }}</td>
+                                <td> {{ v.idMatch.idMatch }}</td>
                                 <td> {{ v.idUser.nom }}</td>
                                 <td> {{ v.idUser.prenom }}</td>
-                                <td> {{ v.idMatch.equipea.nom }}</td>
-                                <td> {{ v.idMatch.equipeb.nom }}</td>
-
-                                <td>
-                                    <a href="{{ path('ajout_Prono') }}">Ajouter une Prono </a>
-                                    <a href="{{ path('modifier_Prono',{'id':v.idProno}) }}">Modifier Pronostique </a>
-                                </td>
+                                <td> {{ v.choixUtilisateur }}</td>
+                                <td> <a href="{{ path('PronostiquesValide',{'id':v.idUser.id}) }}">Definir en tant que gagnant </a> <td>
+                                <td> <a href="{{ path('PronostiquesNonValide',{'id':v.idUser.id}) }}">Perdu </a> <td>
 
 
+
+                            </tr>
+                            <tr>
+                               !!!!!!!!!!!! hedhom ezouz zeydin!!!!!!!!!
+                                <a href="{{ path('ajout_Prono') }}">Ajouter une Prono </a>
+                                <a href="{{ path('modifier_Prono',{'id':v.idProno}) }}">Modifier Pronostique </a>
                             </tr>
                         {% endfor %}
 

@@ -65,6 +65,23 @@ class GestionpronosController extends \Symfony\Bundle\FrameworkBundle\Controller
 
     public function GoToAffichePronoClientAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+       $id=$request->get('id');
+       $test=1;
+
+        $model = $em->getRepository("GestionMatchBundle:Pronostics")->findOneBy(array('idMatch' => $id));
+
+/*
+var_dump($model);
+die();*/
+
+
+        if ($model  != null )
+        {
+
+            return $this->render('@GestionMatch/Front/Message2.html.twig');
+            die();
+        }
 
         $Pronostics = new Pronostics();
         $em = $this->getDoctrine()->getManager();
@@ -81,22 +98,89 @@ class GestionpronosController extends \Symfony\Bundle\FrameworkBundle\Controller
         return $this->render('@GestionMatch/Front/listematches.html.twig', array("form" => $Form->createView(), 'p' => $Pronostics));
     }
 
-    public function addToCartAction ($id,$cote)
+    public function AjouterpronoclientAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $id=$request->get('id');
+
+        $choix=$request->get('choix');
+       /* var_dump($id);
+        var_dump($choix);
+        die;*/
+        //$model = $em->getRepository ('GestionMatchBundle:Pronostics')->find($request->get('id'));
+        $model = $em->getRepository("GestionMatchBundle:Pronostics")->findOneBy(array('idUser' => $id));
+
+
+        $model->setChoixutilisateur($choix);
+       // $model->setIdProno($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        return $this->render('@GestionMatch/Front/Message.html.twig');
+    }
+
+
+    public  function AffichermespronostiquesAction (Request $request)
+    {
+        $session = $this->get('session');
+        $session->start();
+       // $user->getUser();
+        $id=$session->getId();
+        // ici probleme recuperation id ***********************************************
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $id=$user->getId();
+        var_dump($id);
+        //die();*/
+        $em = $this->getDoctrine()->getManager();
+        //$id=$request->get('id');
+        $model = $em->getRepository("GestionMatchBundle:Pronostics")->findBy(array('idUser' => $id));
+
+        return $this->render('@GestionMatch/Front/listedespronostiquesclient.html.twig', array('m' => $model));
+
+    }
+
+    public  function PronostiquesValideAction (Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository("MyAppUserBundle:User")->find($request->get('id'));//afficha 1 user selon id
+       // $user = $em->getRepository ('GestionMatchBundle:GestionMatchBundle')->find($model->getIdUser()); //jeb esm el equipe 1
+
+        $solde=$user->getSoldes();
+        $user->setSoldes($solde+3);
+
+        return $this->redirectToRoute('affiche_prono');
+
+
+    }
+
+    public  function PronostiquesNonValideAction (Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository("MyAppUserBundle:User")->find($request->get('id'));//afficha 1 user selon id
+        $solde=$user->getSoldes();
+        $user->setSoldes($solde-3);
+
+        return $this->redirectToRoute('affiche_prono');
+    }
+
+    /* public function addToCartAction ($id,$choix)
     {
         $session= $this->get('session');
 
         if (!$session->has('paris')) $session->set('paris',array());
         $paris=$session->get('paris');
-        if(array_key_exists($id,$paris)){
+        if(array_key_exists($id,$choix)){
 
 
-        $paris[$id]=$paris[$id]*$cote;
-        }else $paris[$id]=$cote;
+     //   $paris[$id]=$paris[$id]*$cote;
+        }else $paris[$id]=$choix;
 
         $session->set('paris',$paris);
-        //var_dump($session->get('paris'));
+        var_dump($session->get('paris'));
         //$session->remove('paris');
-        //die();
+        die();
         $em=$this->getDoctrine()->getManager();
         $am=$em->getRepository("GestionMatchBundle:Pronostics")->findAll();
         if (!$session->has('paris')) $session->GestionMatchBundle('paris',array());
@@ -127,7 +211,7 @@ die();
             'p'=>$prod
         ));
 
-    }
+    }*/
 
 
 

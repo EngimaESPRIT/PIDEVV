@@ -39,9 +39,9 @@
                         <thead>
                         <tr>
                             <th class="text-center">Id prono</th>
-                            <th class="text-center">Cote A</th>
-                            <th class="text-center">Cote Null</th>
-                            <th class="text-center">Cote B</th>
+                            <th class="text-center">Victoire de l'équipe A</th>
+                            <th class="text-center">Null</th>
+                            <th class="text-center">Victoire de l'équipe B</th>
                             <th class="text-center">Equipe A</th>
                             <th class="text-center">Equipe B</th>
 
@@ -58,15 +58,15 @@
 
                         <tr>
                             <td> {{ v.idProno }}</td>
-                            <td> <a href="{{ path('addtocart',{'id':v.idProno,'cote':v.coteequipea})}}"  rel="nofollow"
+                            <td> <a href="{{ path('parier',{'id':v.idProno,'choix':'A'})}}"  rel="nofollow"
                                     class="button add_to_cart_button product_type_simple">
-                                    {{ v.coteequipea }}  </a> </td>
-                            <td> <a href="{{ path('addtocart',{'id':v.idProno,'cote':v.cotex})}}"  rel="nofollow"
+                                    Victoire de l'équipe A  </a> </td>
+                            <td> <a href="{{ path('parier',{'id':v.idProno,'choix':'N'})}}"  rel="nofollow"
                                     class="button add_to_cart_button product_type_simple">
-                                    {{ v.cotex }}  </a> </td>
-                            <td> <a href="{{ path('addtocart',{'id':v.idProno,'cote':v.coteequipeb})}}"  rel="nofollow"
+                                   Null  </a> </td>
+                            <td> <a href="{{ path('parier',{'id':v.idProno,'choix':'C'})}}"  rel="nofollow"
                                     class="button add_to_cart_button product_type_simple">
-                                    {{ v.coteequipeb }}  </a> </td>
+                                    Victoire de l'équipe B  </a> </td>
                             <td> {{ v.idMatch.equipea.nom }}</td>
                             <td> {{ v.idMatch.equipeb.nom }}</td>
 

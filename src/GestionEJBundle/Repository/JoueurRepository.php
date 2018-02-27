@@ -14,4 +14,10 @@ class JoueurRepository extends \Doctrine\ORM\EntityRepository
         $a=$em->setMaxResults(8);
         return $a->getResult();
     }
+    public function afficherparCout()
+    {
+        $em=$this->getEntityManager()->createQuery("SELECT m from GestionEJBundle:Joueur m ORDER BY m.cout DESC ");
+        $a=$em->setMaxResults(6);
+        return $a->getResult();
+    }
 }

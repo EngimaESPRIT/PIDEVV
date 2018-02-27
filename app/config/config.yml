@@ -45,6 +45,7 @@ framework:
     assets: ~
     php_errors:
         log: true
+    http_method_override: true
 
 # Twig Configuration
 twig:
@@ -144,4 +145,16 @@ swiftmailer:
     password:   "%mailer_password%"
     encryption: "%mailer_encryption%"
     spool:      { type: memory }
+
+ivory_google_map:
+    map:
+        api_key: AIzaSyANA29xt7tok9V7EyeeLhegCsDyv0XmxSc
+#app/config/config.yml
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:    []
+
 

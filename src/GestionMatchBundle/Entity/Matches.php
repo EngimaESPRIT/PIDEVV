@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Matches
  *
  * @ORM\Table(name="matches", indexes={@ORM\Index(name="fk_equipa", columns={"EquipeA"}), @ORM\Index(name="fk_groupe", columns={"Id_groupe"}), @ORM\Index(name="fk_equipeb", columns={"EquipeB"}), @ORM\Index(name="fk_stade", columns={"id_stade"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GestionMatchBundle\Repository\MatchesRepository")
  */
 class Matches
 {
@@ -86,7 +86,7 @@ class Matches
     /**
      * @var \Groupe
      *
-     * @ORM\ManyToOne(targetEntity="GestionMatchBundle\Entity\Groupe")
+     * @ORM\ManyToOne(targetEntity="Groupe")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_groupe", referencedColumnName="Nom_Groupe")
      * })

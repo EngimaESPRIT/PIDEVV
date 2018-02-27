@@ -14,34 +14,38 @@ class GestionGroupeController extends \Symfony\Bundle\FrameworkBundle\Controller
     public function GoToAfficheGroupesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $GA = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'A'));
-        $GB = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'B'));
-        $GC = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'C'));
-        $GD = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'D'));
-        $GE = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'E'));
-        $GF = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'F'));
-        $GH = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'H'));
+        $EQA = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'A'));
+        $EQB = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'B'));
+        $EQC = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'C'));
+        $EQD = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'D'));
+        $EQE = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'E'));
+        $EQF = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'F'));
+        $EQG = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'G'));
+        $EQH = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe'=>'H'));
 
 
-        return $this->render('@GestionMatch/Admin/AfficherGroupe.html.twig', array('G' => $GA,'G2' => $GB,'G3' => $GC,'G4' => $GD,'G5' => $GE,'G6' => $GF,'G7' => $GH));
+
+        return $this->render('@GestionMatch/Admin/AfficherGroupe.html.twig', array('GA' => $EQA,'GB' => $EQB,'GC' => $EQC,'GD' => $EQD,'GE' => $EQE,'GF' => $EQF,'GG' => $EQG,'GH' => $EQH));
+
     }
 
     public function GoToAfficheGroupesFrontAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $GA = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'A'));
-        $GB = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'B'));
-        $GC = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'C'));
-        $GD = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'D'));
-        $GE = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'E'));
-        $GF = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'F'));
-        $GH = $em->getRepository("GestionMatchBundle:Groupe")->findBy(array('nomGroupe'=>'H'));
+        $EQA = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'A'));
+        $EQB = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'B'));
+        $EQC = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'C'));
+        $EQD = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'D'));
+        $EQE = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'E'));
+        $EQF = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'F'));
+        $EQG = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'G'));
+        $EQH = $em->getRepository("GestionEJBundle:Equipe")->findBy(array('Groupe' => 'H'));
 
+        return $this->render('@GestionMatch/Front/affichegroupes.html.twig', array('GA' => $EQA, 'GB' => $EQB, 'GC' => $EQC, 'GD' => $EQD, 'GE' => $EQE, 'GF' => $EQF, 'GG' => $EQG, 'GH' => $EQH));
 
-        return $this->render('@GestionMatch/Front/affichegroupes.html.twig', array('G' => $GA,'G2' => $GB,'G3' => $GC,'G4' => $GD,'G5' => $GE,'G6' => $GF,'G7' => $GH));
     }
 
-    public function GoToModifGroupeAction(Request $request)
+  /*  public function GoToModifGroupeAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $model = $em->getRepository("GestionMatchBundle:Groupe")->find($request->get('id'));
@@ -55,5 +59,5 @@ class GestionGroupeController extends \Symfony\Bundle\FrameworkBundle\Controller
         return $this->render('@GestionMatch/Admin/ModifGroupe.html.twig',array('form'=>$form->createView()
         ));
 
-    }
+    }*/
 }

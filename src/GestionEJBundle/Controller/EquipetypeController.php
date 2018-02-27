@@ -19,7 +19,7 @@ class EquipetypeController extends \Symfony\Bundle\FrameworkBundle\Controller\Co
 {
 public function AjoutEquipeTypeAction(Request $request)
 {
-    if ($this->get('security.authorization_checker')->isGranted('ROLE_CLIENT')) {
+
         $em = $this->getDoctrine()->getManager();
 
 
@@ -38,14 +38,12 @@ public function AjoutEquipeTypeAction(Request $request)
         } else {
             return $this->redirectToRoute('AffEquipeType');
         }
-    }
-    else
-    {
+
         $em = $this->getDoctrine()->getManager();
 
         $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
         return $this->redirectToRoute('Erreur',array('s'=>$stades));
-    }
+
 }
 
     /**
@@ -57,7 +55,6 @@ public function AjoutEquipeTypeAction(Request $request)
     $em = $this->getDoctrine()->getManager();
 
     $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
-    if ($this->get('security.authorization_checker')->isGranted('ROLE_CLIENT')) {
 
 
         $equipe = new Equipetype();
@@ -114,12 +111,8 @@ $equipe->setJoueur1($j1);
                 $em->flush();
                 return $this->redirectToRoute('AffEquipeType');
             }
-        }
 
-    else
-    {
-        $this->redirectToRoute('Erreur',array('s'=>$stades));
-    }
+
 
     }
 

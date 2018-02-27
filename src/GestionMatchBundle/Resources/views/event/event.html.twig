@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <script>
+        window.event_submit_path = '{{ path('new_event') }}';
+        window.event_update_path = '{{ path('update_event',{id:'idevent'}) }}';
+        window.event_delete_path = '{{ path('delete_event',{id:'idevent'}) }}';
+    </script>
+    <h1 style="margin-left: 43%;">Events Managment</h1>
+
+
+    <script src="{{ asset('bundles/front/calendar/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/calendar/js/script.js') }}"></script>
+
+    <script src="{{ asset('bundles/front/calendar/js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
+    <link href="{{ asset('bundles/front/calendar/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('bundles/front/calendar/css/fullcalendar.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('bundles/front/calendar/css/fullcalendar.print.css') }}" rel="stylesheet" media="print"/>
+    <script src="{{ asset('bundles/front/calendar/js/moment.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/calendar/js/fullcalendar.js') }}"></script>
+
+    <style type="text/css">
+        .block a:hover {
+            color: silver;
+        }
+
+        .block a {
+            color: #fff;
+        }
+
+        .block {
+            position: fixed;
+            background: #2184cd;
+            padding: 20px;
+            z-index: 1;
+            top: 240px;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+
+
+    <!-- add calander in this div -->
+    <div class="container">
+        <div class="row">
+            <div id="calendar"></div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div id="createEventModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Event</h4>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(form) }}
+                    <div class="control-group">
+                        <label class="control-label" for="inputPatient">Event:</label>
+                        <div class="field desc">
+                            <div class="form-group">
+                               {{ form_widget(form.title) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.nbplaces) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.price) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.startdate) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.enddate) }}
+                            </div>
+
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submitButton">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="calendarModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Event Details</h4>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    <h4 id="modalTitle" class="modal-title"></h4>
+                    <div id="modalWhen" style="margin-top:5px;"></div>
+                </div>
+                <input type="hidden" id="eventID"/>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                    <button type="submit" class="btn btn-danger" id="deleteButton">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal-->
+
+    <script>
+        var events = {{ events|json_encode|raw }};
+        $(function() {
+            events.forEach(function(e) {
+                $("#calendar").fullCalendar('renderEvent',
+                        {
+                            id: e.idevent,
+                            title: e.title,
+                            start: e.startdate.date,
+                            end: e.enddate.date,
+                        },
+                        true);
+            })
+        })
+    </script>
+{% endblock %}

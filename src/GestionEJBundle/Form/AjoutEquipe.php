@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Tests\Extension\Core\Type\NumberTypeTest;
@@ -290,7 +291,7 @@ class AjoutEquipe extends AbstractType
                 'Amerique du nord'=>'Amerique du nord',
                 'Europe'=>'Europe',
                 'Oceanie'=>'Oceanie',
-            )))->add('victoires',IntegerType::class,array('attr'=>array('min'=>0)))->add('entraineur')->add('classementfifa',IntegerType::class,array('attr'=>array('min'=>0)))->add('matchescm',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Matches'))->add('butscm',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Buts'))->add('matchwins',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Victoires'))->add('matchlosses',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Defaites'))->add('matchdraws',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Nuls'))->add('drapeau',FileType::class,array('data_class'=>null))->add('photoequipe',FileType::class,array('data_class'=>null))->add('Logo',FileType::class,array('data_class'=>null))->add('Groupe',ChoiceType::class,array('choices'=>
+            )))->add('victoires',IntegerType::class,array('attr'=>array('min'=>0)))->add('entraineur')->add('classementfifa',IntegerType::class,array('attr'=>array('min'=>0)))->add('butscm',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Buts'))->add('matchwins',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Victoires'))->add('matchlosses',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Defaites'))->add('matchdraws',IntegerType::class,array('attr'=>array('min'=>0),'label'=>'Nuls'))->add('drapeau',FileType::class,array('data_class'=>null))->add('photoequipe',FileType::class,array('data_class'=>null))->add('Logo',FileType::class,array('data_class'=>null))->add('Groupe',ChoiceType::class,array('choices'=>
             array(
                 'A'=>'A',
                 'B'=>'B',
@@ -301,7 +302,7 @@ class AjoutEquipe extends AbstractType
     'G'=>'G',
         'H'=>'H',
             )
-            ))->add('Ajout Equipe',SubmitType::class);
+            ))->add('Description',TextareaType::class)->add('Ajout Equipe',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

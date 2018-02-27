@@ -32,6 +32,16 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
             new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
+            // ...
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            // Optionally
+            new Ivory\SerializerBundle\IvorySerializerBundle(),
+            new Http\HttplugBundle\HttplugBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
 
 
 

@@ -33,7 +33,7 @@
                     <div class="container">
                         <h5><i class="fa fa-filter" aria-hidden="true"></i>Filter By:</h5>
 
-                        <a href="#" data-filter="*" class="current">Show All</a>
+                        <a href="#" data-filter="*" class="current" >Show All</a>
                         {% for s in e %}
                         <a href="#" data-filter=".{{ s.nom }}"><img src="{{ asset('uploads/Equipes/' ~ s.drapeau) }}" height="30" width="30"/></a>
 
@@ -80,9 +80,10 @@
 
                     </div>
                 </div>
-                <div class="navigation" align="center">
+                <div class="navigation" align="center" >
                     {{ knp_pagination_render(m) }}
                 </div>
+
                 <!-- Newsletter -->
                 <div class="section-newsletter">
                     <div class="container">

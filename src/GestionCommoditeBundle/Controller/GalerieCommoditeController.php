@@ -86,7 +86,7 @@ class GalerieCommoditeController extends Controller
         $commodite = $em->getRepository("GestionCommoditeBundle:GalerieCommodite")->find($idGalerie);
         $em->remove($commodite);
         $em->flush();
-        return $this->redirectToRoute('commodite_show');
+        return $this->redirectToRoute('galeriecommodite_show');
     }
 
     /**

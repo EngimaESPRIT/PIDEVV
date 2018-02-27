@@ -130,6 +130,29 @@ class Equipe
      * @ORM\Column(name="Groupe", type="string", length=1, nullable=false)
      */
     private $Groupe;
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->Description;
+    }
+
+    /**
+     * @param string $Description
+     */
+    public function setDescription($Description)
+    {
+        $this->Description = $Description;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=15500, nullable=false)
+     */
+    private $Description;
     /**
  * @var integer
  *

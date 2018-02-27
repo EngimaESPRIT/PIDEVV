@@ -33,7 +33,10 @@ gestion_ej:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-
+app1:
+    resource: "@GestionCommoditeBundle/Controller/"
+    type: annotation
+    prefix:   /
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 gregwar_captcha_routing:
@@ -41,3 +44,4 @@ gregwar_captcha_routing:
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+

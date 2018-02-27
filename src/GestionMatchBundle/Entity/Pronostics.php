@@ -8,8 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Pronostics
  *
  * @ORM\Table(name="pronostics", indexes={@ORM\Index(name="fk_id_user", columns={"id_user"}), @ORM\Index(name="fk_match_prono", columns={"Id_Match"})})
- * @ORM\Entity(repositoryClass="GestionMatchBundle\Repository\PronosticsRepository")
- *
+ * @ORM\Entity
  */
 class Pronostics
 {
@@ -18,35 +17,30 @@ class Pronostics
      *
      * @ORM\Column(name="Id_Prono", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idProno;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="CoteEquipeA", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="Choix_Utilisateur", type="string", length=2, nullable=false)
      */
-    private $coteequipea;
+    private $choixUtilisateur;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="CoteX", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="Staut_paris", type="string", length=20, nullable=true)
      */
-    private $cotex;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="CoteEquipeB", type="float", precision=10, scale=0, nullable=false)
-     */
-    private $coteequipeb;
+    private $stautParis;
 
     /**
      * @var \User
      *
-     * @ORM\ManyToOne(targetEntity="MyApp\UserBundle\Entity\User")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="MyApp\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
@@ -56,7 +50,9 @@ class Pronostics
     /**
      * @var \Matches
      *
-     * @ORM\ManyToOne(targetEntity="Matches")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Matches")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Match", referencedColumnName="Id_Match")
      * })
@@ -80,51 +76,35 @@ class Pronostics
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getCoteequipea()
+    public function getChoixUtilisateur()
     {
-        return $this->coteequipea;
+        return $this->choixUtilisateur;
     }
 
     /**
-     * @param float $coteequipea
+     * @param string $choixUtilisateur
      */
-    public function setCoteequipea($coteequipea)
+    public function setChoixUtilisateur($choixUtilisateur)
     {
-        $this->coteequipea = $coteequipea;
+        $this->choixUtilisateur = $choixUtilisateur;
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getCotex()
+    public function getStautParis()
     {
-        return $this->cotex;
+        return $this->stautParis;
     }
 
     /**
-     * @param float $cotex
+     * @param string $stautParis
      */
-    public function setCotex($cotex)
+    public function setStautParis($stautParis)
     {
-        $this->cotex = $cotex;
-    }
-
-    /**
-     * @return float
-     */
-    public function getCoteequipeb()
-    {
-        return $this->coteequipeb;
-    }
-
-    /**
-     * @param float $coteequipeb
-     */
-    public function setCoteequipeb($coteequipeb)
-    {
-        $this->coteequipeb = $coteequipeb;
+        $this->stautParis = $stautParis;
     }
 
     /**

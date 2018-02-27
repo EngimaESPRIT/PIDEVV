@@ -17,7 +17,7 @@ class PronosticsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('coteequipea')->add('cotex')->add('coteequipeb')
+        $builder->add('choixutilisateur')
             ->add('idUser',EntityType::class,
                 array(
                     'class'=>'MyApp\UserBundle\Entity\User','choice_label'=>'id'))

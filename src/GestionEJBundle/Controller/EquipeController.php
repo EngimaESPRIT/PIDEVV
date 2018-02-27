@@ -27,34 +27,96 @@ class EquipeController extends \Symfony\Bundle\FrameworkBundle\Controller\Contro
         $m=new Equipe();
         $form=$this->createForm(AjoutEquipe::class,$m);
         $form->handleRequest($request);
+        $d=new Equipe();
+        $var=0;
+        $em = $this->getDoctrine()->getManager();
+
+        $model = $em->getRepository("GestionEJBundle:Equipe")->findAll();
+$t=false;
+$v=false;
+        foreach ($model as $d)
+        {
+            $var=$var+1;
+        }
+       foreach ($model as $d)
+       {
+           if ($d->getEntraineur()==$m->getEntraineur())
+           {
+               $t=true;
+           }
+           if ($d->getClassementfifa()==$m->getClassementfifa())
+
+           {
+               $v=true;
+           }
+       }
+        echo $var;
         if ($form->isValid())
         {
-$file=$m->getDrapeau();
-            $fileName = $m->getNom().'Drapeau'.'.'.$file->guessExtension();
-            $file->move(
-                $this->getParameter('Equipes_directory'),
-                $fileName
-            );
-            $file1=$m->getPhotoequipe();
-            $fileName1 = $m->getNom().'Equipe'.'.'.$file1->guessExtension();
-            $file1->move(
-                $this->getParameter('Equipes_directory'),
-                $fileName1
-            );
-            $m->setDrapeau($fileName);
-            $m->setPhotoequipe($fileName1);
-            $file2=$m->getLogo();
-            $fileName2 = $m->getNom().'Logo'.'.'.$file2->guessExtension();
-            $file2->move(
-                $this->getParameter('Equipes_directory'),
-                $fileName2
-            );
-            $m->setLogo($fileName2);
-            $em = $this->getDoctrine()->getManager();
+if ($var<32) {
+    if ($m->getParticipations()<=21 && $m->getParticipations()>=0) {
+        if ($t==false) {
+if ($m->getMatchlosses()>=0 and $m->getMatchdraws()>=0 and $m->getButscm()>=0 and $m->getClassementfifa()>=1) {
+    if ($v==false) {
+        $m->setMatchescm($m->getMatchwins() + $m->getMatchdraws() + $m->getMatchlosses());
+        $file = $m->getDrapeau();
+        $fileName = $m->getNom() . 'Drapeau' . '.' . $file->guessExtension();
+        $file->move(
+            $this->getParameter('Equipes_directory'),
+            $fileName
+        );
+        $file1 = $m->getPhotoequipe();
+        $fileName1 = $m->getNom() . 'Equipe' . '.' . $file1->guessExtension();
+        $file1->move(
+            $this->getParameter('Equipes_directory'),
+            $fileName1
+        );
+        $m->setDrapeau($fileName);
+        $m->setPhotoequipe($fileName1);
+        $file2 = $m->getLogo();
+        $fileName2 = $m->getNom() . 'Logo' . '.' . $file2->guessExtension();
+        $file2->move(
+            $this->getParameter('Equipes_directory'),
+            $fileName2
+        );
+        $m->setLogo($fileName2);
+        $em = $this->getDoctrine()->getManager();
 
-            $em->persist($m);
-            $em->flush();
-            $this->get('session')->getFlashBag()->add('notice','Ajout avec succees');
+        $em->persist($m);
+        $em->flush();
+        $this->get('session')->getFlashBag()->add('notice', 'Ajout avec succees');
+    }
+    else
+    {
+        $this->get('session')->getFlashBag()->add('error', 'Echoué:Une Equipe A deja ce classement');
+
+    }
+
+}
+
+else
+{
+    $this->get('session')->getFlashBag()->add('error', 'Echoué:Victoires ou Defaites ou classement fifa negative');
+
+}
+        }
+        else
+            {
+                $this->get('session')->getFlashBag()->add('error', 'Echoué:Cet Entraineur a deja une equipe');
+
+            }
+        }
+    else
+    {
+        $this->get('session')->getFlashBag()->add('error', 'Echoué:Attention il ya eu que 21 CMs');
+
+    }
+}
+else
+{
+    $this->get('session')->getFlashBag()->add('error', 'Echoué:Attention! La Coupe du monde ne contient que 32 equipes');
+
+}
         }
         return $this->render('@GestionEJ/TemplateAdmin/ajouterequipe.html.twig',array('form'=>$form->createView()));
 
@@ -67,21 +129,14 @@ $file=$m->getDrapeau();
     }
     public function GoToTeamsAction()
     {
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')==false) {
             $em = $this->getDoctrine()->getManager();
 
 
             $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
             $model = $em->getRepository("GestionEJBundle:Equipe")->findAll();
             return $this->render('GestionEJBundle:template 2:teams.html.twig', array('m' => $model,'s'=>$stades));
-        }
-        else
-        {
-            $em = $this->getDoctrine()->getManager();
 
-            $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
-            return $this->redirectToRoute('Erreur',array('s'=>$stades));
-        }
+
 
 
     }
@@ -91,10 +146,12 @@ $file=$m->getDrapeau();
 
         $model = $em->getRepository("GestionEJBundle:Equipe")->find($request->get('id'));
         $joueurs = $em->getRepository("GestionEJBundle:Joueur")->findBy(array("idEquipe"=>$request->get('id')));
+        $matches = $em->getRepository("GestionMatchBundle:Matches")->TrouverMatches($request->get('id'));
+
 
 
         $stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
-        return $this->render('GestionEJBundle:template 2:single-team.html.twig', array('m' => $model,'j'=>$joueurs,'s'=>$stades));
+        return $this->render('GestionEJBundle:template 2:single-team.html.twig', array('m' => $model,'j'=>$joueurs,'s'=>$stades,'ma'=>$matches));
     }
     public function GoToSuppEquipeAction(Request $request)
     {

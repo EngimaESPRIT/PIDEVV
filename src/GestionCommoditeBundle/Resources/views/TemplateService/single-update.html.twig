@@ -177,6 +177,7 @@
                         <!-- Title Post -->
                         <div class="titles">
                             <h4>Comments</h4>
+
                         </div>
                         <!-- Title Post -->
 
@@ -291,22 +292,49 @@
             </div>
         </div>
 
-        <!-- Newsletter -->        <div id="map" style="width: 100%;height: 400px;background-color: grey;"></div>
+        <!-- Newsletter -->
+        <div id="map" style="width: 100%;height: 400px;background-color: grey;"></div>
         <!-- End Newsletter -->
     </section>
     <!-- End Section Area -  Content Central -->
     <script>
         function initMap() {
-            var uluru = {lat: {{commodite.lat}}, lng: {{commodite.lng}}};
+            var uluru = {lat: {{ commodite.lat }}, lng: {{ commodite.lng }}};
+            var nom = '{{ commodite.nomCommodite }}'
+            var adresse = '{{ commodite.adresse }}'
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                zoom: 14,
                 center: uluru
+            });
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h1 id="firstHeading" class="firstHeading">' + nom + '</h1>' +
+                '<div id="bodyContent">' +
+                adresse +
+                '</div>' +
+                '</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
             });
             var marker = new google.maps.Marker({
                 position: uluru,
-                map: map
+                map: map,
+                title: 'Hello World!'
+            });
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+            google.maps.event.addListener(map, "click", function (e) {
+
+                //lat and lng is available in e object
+                var latLng = e.latLng;
+                console.log(latLng.lat());
+                console.log(latLng.lng());
+
             });
         }
+
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANA29xt7tok9V7EyeeLhegCsDyv0XmxSc&callback=initMap">

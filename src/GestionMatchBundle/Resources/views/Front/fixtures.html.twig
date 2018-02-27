@@ -52,9 +52,8 @@
                             <th class="text-center">Team B</th>
                             <th class="text-center">Date</th>
                             <th class="text-center">Lieu</th>
-                            <th class="text-center">Cote Equipe 1</th>
-                            <th class="text-center">Cote Nulle</th>
-                            <th class="text-center">Cote Equipe 2</th>
+                            <th class="text-center">Parier</th>
+                            <th class="text-center"><a href="{{ path('Affichermespronostiques') }}">Consulter mes pronostiques </a>  </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -74,7 +73,7 @@
                             <td> {{ v.Equipeb.Nom }} <img src="{{ asset('uploads/Equipes/' ~  v.Equipeb.Drapeau) }}" alt="location-team"></td>
                             <td> {{ v.dateMatch|date }} </td>
                             <td> {{ v.lieuMatch }} </td>
-                            <td>  <a href="{{ path('affiche_prono_client',{'idProno':v.idMatch}) }}">Parier sue ce match </a>   </td>
+                            <td>  <a href="{{ path('affiche_prono_client',{'id':v.idMatch}) }}">Parier sue ce match </a>   </td>
 
 
 

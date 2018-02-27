@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+
+    <h1 style="margin-left: 43%;">Events List</h1>
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }}" role="alert">{{ message }}</div>
+
+        {% endfor %}
+    {% endfor %}
+
+    <script src="{{ asset('bundles/front/calendar/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/calendar/js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
+    <link href="{{ asset('bundles/front/calendar/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <div class="row">
+    {% for event in events %}
+    <!-- Button trigger modal -->
+        <div>
+
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="https://www.beart.fr/wp-content/uploads/2015/05/jzeudiarty-e1453371600278.jpg" alt="">
+                        <div class="caption">
+                            <h4 class="pull-right">Price {{ event.price }} $</h4>
+                            <h4><a href="#">{{ event.nbplaces }} Available ticket</a>
+                            </h4>
+                            <h4><a href="#">{{event.nbplaces - event.NbrPlaceToken }} Left Tickets</a>
+                            </h4>
+                            <br>
+
+                            <button  type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#{{ event.idevent }}">
+                                show event
+                            </button>
+                        </div>
+                        <div class="ratings">
+                            <p class="pull-right">15 reviews</p>
+                            <p>
+                                <span>by <a href="#">{{ event.iduser.nom }} {{ event.iduser.prenom }}</a></span>
+                                <br>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="{{ event.idevent }}" tabindex="-1" role="dialog" aria-labelledby="modal-eventLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                      <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="modal-eventLabel">{{ event.title }}</h4>
+                          </div>
+                      <div class="modal-body" >
+                    <div class="form-group">
+                        start date :
+                        <input type="text"  class="form-control" value="{{ event.startdate|date('Y-m-d H:i:s') }}" readonly>
+
+                    </div>
+                    <div class="form-group">
+                        end date :
+                        <input type="text"  class="form-control" value="{{ event.enddate|date('Y-m-d H:i:s') }}" readonly>
+
+                    </div>
+                    <div class="form-group">
+                        Available Places :
+                        <input type="text"  class="form-control" value="{{ event.nbplaces }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        Left Tickets :
+                        <input type="text"  class="form-control" value="{{event.nbplaces - event.NbrPlaceToken }}" readonly>
+                    </div>
+
+                    Price per Ticket :
+
+                    <div class="input-group">
+                        <span class="input-group-addon">€ </span>
+                        <input type="text"  class="form-control" value="{{ event.price }} " readonly>
+                    </div>
+
+
+
+                      </div>
+                      <div class="modal-footer">
+                            <button type="button" class="btn btn-default" onclick='' data-dismiss="modal">close</button>
+                           
+                    <a class="btn btn-primary" href="{{ path('take_event',{'id':event.idevent})}}">take place</a>
+                          </div>
+                    </div>
+              </div>
+    </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <style>
+
+        body {
+            padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+            background:url(../images/templatemo_box.jpg) repeat-x;
+        }
+
+        button.btn.btn-primary.btn {
+
+            margin-left: 70%;
+        }
+
+
+
+        .caption {
+            height: 130px;
+            overflow: hidden;
+        }
+
+        .caption h4 {
+            white-space: nowrap;
+        }
+
+        .thumbnail img {
+            width: 100%;
+        }
+
+        .ratings {
+            padding-right: 10px;
+            padding-left: 10px;
+            color: #d17581;
+        }
+
+        .thumbnail {
+            padding: 0;
+        }
+
+        .thumbnail {
+            padding: 9px;
+            color: #333;
+        }
+
+        footer {
+            margin: 50px 0;
+        }
+    </style>
+
+{% endblock %}

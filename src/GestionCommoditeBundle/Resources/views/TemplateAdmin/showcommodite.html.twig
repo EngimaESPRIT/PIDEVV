@@ -60,12 +60,12 @@
                                 <th>Categorie</th>
                                 <th>nom Commodite</th>
                                 <th>Tel</th>
-                                <th>adresse</th>
                                 <th>Carte credit</th>
                                 <th>Alcool</th>
                                 <th>Ticket restaurant</th>
                                 <th>wifi gratuit </th>
                                 <th>Description</th>
+                                <th>adresse</th>
                                 <th>ville</th>
                                 <th>Lat</th>
                                 <th>Lng</th>
@@ -78,17 +78,17 @@
                                 <tr>
                                     <td><a href="{{ path('commodite_show', { 'idCommodite': commodite.idCommodite }) }}">{{ commodite.idCommodite }}</a></td>
                                     <td>{{ commodite.categorie }}</td>
-                                    <td>{{ commodite.tel }}</td>
-                                    <td>{{ commodite.adresse }}</td>
                                     <td>{{ commodite.nomCommodite }}</td>
+                                    <td>{{ commodite.tel }}</td>
                                     <td>{% if commodite.carteCredit %}Yes{% else %}No{% endif %}</td>
                                     <td>{% if commodite.alcool %}Yes{% else %}No{% endif %}</td>
                                     <td>{% if commodite.ticketRestaurant %}Yes{% else %}No{% endif %}</td>
                                     <td>{% if commodite.wifiGratuit %}Yes{% else %}No{% endif %}</td>
-                                    <td>{{ commodite.description }}</td>
+                                    <td>{{ commodite.description [:150] }}</td>
+                                    <td>{{ commodite.adresse }}</td>
+                                    <td>{{ commodite.ville }}</td>
                                     <td>{{ commodite.lat }}</td>
                                     <td>{{ commodite.lng }}</td>
-                                    <td>{{ commodite.ville }}</td>
                                     <td>
                                         <ul>
                                             <li>

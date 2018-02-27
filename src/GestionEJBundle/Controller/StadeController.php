@@ -8,10 +8,13 @@
 
 namespace GestionEJBundle\Controller;
 
-
+use Ivory\GoogleMap\Place\Autocomplete;
+use Ivory\GoogleMap\Service\Place\Base\Place;
+use Ivory\GoogleMapBundle\Form\Type\PlaceAutocompleteType;
 use GestionEJBundle\Entity\Stade;
 use GestionEJBundle\Form\AjoutStade;
 use Symfony\Component\HttpFoundation\Request;
+use Ivory\GoogleMap\Map;
 class StadeController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
 {
     public function AjouterStadeAction(Request $request)
@@ -75,11 +78,14 @@ return $this->render('@GestionEJ/TemplateAdmin/afficherStade.html.twig', array('
     }
     public function afficherStadeFrontAction(Request $request)
     {
+        $map = new Map();
+        $stade=new Stade();
+        $au=new Autocomplete();
         $em = $this->getDoctrine()->getManager();
         $Stades = $em->getRepository("GestionEJBundle:Stade")->findAll();
-
+$form=$this->createFormBuilder($stade)->add('latitude',PlaceAutocompleteType::class)->getForm();
         $model = $em->getRepository("GestionEJBundle:Stade")->find($request->get('id'));
-        return $this->render('@GestionEJ/template 2/stades.html.twig',array('m'=>$model,'s'=>$Stades));
+        return $this->render('@GestionEJ/template 2/stades.html.twig',array('m'=>$model,'s'=>$Stades,'map'=>$map,'form'=>$form->createView()));
     }
     public function afficherStadesFrontAction(Request $request)
     {

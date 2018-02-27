@@ -31,10 +31,10 @@ class MatchesType extends AbstractType
             ->add('idStade',EntityType::class,
                 array(
                     'class'=>'GestionEJBundle\Entity\Stade','choice_label'=>'nom'))
-        ->add('Ajouter Match',SubmitType::class);
+            ->add('Ajouter Match',SubmitType::class);
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

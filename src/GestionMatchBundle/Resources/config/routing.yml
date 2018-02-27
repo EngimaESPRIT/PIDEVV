@@ -52,16 +52,75 @@ affiche_prono_client:
     path:     /pronooo
     defaults: { _controller: GestionMatchBundle:Gestionpronos:GoToAffichePronoClient }
 
-addtocart:
-    path:     /addcart/{id}/{cote}
-    defaults: { _controller: GestionMatchBundle:Gestionpronos:addToCart }
-caart:
-    path:     /gotocart
-    defaults: { _controller: GestionMatchBundle:Gestionpronos:cart }
-affcart:
-    path:     /affcart
-    defaults: { _controller: GestionMatchBundle:Gestionpronos:AfficheDetails }
+Affichermespronostiques:
+    path:     /mespronostiques
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:Affichermespronostiques }
+
+PronostiquesValide:
+    path:     /valide
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:PronostiquesValide }
+PronostiquesNonValide:
+    path:     /nonvalide
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:PronostiquesNonValide }
+
+parier:
+    path:     /parier
+    defaults: { _controller: GestionMatchBundle:Gestionpronos:Ajouterpronoclient }
+
 
 calendrier:
     path:     /calendar
     defaults: { _controller: GestionMatchBundle:GestionMatches:Calendrier }
+
+
+
+
+
+
+events_admin:
+    path:    /events_admin
+    defaults: { _controller: GestionMatchBundle:event:eventadmin }
+
+ActivateEvent:
+    path:    /ActivateEvent/{id}
+    defaults: { _controller: GestionMatchBundle:event:ActivateEvent }
+
+DeleteEvent:
+    path:    /DeleteEvent/{id}
+    defaults: { _controller: GestionMatchBundle:event:DeleteEv }
+
+BlockEvent:
+    path:    /BlockEvent/{id}
+    defaults: { _controller: GestionMatchBundle:event:BlockEvent }
+
+event:
+    path:     /event
+    defaults: { _controller: GestionMatchBundle:event:event }
+
+update_event:
+    path:     /update-event/{id}
+    defaults: { _controller: GestionMatchBundle:event:updateEvent }
+
+delete_event:
+    path:     /delete-event/{id}
+    defaults: { _controller: GestionMatchBundle:event:deleteEvent }
+
+showevents:
+    path:     /showevents
+    defaults: { _controller: GestionMatchBundle:ticket:showevents }
+
+take_event:
+    path:     /take_event/{id}
+    defaults: { _controller: GestionMatchBundle:ticket:takeevent }
+
+new_event:
+    path:     /new-event
+    defaults: { _controller: GestionMatchBundle:event:newEvent }
+
+render_event:
+    path:     /render-event
+    defaults: { _controller: GestionMatchBundle:event:RenderEvent }
+
+Ticketshow:
+    path:    /Ticketshow
+    defaults: { _controller: GestionMatchBundle:ticket:Ticketshow }

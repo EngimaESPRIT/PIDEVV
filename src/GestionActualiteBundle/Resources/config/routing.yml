@@ -18,9 +18,6 @@ my_app_mail_accuse:
     path: /success
     defaults: { _controller: GestionActualiteBundle:Default:success }
 
-admin_homepage:
-    path:     /admin
-    defaults: { _controller: GestionActualiteBundle:Liens:GoToAdmin }
 
 client_homepage:
     path:     /home

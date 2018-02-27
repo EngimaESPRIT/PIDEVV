@@ -20,12 +20,14 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+
                 csrf_token_generator: security.csrf.token_manager
                 success_handler: redirect.after.login
 
             logout:
                 success_handler: redirect.after.logout
             anonymous:    true
+
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -54,6 +56,77 @@ security:
         - { path: ^/userlistedemande, roles: [ROLE_CLIENT,ROLE_ADMIN] }
         - { path: ^/searchdemande, roles: [ROLE_CLIENT,ROLE_ADMIN] }
         - { path: ^/searchhoraire, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/AjoutEquipe:, role: ROLE_ADMIN }
+
+        - { path: ^/AjoutJoueur:, role: ROLE_ADMIN }
+
+        - { path: ^/AfficheJoueur:, role: ROLE_ADMIN }
+        - { path: ^/AfficheEquipe:, role: ROLE_ADMIN }
+
+        - { path: ^/SupprimerEquipe:, role: ROLE_ADMIN }
+        - { path: ^/SupprimerJoueur:, role: ROLE_ADMIN }
+        - { path: ^/ModifierEquipe:, role: ROLE_ADMIN }
+        - { path: ^/ModifierJoueur:, role: ROLE_ADMIN }
+        - { path: ^/AjouterStade:, role: ROLE_ADMIN }
+
+        - { path: ^/ModifierStade:, role: ROLE_ADMIN }
+        - { path: ^/AfficherStade:, role: ROLE_ADMIN }
+
+
+        - { path: ^/Equipe-type, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/Equipe-type2, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/OnePlayerShow, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/AffEquipeType, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/EquipeFavorite, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/StadeView, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/StadeSelection, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+
+        - { path: ^/successSolde, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+        - { path: ^/pdf, role: ROLE_ADMIN }
+        - { path: ^/alimenter, roles: [ROLE_CLIENT,ROLE_ADMIN] }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
 

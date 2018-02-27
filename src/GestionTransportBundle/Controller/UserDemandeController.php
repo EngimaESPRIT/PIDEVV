@@ -37,7 +37,7 @@ class UserDemandeController extends Controller
             //  $em = $this->getDoctrine()->getManager();
             $user = $this->getUser();
             $d->setIdUser($user);
-            $d->setNbPlacesDispo($d->getIdVehicule()->getNbPlaces());
+            $d->setNbPlacesDispo($d->getIdVehicule()->getNbPlaces()-1);
 
             // récuperer la date systéme et la date de match et les comparer afin de vérifier la date avant d'ajouter la demande de covoiturage
 

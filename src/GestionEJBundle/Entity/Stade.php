@@ -42,19 +42,7 @@ class Stade
      */
     private $capacite;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="longitude", type="float", precision=10, scale=0, nullable=false)
-     */
-    private $longitude;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="latitude", type="float", precision=10, scale=0, nullable=false)
-     */
-    private $latitude;
 
     /**
      * @var string

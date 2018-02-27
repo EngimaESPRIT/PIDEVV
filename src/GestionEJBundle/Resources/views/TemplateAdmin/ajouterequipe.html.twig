@@ -47,11 +47,20 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <br />
+
                       {% set flashbag_notices = app.session.flashbag.get('notice') %}
+                      {% set flashbag = app.session.flashbag.get('error') %}
+
                       {% if flashbag_notices is not empty %}
                         <ul class="msg">
                             {% for notice in flashbag_notices %}
+                              <li>{{ notice }}</li>
+                            {% endfor %}
+                        </ul>
+                      {% elseif flashbag is not empty %}
+
+                        <ul class="msg" STYLE="background-color: red">
+                            {% for notice in flashbag %}
                               <li>{{ notice }}</li>
                             {% endfor %}
                         </ul>

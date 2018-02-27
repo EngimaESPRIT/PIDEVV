@@ -83,285 +83,97 @@
                 <!-- End White Section -->
 
                   <!-- End Parallax Section -->
-                <div class="default-section paddings">
-                    <div class="container">
 
-                        <div class="row no-line-height">
-                              <div class="col-md-12">
-                                  <h3 class="clear-title">Club Teams</h3>
-                              </div>
-                        </div>
 
 
                         <div class="row">
-                           <!-- Item Team Group A-->
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="item-team">
-                                    <div class="head-team">
-                                        <img src="img/locations/1.jpg" alt="location-team">
-                                        <div class="overlay"><a href="single-team.html">+</a></div>
-                                    </div>
-                                    <div class="info-team">
-                                        <span class="logo-team">
-                                            <img src="img/clubs-logos/rusia.png" alt="logo-team">
-                                        </span>
-                                        <h4>Rusia</h4>
-                                        <span class="location-team">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            Stadium
-                                        </span>
-                                        <span class="group-team">
-                                            <i class="fa fa-trophy" aria-hidden="true"></i>
-                                            Group A
-                                        </span>
-                                    </div>
-                                    <a href="single-team.html" class="btn">Team Profile <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <!-- End Item Team Group A-->
 
-                            <!-- Item Team Group A-->
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="item-team">
-                                    <div class="head-team">
-                                        <img src="img/locations/2.jpg" alt="location-team">
-                                        <div class="overlay"><a href="single-team.html">+</a></div>
-                                    </div>
-                                    <div class="info-team">
-                                        <span class="logo-team">
-                                            <img src="img/clubs-logos/arabia.png" alt="logo-team">
-                                        </span>
-                                        <h4>Saudi Arabia</h4>
-                                        <span class="location-team">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            Stadium
-                                        </span>
-                                        <span class="group-team">
-                                            <i class="fa fa-trophy" aria-hidden="true"></i>
-                                            Group A
-                                        </span>
-                                    </div>
-                                    <a href="single-team.html" class="btn">Team Profile <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <!-- End Item Team Group A-->
+                            <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
 
-                            <!-- Item Team Group A-->
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="item-team">
-                                    <div class="head-team">
-                                        <img src="img/locations/3.jpg" alt="location-team">
-                                        <div class="overlay"><a href="single-team.html">+</a></div>
-                                    </div>
-                                    <div class="info-team">
-                                        <span class="logo-team">
-                                            <img src="img/clubs-logos/egy.png" alt="logo-team">
-                                        </span>
-                                        <h4>Egypt</h4>
-                                        <span class="location-team">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            Stadium
-                                        </span>
-                                        <span class="group-team">
-                                            <i class="fa fa-trophy" aria-hidden="true"></i>
-                                            Group A
-                                        </span>
-                                    </div>
-                                    <a href="single-team.html" class="btn">Team Profile <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <!-- End Item Team Group A-->
+                            <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXNo5iYEjwgUG7h9K8ne5Kd5fZ7ulff3E&sensor=false&.js"
+                                    type="text/javascript"    ></script>
+                            <style>
+                                #map_canvas{
+                                    width: 1990px;
+                                    height: 400px;
+                                    border: 1px solid black;
+                                    float: left;
+                                }
+                                #directions {
+                                    width: 38%;
+                                    float: right;
+                                }
+                                body {
+                                    font-size: 12px;
+                                }
+                            </style>
 
-                            <!-- Item Team Group A-->
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="item-team">
-                                    <div class="head-team">
-                                        <img src="img/locations/4.jpg" alt="location-team">
-                                        <div class="overlay"><a href="single-news.html">+</a></div>
-                                    </div>
-                                    <div class="info-team">
-                                        <span class="logo-team">
-                                            <img src="img/clubs-logos/uru.png" alt="logo-team">
-                                        </span>
-                                        <h4>Uruguay</h4>
-                                        <span class="location-team">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            Stadium
-                                        </span>
-                                        <span class="group-team">
-                                            <i class="fa fa-trophy" aria-hidden="true"></i>
-                                            Group A
-                                        </span>
-                                    </div>
-                                    <a href="single-team.html" class="btn">Team Profile <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                </div>
+                            <script>
+                                var directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true });
+                                var directionsService = new google.maps.DirectionsService();
+                                var map;
+
+                                $(window).on('load',function() {
+                                    var myOptions = {
+                                        zoom: 10,
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                        center: new google.maps.LatLng(35.270, -80.837)
+                                    };
+                                    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                                    directionsDisplay.setMap(map);
+                                    directionsDisplay.setPanel(document.getElementById("directions"));
+
+                                    $("#routeMode").on("change", function() { calcRoute(); });
+                                    $("#routeGo").on("click", function() { calcRoute(); });
+                                    $("#routeClear").on("click", function() { directionsDisplay.setDirections({ routes: [] }); });
+
+                                });
+
+
+                                function calcRoute() {
+                                    var request = {
+                                        origin: $("#routeTo").val(),
+                                        destination: $("#routeFrom").val(),
+                                        travelMode: google.maps.TravelMode[$("#routeMode").val()]
+                                    };
+                                    directionsService.route(request, function(response, status) {
+                                        if (status == google.maps.DirectionsStatus.OK) {
+                                            directionsDisplay.setDirections(response);
+                                        }
+                                    });
+                                }
+                            </script>
+
+                           aaaaaaaaa <input type="text" id="routeFrom" name="routeFrom" value="{{ 'stade ' ~ m.nom}}"/>
+                            <label for="routeFrom">Destination</label><br />
+                            <input type="text" id="routeTo" name="routeTo" value="Moscou" />
+
+                            <select id="routeMode" name="routeMode">
+                                <option value="DRIVING">Driving</option>
+                                <option value="WALKING">Walking</option>
+                                <option value="BICYCLING">Bicycling</option>
+                                <option value="TRANSIT">Transit</option>
+                            </select>
+                            <label for="routeMode">Mode</label><br />
+                            <div class="textcenter">
+                                <button id="routeGo">Route</button>
+                                <button id="routeClear">Clear Route</button>
                             </div>
-                            <!-- End Item Team Group A-->
+                            <div id="map_canvas"></div>
+                            <div id="directions"></div>
+
                         </div>
-                    </div>
-                </div>
-                <!-- End Gray Section -->
+
+
+                            <!-- End Item Team Group A-->
+
 
                 <!-- Parallax Section -->
-                <div class="parallax-section" style="background:url(img/slide/1.jpg);">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-12 text-center">
-                                <h1 class="big-title">We are a great team</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- End Gray Section -->
 
                 <!-- Sponsors-->
-                <div class="default-section paddings-mini">
-                    <div class="container">
-                        <div class="groups-list page-group">
-                            <div class="row">
-                            <div class="col-lg-3 col-md-6">
-                               <h5><a href="group-list-html.html">GROUP E</a></h5>
-                                <div class="item-group">
-                                    <ul>
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/bra.png" alt="">
-                                                Brazil
-                                            </a>
-                                        </li>
 
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/sui.png" alt="">
-                                                Switzerland
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/costa-rica.png" alt="">
-                                                Costa rica
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/srb.png" alt="">
-                                                Serbia
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6">
-                               <h5><a href="group-list-html.html">GROUP F</a></h5>
-                                <div class="item-group">
-                                    <ul>
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/ger.png" alt="">
-                                                Germany
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/mex.png" alt="">
-                                                Mexico
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/swe.png" alt="">
-                                                Sweden
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/kor.png" alt="">
-                                                Korea Rep
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6">
-                               <h5><a href="group-list-html.html">GROUP G</a></h5>
-                                <div class="item-group">
-                                    <ul>
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/bel.png" alt="">
-                                                Belgium
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/pan.png" alt="">
-                                                Panama
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/tun.png" alt="">
-                                                Tunisia
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/eng.png" alt="">
-                                                England
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6">
-                               <h5><a href="group-list-html.html">GROUP H</a></h5>
-                                <div class="item-group">
-                                    <ul>
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/pol.png" alt="">
-                                                Poland
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/sen.png" alt="">
-                                                Senegal
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/colombia.png" alt="">
-                                                Colombia
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                           <a href="single-team.html">
-                                                <img src="img/clubs-logos/japan.png" alt="">
-                                                Japan
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- End Sponsors -->
 
 

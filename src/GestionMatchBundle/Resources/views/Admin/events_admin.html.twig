@@ -1,0 +1,129 @@
+{% extends 'baseadmin.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/datatables.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/AutoFill-2.1.3/css/autoFill.bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/Buttons-1.2.4/css/buttons.bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/ColReorder-1.3.2/css/colReorder.bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/jQueryUI-1.11.4/jquery-ui.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/KeyTable-2.2.0/css/keyTable.bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/Responsive-2.1.0/css/responsive.bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/RowReorder-1.2.0/css/rowReorder.bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/front/DataTables/Scroller-1.4.2/css/scroller.jqueryui.min.css') }}"/>
+
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Scroller-1.4.2/js/dataTables.scroller.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Scroller-1.4.2/js/dataTables.scroller.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/datatables.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/AutoFill-2.1.3/js/autoFill.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.colVis.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.flash.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.foundation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.print.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.jqueryui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Buttons-1.2.4/js/buttons.semanticui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/ColReorder-1.3.2/js/dataTables.colReorder.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/jQuery-2.2.4/jquery-2.2.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/jQueryUI-1.11.4/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/KeyTable-2.2.0/js/dataTables.keyTable.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/Responsive-2.1.0/js/dataTables.responsive.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/DataTables/RowReorder-1.2.0/js/dataTables.rowReorder.min.js') }}"></script>
+
+
+
+
+
+
+    {% block  container_back %}
+
+        <script  type="text/javascript" >
+
+            $(document).ready(function() {
+                $('#t01').DataTable( {
+                    keys: true,
+                    responsive: true,
+                    select: true,
+                    autoFill: true,
+
+                    scrollY:        300,
+
+                    deferRender:    true
+
+
+                } );
+            } );
+
+        </script>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="">
+                        <div class="card">
+                            <div class="header">
+
+                                <h4 class="title"><span class="pe-7s-user"></span> Events Informations</h4>
+                            </div>
+                        </div>
+                        <div class="content_user">
+
+                            <table id="t01" >
+
+                                <thead>
+                                <tr>
+
+                                    <th>Id event</th>
+                                    <th>Title</th>
+                                    <th>User</th>
+                                    <th>Price per ticket</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>N° Places</th>
+                                    <th>N° Place Token</th>
+                                    <th>enabled</th>
+                                    <th>Action</th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for event in events %}
+                                    <tr>
+                                        <td>{{ event.idevent }}</td>
+                                        <td>{{ event.title }}</td>
+                                        <td>{{ event.iduser }}</td>
+                                        <td>{{ event.price }}</td>
+                                        <td>{{ event.startdate| date('Y-m-d') }}</td>
+                                        <td>{{ event.enddate|date('Y-m-d')}}</td>
+                                        <td>{{ event.nbplaces}}</td>
+                                        <td>{{ event.NbrPlaceToken }}</td>
+                                        <td>{{ event.enable}}</td>
+                                        <td>
+                                            <a href="{{ path('DeleteEvent',{'id':event.idevent}) }}">Delete</a><br>
+                                            <a href="{{ path('BlockEvent',{'id':event.idevent}) }}">Block</a>
+                                            <a href="{{ path('ActivateEvent',{'id':event.idevent}) }}">Activate</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    {% endblock %}
+
+
+{% endblock %}

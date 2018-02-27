@@ -8,10 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class LiensController extends Controller
 {
 
-    public function GoToAdminAction()
-    {
-        return $this->render('GestionActualiteBundle:TemplateBK:index.html.twig') ;
-    }
+
     public function GoToCommentViewAction()
     {
         return $this->render('Posts.html.twig');

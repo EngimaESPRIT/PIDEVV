@@ -41,7 +41,7 @@ class DemandeController extends Controller
             // $nb=$em->getRepository('GestionTransportBundle:Vehicules')->find($Form->get('id_vehicule'));
             //    $d->setNbPlacesDispo($nb->getNbPlaces());
 
-            $d->setNbPlacesDispo($d->getIdVehicule()->getNbPlaces());
+            $d->setNbPlacesDispo($d->getIdVehicule()->getNbPlaces()-1);
             $em->persist($d);
             $em->flush();
 
